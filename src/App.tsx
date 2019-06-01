@@ -5,8 +5,10 @@ import './App.css';
 import { Homepage } from './components/Homepage';
 import { About } from './components/About';
 import { NotFound } from './components/NotFound';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import Background from './images/bg.jpg';
+import { CssBaseline } from '@material-ui/core';
+import { main } from './theme';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -25,21 +27,24 @@ export const App: FunctionComponent = observer(() => {
     });
 
     return (
-        <BrowserRouter>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/about">About</Link>
-                    </li>
-                </ul>
-                <Switch>
-                    <Route path="/" exact component={Homepage} />
-                    <Route path="/about" exact component={About} />
-                    <Route component={NotFound} />
-                </Switch>
-        </BrowserRouter>
+        <ThemeProvider theme={main}>
+            <CssBaseline />
+            <BrowserRouter>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                    </ul>
+                    <Switch>
+                        <Route path="/" exact component={Homepage} />
+                        <Route path="/about" exact component={About} />
+                        <Route component={NotFound} />
+                    </Switch>
+            </BrowserRouter>
+        </ThemeProvider>
     );
 
 });

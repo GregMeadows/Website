@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import { Typography } from '@material-ui/core';
 import { Logo } from './Logo';
+import { main } from '../theme';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -16,7 +17,9 @@ export const Homepage: FunctionComponent = () => {
     return (
         <div className={classes.root}>
             <Typography>Homepage</Typography>
-            <Logo />
+            <ThemeProvider theme={main}>
+                <Logo />
+            </ThemeProvider>
         </div>
     );
 };
