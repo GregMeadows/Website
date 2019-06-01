@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Theme, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+import { Logo } from './Logo';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         margin: 16
     }
@@ -10,14 +11,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     classNamePrefix: 'homepage',
 });
 
-/**
- * An initial home page that will be displayed to a logged in user.
- */
 export const Homepage: FunctionComponent = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
             <Typography>Homepage</Typography>
+            <Logo />
         </div>
     );
 };

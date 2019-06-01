@@ -10,9 +10,6 @@ const useStyles = makeStyles(() => ({
     classNamePrefix: 'about',
 });
 
-/**
- * An initial home page that will be displayed to a logged in user.
- */
 export const About: FunctionComponent = () => {
     const classes = useStyles();
     return (

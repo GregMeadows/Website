@@ -10,9 +10,6 @@ const useStyles = makeStyles(() => ({
     classNamePrefix: 'not-found',
 });
 
-/**
- * An initial home page that will be displayed to a logged in user.
- */
 export const NotFound: FunctionComponent = () => {
     const classes = useStyles();
     return (
