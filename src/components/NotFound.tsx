@@ -1,23 +1,23 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Theme, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         margin: 16
     }
 }), {
-    classNamePrefix: 'homepage',
+    classNamePrefix: 'not-found',
 });
 
 /**
  * An initial home page that will be displayed to a logged in user.
  */
-export const Homepage: FunctionComponent = () => {
+export const NotFound: FunctionComponent = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Typography>Homepage</Typography>
+            <Typography>Page Not Found</Typography>
         </div>
     );
 };
