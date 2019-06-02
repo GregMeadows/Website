@@ -20,6 +20,9 @@ export const main = createMuiTheme({
         secondary: {
             main: '#ff5900'
         },
+        background: {
+            default: '#F5F5F5'
+        },
         base: {
             main: '#F5F5F5'
         },
@@ -32,11 +35,17 @@ export const main = createMuiTheme({
 export const greyscale = createMuiTheme({
     palette: {
         type: 'dark',
+        text: {
+            primary: '#fff'
+        },
         primary: {
             main: '#444444'
         },
         secondary: {
             main: '#888888'
+        },
+        background: {
+            default: '#222222'
         },
         base: {
             main: '#222222'
