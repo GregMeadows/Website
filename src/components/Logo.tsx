@@ -17,6 +17,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     root: (props: StyleProps) => ({
         fontSize: props.fontSize,
         margin: 16,
+        transition: 'font-size 1s',
     }),
     name: {
         fontSize: '6em',
@@ -34,8 +35,12 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     classNamePrefix: 'logo',
 });
 
+/**
+ * Inserts the main logo with a variable size.
+ * @param size can be of type enum logoSizes, or a string of fontsize (e.g. '2rem').
+ */
 export const Logo: FunctionComponent<{
-    size?: logoSizes;
+    size?: logoSizes | string;
 }> = ({size}) => {
     let styleProps: StyleProps = {fontSize: `${size || logoSizes.medium}`};
     const classes = useStyles(styleProps);

@@ -1,8 +1,7 @@
-import React, { FunctionComponent } from 'react';
-import { makeStyles, ThemeProvider } from '@material-ui/styles';
-import { Typography } from '@material-ui/core';
-import { Logo } from './Logo';
-import { main } from '../theme';
+import React, { FunctionComponent, useState } from 'react';
+import { makeStyles } from '@material-ui/styles';
+import { Typography, Button } from '@material-ui/core';
+import { Logo, logoSizes } from './Logo';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -14,12 +13,18 @@ const useStyles = makeStyles(() => ({
 
 export const Homepage: FunctionComponent = () => {
     const classes = useStyles();
+    
+    const [logoSize, setLogoSize] = useState(2.5);
+    
+    function onTestClick(){
+        setLogoSize(0.5);    
+    }
+
     return (
         <div className={classes.root}>
             <Typography>Homepage</Typography>
-            <ThemeProvider theme={main}>
-                <Logo />
-            </ThemeProvider>
+            <Button variant="contained" onClick={() => onTestClick()}>Test</Button> 
+            <Logo size={`${logoSize}rem`} />
         </div>
     );
 };
