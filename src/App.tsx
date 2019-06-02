@@ -31,26 +31,26 @@ export const App: FunctionComponent = observer(() => {
     return (
         <ThemeProvider theme={main}>
             <CssBaseline />
-            <div className={classes.root}>
-                <BrowserRouter>
-                        <ul>
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/about">About</Link>
-                            </li>
-                        </ul>
-                        <Switch>
-                            <Route path="/" exact component={Homepage} />
-                            <Route path="/about" exact component={About} />
-                            <Route component={NotFound} />
-                        </Switch>
-                </BrowserRouter>
-            </div>
-            <ThemeProvider theme={greyscale}>
-                <Footer />
-            </ThemeProvider>
+            <BrowserRouter>
+                <div className={classes.root}>
+                            <ul>
+                                <li>
+                                    <Link to="/">Home</Link>
+                                </li>
+                                <li>
+                                    <Link to="/about">About</Link>
+                                </li>
+                            </ul>
+                            <Switch>
+                                <Route path="/" exact component={Homepage} />
+                                <Route path="/about" exact component={About} />
+                                <Route component={NotFound} />
+                            </Switch>
+                </div>
+                <ThemeProvider theme={greyscale}>
+                    <Footer />
+                </ThemeProvider>
+            </BrowserRouter>
         </ThemeProvider>
     );
 

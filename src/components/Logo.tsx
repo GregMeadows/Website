@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Typography, Theme } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 interface StyleProps {
     fontSize: string;
@@ -18,6 +19,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
         fontSize: props.fontSize,
         margin: 16,
         transition: 'font-size 1s',
+        textDecoration: 'none',
     }),
     name: {
         fontSize: '6em',
@@ -46,9 +48,9 @@ export const Logo: FunctionComponent<{
     const classes = useStyles(styleProps);
     
     return (
-        <div className={classes.root}>
+        <Link to="/" className={classes.root}>
             <Typography variant='h1' className={classes.name}>Greg Meadows</Typography>
             <Typography variant='h2' className={classes.title}>Development Portfolio</Typography>
-        </div>
+        </Link>
     );
 };
