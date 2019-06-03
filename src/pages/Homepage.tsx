@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Typography, Button } from '@material-ui/core';
-import { Logo } from './Logo';
+import { Logo } from '../components/Logo';
 
 const useStyles = makeStyles(() => ({
     root: {

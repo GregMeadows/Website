@@ -1,14 +1,15 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Route, BrowserRouter, Link, Switch } from 'react-router-dom';
-import { Homepage } from './components/Homepage';
-import { About } from './components/About';
-import { NotFound } from './components/NotFound';
+import { Homepage } from './pages/Homepage';
+import { About } from './pages/About';
+import { NotFound } from './pages/NotFound';
 import { makeStyles, ThemeProvider } from '@material-ui/styles';
 import Background from './images/bg.jpg';
 import { CssBaseline } from '@material-ui/core';
 import { main, greyscale } from './theme';
 import { Footer } from './components/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -16,7 +17,6 @@ const useStyles = makeStyles(() => ({
         width: '100%',
         marginBottom: 300,
         paddingBottom: 100,
-        // minHeight: 'calc(100% - 200px)',
         minHeight: '100%',
         position: 'absolute',
         paddingLeft: 50,
@@ -28,10 +28,12 @@ const useStyles = makeStyles(() => ({
 
 export const App: FunctionComponent = observer(() => {
     const classes = useStyles();
+
     return (
         <ThemeProvider theme={main}>
             <CssBaseline />
             <BrowserRouter>
+                <ScrollToTop />
                 <div className={classes.root}>
                             <ul>
                                 <li>
