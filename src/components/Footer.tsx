@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Typography, Theme, Grid, Divider } from '@material-ui/core';
+import { Typography, Theme, Grid } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Logo } from './Logo';
 
@@ -41,9 +41,6 @@ export const Footer: FunctionComponent = () => {
                 className={classes.grid}
             >
                 <Grid item className={classes.item}>
-                    <Typography variant='subtitle1'>Menu</Typography>
-                    <Divider />
-                    <Typography variant='subtitle1'>contact@gregmeadows.uk</Typography>
                 </Grid>
                 <Grid item className={classes.item}>
                     <Logo />

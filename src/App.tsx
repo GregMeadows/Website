@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Route, BrowserRouter, Link, Switch } from 'react-router-dom';
 import { Homepage } from './pages/Homepage';
@@ -35,19 +35,19 @@ export const App: FunctionComponent = observer(() => {
             <BrowserRouter>
                 <ScrollToTop />
                 <div className={classes.root}>
-                            <ul>
-                                <li>
-                                    <Link to="/">Home</Link>
-                                </li>
-                                <li>
-                                    <Link to="/about">About</Link>
-                                </li>
-                            </ul>
-                            <Switch>
-                                <Route path="/" exact component={Homepage} />
-                                <Route path="/about" exact component={About} />
-                                <Route component={NotFound} />
-                            </Switch>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                    </ul>
+                    <Switch>
+                        <Route path="/" exact component={Homepage} />
+                        <Route path="/about" exact component={About} />
+                        <Route component={NotFound} />
+                    </Switch>
                 </div>
                 <ThemeProvider theme={greyscale}>
                     <Footer />
