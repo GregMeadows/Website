@@ -34,13 +34,13 @@ export const greyscale = createMuiTheme({
             primary: '#fff'
         },
         primary: {
-            main: '#444444'
+            main: '#454545'
         },
         secondary: {
             main: '#0099ff'
         },
         background: {
-            default: '#222222'
+            default: '#252525'
         },
         head: {
             main: '#888888'
