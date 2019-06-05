@@ -25,6 +25,14 @@ export const main = createMuiTheme({
             main: '#000000'
         }
     },
+    typography: {
+        h1: {
+            fontFamily: 'Alegreya Sans, sans-serif',
+        },
+        h3: {
+            fontFamily: 'Alegreya Sans, sans-serif',
+        }
+    },
 });
 
 export const greyscale = createMuiTheme({
@@ -40,10 +48,19 @@ export const greyscale = createMuiTheme({
             main: '#0099ff'
         },
         background: {
-            default: '#252525'
+            default: '#252525',
+            paper: '#252525'
         },
         head: {
             main: '#888888'
+        }
+    },
+    typography: {
+        h1: {
+            fontFamily: 'Alegreya Sans, sans-serif',
+        },
+        h3: {
+            fontFamily: 'Alegreya Sans, sans-serif',
         }
     },
 });

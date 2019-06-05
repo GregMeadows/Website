@@ -42,7 +42,7 @@ export const Footer: FunctionComponent = () => {
             >
                 <Grid item className={classes.item}>
                 </Grid>
-                <Grid item className={classes.item}>
+                <Grid item>
                     <Logo />
                 </Grid>
             </Grid>

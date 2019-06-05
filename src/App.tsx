@@ -10,6 +10,7 @@ import { CssBaseline } from '@material-ui/core';
 import { main, greyscale } from './theme';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
+import { Navigation } from './components/Navigation';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -35,14 +36,9 @@ export const App: FunctionComponent = observer(() => {
             <BrowserRouter>
                 <ScrollToTop />
                 <div className={classes.root}>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/about">About</Link>
-                        </li>
-                    </ul>
+                    <ThemeProvider theme={greyscale}>
+                        <Navigation />
+                    </ThemeProvider>
                     <Switch>
                         <Route path="/" exact component={Homepage} />
                         <Route path="/about" exact component={About} />
