@@ -37,18 +37,18 @@ export const Navigation: FunctionComponent = () => {
     const gridDirection = useMediaQuery('(min-width:600px)') ? 'row' : 'column';
 
     const [showNav, setShowNav] = useState(false);
-    const toggleNav = (state: boolean) => () => {
-          setShowNav(state);
+    const toggleNav = (state?: boolean) => () => {
+          setShowNav(state ? state : !showNav);
     };
 
     return (
         <nav>
-            <Hamburger />
+            <Hamburger onClick={toggleNav()} state={showNav} />
             <br />
             <br />
             <br />
             <br />
-            <Button onClick={toggleNav(true)}>Nav</Button>
+            <br />
             <Drawer anchor="top" open={showNav} onClose={toggleNav(false)} >
                 <Grid
                     container 
@@ -74,7 +74,7 @@ export const Navigation: FunctionComponent = () => {
                             </Link>
                         </Grid>
                         <Grid item className={classes.item}>
-                            <Link to="/about" className={classes.link}>
+                            <Link to="/portfolio" className={classes.link}>
                                 <Typography variant='h3'>Portfolio</Typography>
                                 <Typography variant='subtitle1'>My Work</Typography>
                             </Link>
