@@ -4,6 +4,7 @@ import { Drawer, Button, Grid, Typography, Theme } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
+import { Hamburger } from './Hamburger';
 
 const useStyles = makeStyles((theme: Theme) => ({
     draw: {
@@ -25,10 +26,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         '&:hover': {
             color: theme.palette.secondary.main,
         }
-    }
+    },
 }), {
-        classNamePrefix: 'nav',
-    });
+    classNamePrefix: 'nav',
+});
 
 
 export const Navigation: FunctionComponent = () => {
@@ -42,6 +43,11 @@ export const Navigation: FunctionComponent = () => {
 
     return (
         <nav>
+            <Hamburger />
+            <br />
+            <br />
+            <br />
+            <br />
             <Button onClick={toggleNav(true)}>Nav</Button>
             <Drawer anchor="top" open={showNav} onClose={toggleNav(false)} >
                 <Grid

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Route, BrowserRouter, Link, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { Homepage } from './pages/Homepage';
 import { About } from './pages/About';
 import { NotFound } from './pages/NotFound';
