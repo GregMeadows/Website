@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Drawer, Button, Grid, Typography, Theme } from '@material-ui/core';
+import { Drawer, Grid, Typography, Theme } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
