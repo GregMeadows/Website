@@ -1,10 +1,11 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Drawer, Grid, Typography, Theme } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Hamburger } from './Hamburger';
+import { useLocation } from './Routing';
 
 const useStyles = makeStyles((theme: Theme) => ({
     draw: {
@@ -41,14 +42,15 @@ export const Navigation: FunctionComponent = () => {
           setShowNav(state ? state : !showNav);
     };
 
+    // Close menu on scene change
+    const  { pathname, search } = useLocation();
+    useEffect(() => {
+        setShowNav(false);
+    }, [pathname, search]);
+
     return (
         <nav>
             <Hamburger onClick={toggleNav()} state={showNav} />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
             <Drawer anchor="top" open={showNav} onClose={toggleNav(false)} >
                 <Grid
                     container 
@@ -58,7 +60,7 @@ export const Navigation: FunctionComponent = () => {
                     className={classes.draw}
                 >
                     <Grid item>
-                        <Logo  />
+                        <Logo />
                     </Grid>
                     <Grid 
                         item

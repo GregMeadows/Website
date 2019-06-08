@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from './Routing';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import HomeIcon from '@material-ui/icons/Home';
+import { observer } from 'mobx-react-lite';
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -41,7 +42,11 @@ export const Breadcrumb: FunctionComponent = () => {
     const pathnames = useLocation().pathname.split('/').filter(x => x);
 
     return (
-        <Breadcrumbs aria-label="Breadcrumb" separator={<NavigateNextIcon fontSize='small' className={classes.separator} />} className={classes.root}>
+        <Breadcrumbs 
+            aria-label='Breadcrumb'
+            separator={<NavigateNextIcon fontSize='small'  className={classes.separator} />}
+            className={classes.root}
+        >
             <Link to="/" className={classes.link}>
                 <HomeIcon fontSize='inherit' />
                 Home
