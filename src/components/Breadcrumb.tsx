@@ -47,26 +47,24 @@ export const Breadcrumb: FunctionComponent = () => {
 
     const homeFlat = (
         <>
-            <HomeIcon fontSize='inherit' className='icon'/>
+            <HomeIcon fontSize='inherit' className='icon' />
             Home
         </>
     );
 
-    const homeLink = pathnames.length === 0 ?
-        (<span className={classes.flat}>{homeFlat}</span>) : (<Link to="/" className={classes.link}>{homeFlat}</Link>);
-
     return (
-        <Breadcrumbs 
+        <Breadcrumbs
             aria-label='Breadcrumb'
             separator={<NavigateNextIcon fontSize='small' className={classes.separator} />}
             className={classes.root}
         >
-            {homeLink}
+            {pathnames.length === 0 ?
+                (<span className={classes.flat}>{homeFlat}</span>) : (<Link to="/" className={classes.link}>{homeFlat}</Link>)}
 
             {pathnames.map((value, index) => {
                 const last = index === pathnames.length - 1;
                 const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-                return last ? <span>{value}</span> : <Link className={classes.link} to={to} key={to}>{value}</Link>;
+                return last ? (<span key={to}>{value}</span>) : (<Link className={classes.link} to={to} key={to}>{value}</Link>);
             })};
         </Breadcrumbs>
     );
