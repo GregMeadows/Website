@@ -5,13 +5,17 @@ import { Link } from 'react-router-dom';
 import { useLocation } from './Routing';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import HomeIcon from '@material-ui/icons/Home';
-import { observer } from 'mobx-react-lite';
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
+        marginTop: 2,
         color: theme.palette.text.primary,
         fontWeight: 'bold',
         fontSize: '0.8rem',
+        '& .icon': {
+            marginRight: 4,
+            fontSize: '1.3em',
+        }
     },
     link: {
         display: 'flex',
@@ -24,10 +28,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         '&:hover, &:focus': {
             background: theme.palette.head.main,
         },
-        '& svg': {
-            marginRight: 4,
-            fontSize: '1.3em',
-        }
+    },
+    flat: {
+        display: 'flex',
+        padding: '2px 6px',
     },
     separator: {
         marginLeft: -8,
@@ -41,16 +45,23 @@ export const Breadcrumb: FunctionComponent = () => {
     const classes = useStyles();
     const pathnames = useLocation().pathname.split('/').filter(x => x);
 
+    const homeFlat = (
+        <>
+            <HomeIcon fontSize='inherit' className='icon'/>
+            Home
+        </>
+    );
+
+    const homeLink = pathnames.length === 0 ?
+        (<span className={classes.flat}>{homeFlat}</span>) : (<Link to="/" className={classes.link}>{homeFlat}</Link>);
+
     return (
         <Breadcrumbs 
             aria-label='Breadcrumb'
-            separator={<NavigateNextIcon fontSize='small'  className={classes.separator} />}
+            separator={<NavigateNextIcon fontSize='small' className={classes.separator} />}
             className={classes.root}
         >
-            <Link to="/" className={classes.link}>
-                <HomeIcon fontSize='inherit' />
-                Home
-            </Link>
+            {homeLink}
 
             {pathnames.map((value, index) => {
                 const last = index === pathnames.length - 1;
