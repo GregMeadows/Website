@@ -59,7 +59,7 @@ export const Breadcrumb: FunctionComponent<{
         <Breadcrumbs
             aria-label='Breadcrumb'
             separator={<NavigateNextIcon fontSize='small' className={classes.separator} />}
-            className={classes.root + ' ' + className}
+            className={`${classes.root} ${className}`}
         >
             {pathnames.length === 0 ?
                 (<span className={classes.flat}>{homeFlat}</span>) : (<Link to="/" className={classes.link}>{homeFlat}</Link>)}

@@ -63,13 +63,11 @@ export const Hamburger: FunctionComponent<{
     const classes = useStyles();
 
     return (
-        <>
-            <div className={classes.root + ' ' + (state ? classes.active : '')} onClick={onClick}>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </>
+        <div className={classes.root + ' ' + (state ? classes.active : '')} onClick={onClick}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     );
 });

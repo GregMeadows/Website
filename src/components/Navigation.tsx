@@ -66,7 +66,7 @@ export const Navigation: FunctionComponent = () => {
     return (
         <nav>
             <Hamburger onClick={toggleNav()} state={showNav} />
-            <Breadcrumb  className={classes.breadcrumb + ' ' + (showNav ? classes.activeBread : '')} />
+            <Breadcrumb  className={`${classes.breadcrumb} ${(showNav ? classes.activeBread : '')}`} />
             <Drawer anchor="top" open={showNav} onClose={toggleNav(false)} >
                 <Grid
                     container 
