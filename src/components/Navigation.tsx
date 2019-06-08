@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Hamburger } from './Hamburger';
 import { useLocation } from './Routing';
+import { Breadcrumb } from './Breadcrumb';
 
 const useStyles = makeStyles((theme: Theme) => ({
     draw: {
@@ -28,6 +29,20 @@ const useStyles = makeStyles((theme: Theme) => ({
             color: theme.palette.secondary.main,
         }
     },
+    breadcrumb: {
+        zIndex: 1499,
+        transition: '.3s ease 0s, opacity .1s ease 0s, visibility 0s linear .5s',
+        position: 'fixed',
+        marginTop: '2%',
+        opacity: 0,
+        visibility: 'hidden',
+    },
+    activeBread: {
+        transition: '.5s ease .3s',
+        opacity: 1,
+        marginLeft: 30,
+        visibility: 'visible'
+    }
 }), {
     classNamePrefix: 'nav',
 });
@@ -51,6 +66,7 @@ export const Navigation: FunctionComponent = () => {
     return (
         <nav>
             <Hamburger onClick={toggleNav()} state={showNav} />
+            <Breadcrumb  className={classes.breadcrumb + ' ' + (showNav ? classes.activeBread : '')} />
             <Drawer anchor="top" open={showNav} onClose={toggleNav(false)} >
                 <Grid
                     container 

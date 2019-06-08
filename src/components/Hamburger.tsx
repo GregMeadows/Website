@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Theme } from '@material-ui/core';
-import { Breadcrumb } from './Breadcrumb';
 import { observer } from 'mobx-react-lite';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -52,18 +51,6 @@ const useStyles = makeStyles((theme: Theme) => ({
             transform: 'rotate(-45deg)',
         },
     },
-    breadcrumb: {
-        zIndex: 1499,
-        transition: '.3s ease 0s, opacity .1s ease 0s',
-        position: 'fixed',
-        marginTop: '2%',
-        opacity: 0,
-    },
-    activeBread: {
-        transition: '.5s ease .3s',
-        opacity: 1,
-        marginLeft: 30,
-    }
 }), {
     classNamePrefix: 'hamburger',
 });
@@ -82,9 +69,6 @@ export const Hamburger: FunctionComponent<{
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            <div className={classes.breadcrumb + ' ' + (state ? classes.activeBread : '')}>
-                <Breadcrumb />
             </div>
         </>
     );
