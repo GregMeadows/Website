@@ -1,14 +1,22 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Drawer, Grid, Typography, Theme } from '@material-ui/core';
+import { makeStyles, ThemeProvider } from '@material-ui/styles';
+import { Drawer, Grid, Typography, Theme, AppBar, Toolbar } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link } from 'react-router-dom';
-import { Logo } from './Logo';
+import { Logo, logoSizes } from './Logo';
 import { Hamburger } from './Hamburger';
 import { useLocation } from './Routing';
 import { Breadcrumb } from './Breadcrumb';
+import { greyscaleAlt } from '../theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
+    navFloat: {
+        position: 'fixed',
+        marginTop: '2%',
+    },
+    navSet: {
+        position: 'absolute',
+    },
     draw: {
         marginTop: '2%',
         marginBottom: '4%',
@@ -32,8 +40,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     breadcrumb: {
         zIndex: 1499,
         transition: '.3s ease 0s, opacity .1s ease 0s, visibility 0s linear .5s',
-        position: 'fixed',
-        marginTop: '2%',
         opacity: 0,
         visibility: 'hidden',
     },
@@ -41,7 +47,23 @@ const useStyles = makeStyles((theme: Theme) => ({
         transition: '.5s ease .3s',
         opacity: 1,
         marginLeft: 30,
-        visibility: 'visible'
+        visibility: 'visible',
+    },
+    appBar: {
+        zIndex: theme.zIndex.drawer + 101,
+    },
+    appBarLogo: {
+        display: 'flex',
+        flexGrow: 1,
+        justifyContent: 'center',
+        visibility: 'visible',
+        opacity: 1,
+        transition: 'opacity .1s ease .3s, visibility 0s linear 0s',
+    },
+    appBarLogoHidden: {
+        visibility: 'hidden',
+        opacity: 0,
+        transition: 'opacity .1s ease 0s, visibility 0s linear .3s',
     }
 }), {
     classNamePrefix: 'nav',
@@ -51,7 +73,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Navigation: FunctionComponent = () => {
     const classes = useStyles();
     const gridDirection = useMediaQuery('(min-width:600px)') ? 'row' : 'column';
+    const showAppBar = !useMediaQuery('(min-width:600px)', {});
 
+    // Drawer State
     const [showNav, setShowNav] = useState(false);
     const toggleNav = (state?: boolean) => () => {
           setShowNav(state ? state : !showNav);
@@ -63,10 +87,28 @@ export const Navigation: FunctionComponent = () => {
         setShowNav(false);
     }, [pathname, search]);
 
+    // Hamburger & Breadcrumb
+    const hamBread = (
+        <ThemeProvider theme={greyscaleAlt}>
+            <Hamburger onClick={toggleNav()} state={showNav} className={showAppBar ? classes.navSet : classes.navFloat} />
+            <Breadcrumb  className={`${classes.breadcrumb} ${showNav ? classes.activeBread : ''} ${showAppBar ? classes.navSet : classes.navFloat}`} />
+        </ThemeProvider>
+    );
+
+    const appBar = (
+        <AppBar position='fixed' className={classes.appBar}>
+            <Toolbar>
+                {hamBread}
+                <div className={`${classes.appBarLogo} ${showNav ? classes.appBarLogoHidden : ''}`}>
+                    <Logo size={logoSizes.small} />
+                </div>
+            </Toolbar>
+        </AppBar>
+    );
+
     return (
         <nav>
-            <Hamburger onClick={toggleNav()} state={showNav} />
-            <Breadcrumb  className={`${classes.breadcrumb} ${(showNav ? classes.activeBread : '')}`} />
+            {showAppBar ? appBar : hamBread}
             <Drawer anchor="top" open={showNav} onClose={toggleNav(false)} >
                 <Grid
                     container 

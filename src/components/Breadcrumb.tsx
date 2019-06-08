@@ -9,7 +9,6 @@ import { observer } from 'mobx-react-lite';
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
-        marginTop: 2,
         color: theme.palette.text.primary,
         fontWeight: 'bold',
         fontSize: '0.8rem',
@@ -20,9 +19,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     link: {
         display: 'flex',
+        alignItems: 'center',
         padding: '2px 6px',
         borderRadius: 10,
-        background: theme.palette.primary.main,
+        background: theme.palette.primaryAccent.main,
         color: theme.palette.text.primary,
         textDecoration: 'none',
         transition: 'color 0.175s, background 0.175s',
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 });
 
 export const Breadcrumb: FunctionComponent<{
-    className: string,
+    className?: string,
 }> = observer(({className}) => {
     const classes = useStyles();
     const pathnames = useLocation().pathname.split('/').filter(x => x);

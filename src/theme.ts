@@ -3,9 +3,11 @@ import { createMuiTheme } from "@material-ui/core";
 declare module '@material-ui/core/styles/createPalette' {
     interface Palette {
         head: SimplePaletteColorOptions,
+        primaryAccent: SimplePaletteColorOptions,
     }
     interface PaletteOptions {
         head?: SimplePaletteColorOptions,
+        primaryAccent?: SimplePaletteColorOptions,
     }
 }
 
@@ -53,7 +55,10 @@ export const greyscale = createMuiTheme({
         },
         head: {
             main: '#888888'
-        }
+        },
+        primaryAccent: {
+            main: '#666666'
+        },
     },
     typography: {
         h1: {
@@ -62,5 +67,30 @@ export const greyscale = createMuiTheme({
         h3: {
             fontFamily: 'Alegreya Sans, sans-serif',
         }
+    },
+});
+
+export const greyscaleAlt = createMuiTheme({
+    palette: {
+        type: 'dark',
+        text: {
+            primary: '#fff'
+        },
+        primary: {
+            main: '#888888'
+        },
+        secondary: {
+            main: '#0099ff'
+        },
+        background: {
+            default: '#252525',
+            paper: '#252525'
+        },
+        head: {
+            main: '#888888'
+        },
+        primaryAccent: {
+            main: '#666666'
+        },
     },
 });

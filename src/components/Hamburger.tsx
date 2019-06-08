@@ -7,10 +7,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     root :{
         width: 25,
         height: 22,
-        position: 'fixed',
-        marginTop: '2%',
         cursor: 'pointer',
         zIndex: 1500,
+        position: 'absolute',
         '& span': {
             display: 'block',
             position: 'absolute',
@@ -59,11 +58,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Hamburger: FunctionComponent<{
     onClick: () => void,
     state: boolean,
-}> = observer(({onClick, state}) => {
+    className?: string,
+}> = observer(({onClick, state, className}) => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root + ' ' + (state ? classes.active : '')} onClick={onClick}>
+        <div className={`${classes.root} ${state ? classes.active : ''} ${className}`} onClick={onClick}>
             <span></span>
             <span></span>
             <span></span>

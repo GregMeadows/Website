@@ -8,7 +8,7 @@ interface StyleProps {
 }
 
 export enum logoSizes {
-    small = '0.4rem',
+    small = '0.35rem',
     medium = '0.75rem',
     large = '1.6rem',
     massive = '3rem',
@@ -17,7 +17,6 @@ export enum logoSizes {
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     root: (props: StyleProps) => ({
         fontSize: props.fontSize,
-        margin: 16,
         transition: 'font-size 1s',
         textDecoration: 'none',
     }),
