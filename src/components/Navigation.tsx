@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/styles';
-import { Drawer, Grid, Typography, Theme, AppBar, Toolbar } from '@material-ui/core';
+import { Grid, Typography, Theme, AppBar, Toolbar, SwipeableDrawer } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { Logo, logoSizes } from './Logo';
@@ -48,24 +48,17 @@ const useStyles = makeStyles((theme: Theme) => ({
         opacity: 0,
         transition: 'opacity .1s ease 0s, visibility 0s linear .3s',
     },
-    drawer: {
+    drawerLayout: {
         marginTop: '2%',
         marginBottom: '2%',
         '@media (max-width:599px)': {
             marginTop: '4rem',
-        }
-    },
-    drawerLinks: {
-        '@media (max-width:599px)': {
-            '& :nth-child(even)': {
-                borderTop: `1px solid ${theme.palette.primary.main}`,
-                borderBottom: `1px solid ${theme.palette.primary.main}`,
-            },
+            width: 300,
         }
     },
     item: {
         margin: '4% 6%',
-        '@media (max-width:660px)': {
+        '@media (max-width:719px)': {
             margin: '4%'
         },
         '@media (max-width:599px)': {
@@ -80,16 +73,23 @@ const useStyles = makeStyles((theme: Theme) => ({
         color: theme.palette.text.primary,
         textAlign: 'center',
         transition: 'color 0.175s',
+        display: 'block',
         '&:hover': {
             color: theme.palette.secondary.main,
         },
         '@media (max-width:599px)': {
-            '& h3': {
-                padding: '2%',
-            },
+            padding: '4% 0',
+            paddingLeft: 50,
+            textAlign: 'left',
             '&:hover': {
                 color: theme.palette.text.primary,
             },
+        }
+    },
+    linkDivider: {
+        '@media (max-width:599px)': {
+            borderTop: `1px solid ${theme.palette.primary.main}`,
+            borderBottom: `1px solid ${theme.palette.primary.main}`,
         }
     },
     mobileDisplayNone: {
@@ -109,9 +109,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const Navigation: FunctionComponent = () => {
     const classes = useStyles();
-    const mediaMobileWidth = useMediaQuery('(min-width:600px)');
-    const gridDirection = useMediaQuery('(min-width:600px)') ? 'row' : 'column';
-    let showAppBar = !mediaMobileWidth;
+    const mobileWidth = useMediaQuery('(max-width:599px)');
+    const drawerAnchor = mobileWidth ? 'left' : 'top';
+    const linkVarient = mobileWidth ? 'h5' : 'h3';
     
     // Drawer State
     const [showNav, setShowNav] = useState(false);
@@ -121,9 +121,9 @@ export const Navigation: FunctionComponent = () => {
 
     // Close menu on scene change
     const  { pathname, search } = useLocation();
-    useEffect(() => {
-        setShowNav(false);
-    }, [pathname, search]);
+    // useEffect(() => {
+    //     setShowNav(false);
+    // }, [pathname, search]);
 
     return (
         <nav>
@@ -138,13 +138,18 @@ export const Navigation: FunctionComponent = () => {
                     </ThemeProvider>
                 </Toolbar>
             </AppBar>
-            <Drawer anchor="top" open={showNav} onClose={toggleNav(false)} >
+            <SwipeableDrawer
+                anchor={drawerAnchor}
+                open={showNav}
+                onClose={toggleNav(false)}
+                onOpen={toggleNav(true)}
+            >
                 <Grid
                     container 
                     direction='column'
                     alignItems='center'
                     justify='center'
-                    className={`${classes.drawer} ${classes.mobileDisplayBlock}`}
+                    className={`${classes.drawerLayout} ${classes.mobileDisplayBlock}`}
                 >
                     <Grid item className={classes.mobileDisplayNone}>
                         <Logo />
@@ -152,32 +157,32 @@ export const Navigation: FunctionComponent = () => {
                     <Grid 
                         item
                         container 
-                        direction={gridDirection} 
+                        direction='row'
                         alignItems='center'
                         justify='center'
-                        className={`${classes.drawerLinks} ${classes.mobileDisplayBlock}`}
+                        className={classes.mobileDisplayBlock}
                     >
                         <Grid item className={classes.item}>
                             <Link to="/about" className={classes.link}>
-                                <Typography variant='h3'>About</Typography>
-                                <Typography variant='subtitle1' className={classes.mobileDisplayNone}>Who Am I?</Typography>
+                                <Typography variant={linkVarient}>About</Typography>
+                                <Typography variant='subtitle1'>Who Am I?</Typography>
                             </Link>
                         </Grid>
-                        <Grid item className={classes.item}>
+                        <Grid item className={`${classes.item} ${classes.linkDivider}`}>
                             <Link to="/portfolio" className={classes.link}>
-                                <Typography variant='h3'>Portfolio</Typography>
-                                <Typography variant='subtitle1' className={classes.mobileDisplayNone}>My Work</Typography>
+                                <Typography variant={linkVarient}>Portfolio</Typography>
+                                <Typography variant='subtitle1'>My Work</Typography>
                             </Link>
                         </Grid>
                         <Grid item className={classes.item}>
                             <Link to="/contact" className={classes.link}>
-                                <Typography variant='h3'>Contact</Typography>
-                                <Typography variant='subtitle1' className={classes.mobileDisplayNone}>Say Hello</Typography>
+                                <Typography variant={linkVarient}>Contact</Typography>
+                                <Typography variant='subtitle1'>Say Hello</Typography>
                             </Link>
                         </Grid>
                     </Grid>
                 </Grid>
-            </Drawer>
+            </SwipeableDrawer>
         </nav>
     );
 };

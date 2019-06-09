@@ -16,6 +16,7 @@ const useStyles = makeStyles(() => ({
     root: {
         background: `#F5F5F5 url(${Background}) repeat`,
         width: '100%',
+        overflowX: 'hidden',
         marginBottom: 300,
         paddingBottom: 100,
         minHeight: '100%',
@@ -24,7 +25,7 @@ const useStyles = makeStyles(() => ({
         paddingRight: 50,
     },
     page: {
-        marginTop: 'calc(4% + 30px)',
+        marginTop: '4rem',
     }
 }), {
     classNamePrefix: 'app',

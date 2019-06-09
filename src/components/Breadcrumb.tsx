@@ -17,10 +17,12 @@ const useStyles = makeStyles((theme: Theme) => ({
             fontSize: '1.3em',
         }
     },
-    link: {
+    linkBase: {
         display: 'flex',
         alignItems: 'center',
         padding: '2px 6px',
+    },
+    link: {
         borderRadius: 10,
         background: theme.palette.primaryAccent.main,
         color: theme.palette.text.primary,
@@ -29,10 +31,6 @@ const useStyles = makeStyles((theme: Theme) => ({
         '&:hover, &:focus': {
             background: theme.palette.head.main,
         },
-    },
-    flat: {
-        display: 'flex',
-        padding: '2px 6px',
     },
     separator: {
         marginLeft: -8,
@@ -62,7 +60,7 @@ export const Breadcrumb: FunctionComponent<{
             className={`${classes.root} ${className}`}
         >
             {pathnames.length === 0 ?
-                (<span className={classes.flat}>{homeFlat}</span>) : (<Link to="/" className={classes.link}>{homeFlat}</Link>)}
+                (<span className={classes.linkBase}>{homeFlat}</span>) : (<Link to="/" className={`${classes.linkBase} ${classes.link}`}>{homeFlat}</Link>)}
 
             {pathnames.map((value, index) => {
                 const last = index === pathnames.length - 1;
