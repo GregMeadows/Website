@@ -24,12 +24,12 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     link: {
         borderRadius: 10,
-        background: theme.palette.primaryAccent.main,
+        background: theme.palette.background.highlight,
         color: theme.palette.text.primary,
         textDecoration: 'none',
         transition: 'color 0.175s, background 0.175s',
         '&:hover, &:focus': {
-            background: theme.palette.head.main,
+            background: theme.palette.primary.main,
         },
     },
     separator: {

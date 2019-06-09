@@ -23,7 +23,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     name: {
         fontSize: '6em',
         fontWeight: 'bold',
-        color: theme.palette.head.main,
+        color: theme.palette.text.secondary,
     },
     title: {
         fontSize: '2.06em',

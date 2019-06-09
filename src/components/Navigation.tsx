@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { makeStyles, ThemeProvider } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import { Grid, Typography, Theme, AppBar, Toolbar, SwipeableDrawer } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,6 @@ import { Logo, logoSizes } from './Logo';
 import { Hamburger } from './Hamburger';
 import { useLocation } from './Routing';
 import { Breadcrumb } from './Breadcrumb';
-import { greyscaleAlt } from '../theme';
 
 const useStyles = makeStyles((theme: Theme) => ({
     hamburger: {
@@ -32,6 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         visibility: 'visible',
     },
     appBar: {
+        background: theme.palette.background.default,
         zIndex: theme.zIndex.drawer + 101,
         '@media (min-width:600px)': {
             visibility: 'hidden',
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         '@media (max-width:599px)': {
             margin: 0,
             '&:hover': {
-                background: theme.palette.primaryAccent.main,
+                background: theme.palette.background.highlight,
             },
         }
     },
@@ -81,15 +81,10 @@ const useStyles = makeStyles((theme: Theme) => ({
             padding: '4% 0',
             paddingLeft: 50,
             textAlign: 'left',
+            borderBottom: `1px solid ${theme.palette.background.highlight}`,
             '&:hover': {
                 color: theme.palette.text.primary,
             },
-        }
-    },
-    linkDivider: {
-        '@media (max-width:599px)': {
-            borderTop: `1px solid ${theme.palette.primary.main}`,
-            borderBottom: `1px solid ${theme.palette.primary.main}`,
         }
     },
     mobileDisplayNone: {
@@ -129,13 +124,11 @@ export const Navigation: FunctionComponent = () => {
         <nav>
             <AppBar position='fixed' className={classes.appBar}>
                 <Toolbar>
-                    <ThemeProvider theme={greyscaleAlt}>
-                        <Hamburger onClick={toggleNav()} state={showNav} className={classes.hamburger} />
-                        <Breadcrumb  className={`${classes.breadcrumb} ${showNav ? classes.activeBread : ''} ${classes.hamburger}`} />
-                        <div className={`${classes.appBarLogo} ${showNav ? classes.appBarLogoHidden : ''}`}>
-                            <Logo size={logoSizes.small} />
-                        </div>
-                    </ThemeProvider>
+                    <Hamburger onClick={toggleNav()} state={showNav} className={classes.hamburger} />
+                    <Breadcrumb  className={`${classes.breadcrumb} ${showNav ? classes.activeBread : ''} ${classes.hamburger}`} />
+                    <div className={`${classes.appBarLogo} ${showNav ? classes.appBarLogoHidden : ''}`}>
+                        <Logo size={logoSizes.small} />
+                    </div>
                 </Toolbar>
             </AppBar>
             <SwipeableDrawer
@@ -168,7 +161,7 @@ export const Navigation: FunctionComponent = () => {
                                 <Typography variant='subtitle1'>Who Am I?</Typography>
                             </Link>
                         </Grid>
-                        <Grid item className={`${classes.item} ${classes.linkDivider}`}>
+                        <Grid item className={classes.item}>
                             <Link to="/portfolio" className={classes.link}>
                                 <Typography variant={linkVarient}>Portfolio</Typography>
                                 <Typography variant='subtitle1'>My Work</Typography>

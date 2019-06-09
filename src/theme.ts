@@ -1,31 +1,39 @@
 import { createMuiTheme } from "@material-ui/core";
+import { grey } from "@material-ui/core/colors";
 
+// Material UI Overrides
 declare module '@material-ui/core/styles/createPalette' {
-    interface Palette {
-        head: SimplePaletteColorOptions,
-        primaryAccent: SimplePaletteColorOptions,
-    }
-    interface PaletteOptions {
-        head?: SimplePaletteColorOptions,
-        primaryAccent?: SimplePaletteColorOptions,
+    // interface Palette {
+    //     custom: PaletteColor,
+    // }
+    // interface PaletteOptions {
+    //     custom?: PaletteColorOptions,
+    // }
+
+    interface TypeBackground {
+        highlight: string,
     }
 }
 
+// Main Colour Theme
 export const main = createMuiTheme({
     palette: {
         type: 'light',
+        text: {
+            primary: '#000',
+            secondary: '#000',
+        },
         primary: {
-            main: '#0099ff'
+            main: '#0099ff',
         },
         secondary: {
-            main: '#ff5900'
+            main: '#ff5900',
         },
         background: {
-            default: '#F5F5F5'
+            default: '#F5F5F5',
+            paper: '#F5F5F5',
+            highlight: grey[200],
         },
-        head: {
-            main: '#000000'
-        }
     },
     typography: {
         h1: {
@@ -37,27 +45,24 @@ export const main = createMuiTheme({
     },
 });
 
+// Grey Theme
 export const greyscale = createMuiTheme({
     palette: {
         type: 'dark',
         text: {
-            primary: '#fff'
+            primary: '#fff',
+            secondary: grey[400],
         },
         primary: {
-            main: '#454545'
+            main: grey[600],
         },
         secondary: {
-            main: '#0099ff'
+            main: '#0099ff',
         },
         background: {
-            default: '#252525',
-            paper: '#252525'
-        },
-        head: {
-            main: '#888888'
-        },
-        primaryAccent: {
-            main: '#666666'
+            default: grey[800],
+            paper: grey[800],
+            highlight: grey[700],
         },
     },
     typography: {
@@ -67,30 +72,5 @@ export const greyscale = createMuiTheme({
         h3: {
             fontFamily: 'Alegreya Sans, sans-serif',
         }
-    },
-});
-
-export const greyscaleAlt = createMuiTheme({
-    palette: {
-        type: 'dark',
-        text: {
-            primary: '#fff'
-        },
-        primary: {
-            main: '#888888'
-        },
-        secondary: {
-            main: '#0099ff'
-        },
-        background: {
-            default: '#252525',
-            paper: '#252525'
-        },
-        head: {
-            main: '#888888'
-        },
-        primaryAccent: {
-            main: '#666666'
-        },
     },
 });
