@@ -121,9 +121,9 @@ export const Navigation: FunctionComponent = () => {
 
     // Close menu on scene change
     const  { pathname, search } = useLocation();
-    // useEffect(() => {
-    //     setShowNav(false);
-    // }, [pathname, search]);
+    useEffect(() => {
+        setShowNav(false);
+    }, [pathname, search]);
 
     return (
         <nav>
