@@ -18,15 +18,9 @@ const useStyles = makeStyles(() => ({
         width: '100%',
         overflowX: 'hidden',
         minHeight: '100%',
-        position: 'absolute',
         marginBottom: 300,
-        paddingBottom: 100,
-        paddingLeft: 50,
-        paddingRight: 50,
+        padding: '4rem 50px 100px',
     },
-    page: {
-        marginTop: '4rem',
-    }
 }), {
     classNamePrefix: 'app',
 });
@@ -39,17 +33,15 @@ export const App: FunctionComponent = observer(() => {
             <CssBaseline />
             <BrowserRouter>
                 <ScrollToTop />
+                <ThemeProvider theme={greyscale}>
+                    <Navigation />
+                </ThemeProvider>
                 <section className={classes.root}>
-                    <ThemeProvider theme={greyscale}>
-                        <Navigation />
-                    </ThemeProvider>
-                    <section className={classes.page}>
-                        <Switch>
-                            <Route path="/" exact component={Homepage} />
-                            <Route path="/about" exact component={About} />
-                            <Route component={NotFound} />
-                        </Switch>
-                    </section>
+                    <Switch>
+                        <Route path="/" exact component={Homepage} />
+                        <Route path="/about" exact component={About} />
+                        <Route component={NotFound} />
+                    </Switch>
                 </section>
                 <ThemeProvider theme={greyscale}>
                     <Footer />
