@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme: Theme) => ({
             marginBottom: 10,
         }
     },
+    copyright: {
+        color: theme.palette.text.secondary,
+    }
 }), {
     classNamePrefix: 'footer',
 });
@@ -46,7 +49,7 @@ export const Footer: FunctionComponent = () => {
                     <Logo />
                 </Grid>
             </Grid>
-            <Typography variant='subtitle2' align='center'>Copyright © {(new Date().getFullYear())}. Greg Meadows.</Typography>
+            <Typography variant='subtitle2' align='center' className={classes.copyright}>Copyright © {(new Date().getFullYear())}. Greg Meadows.</Typography>
         </footer>
     );
 };

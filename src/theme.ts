@@ -41,6 +41,9 @@ export const main = createMuiTheme({
         },
         h3: {
             fontFamily: 'Alegreya Sans, sans-serif',
+        },
+        subtitle2: {
+            fontSize: '0.6rem',
         }
     },
 });
@@ -71,6 +74,9 @@ export const greyscale = createMuiTheme({
         },
         h3: {
             fontFamily: 'Alegreya Sans, sans-serif',
+        },
+        subtitle2: {
+            fontSize: '0.8rem',
         }
     },
 });
