@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         alignItems: 'center',
         padding: '2px 6px',
     },
+    homeFlat: {
+        paddingTop: 4,
+        paddingLeft: 4,
+    },
     link: {
         borderRadius: 10,
         background: theme.palette.background.highlight,
@@ -60,7 +64,8 @@ export const Breadcrumb: FunctionComponent<{
             className={`${classes.root} ${className}`}
         >
             {pathnames.length === 0 ?
-                (<span className={classes.linkBase}>{homeFlat}</span>) : (<Link to="/" className={`${classes.linkBase} ${classes.link}`}>{homeFlat}</Link>)}
+                (<span className={`${classes.linkBase} ${classes.homeFlat}`}>{homeFlat}</span>) 
+                : (<Link to="/" className={`${classes.linkBase} ${classes.link}`}>{homeFlat}</Link>)}
 
             {pathnames.map((value, index) => {
                 const last = index === pathnames.length - 1;

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         position: 'fixed',
         marginTop: '2%',
         visibility: 'visible',
-        '@media (max-width:600px)': {
+        '@media (max-width:599px)': {
             position: 'absolute',
             marginTop: 0,
         }
@@ -52,10 +52,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginTop: '2%',
         marginBottom: '2%',
         '@media (max-width:599px)': {
-            marginTop: '4rem',
             width: 300,
         }
     },
+    toolbar: theme.mixins.toolbar,
     item: {
         margin: '4% 6%',
         '@media (max-width:719px)': {
@@ -95,6 +95,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     mobileDisplayBlock: {
         '@media (max-width:599px)': {
             display: 'block',
+        }
+    },
+    desktopDisplayNone: {
+        '@media (min-width:800px)': {
+            display: 'none',
         }
     }
 }), {
@@ -137,6 +142,7 @@ export const Navigation: FunctionComponent = () => {
                 onClose={toggleNav(false)}
                 onOpen={toggleNav(true)}
             >
+                <div className={`${classes.toolbar} ${classes.desktopDisplayNone}`} />
                 <Grid
                     container 
                     direction='column'
