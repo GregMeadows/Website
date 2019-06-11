@@ -36,7 +36,7 @@ export const App: FunctionComponent = observer(() => {
                 <ThemeProvider theme={greyscale}>
                     <Navigation />
                 </ThemeProvider>
-                <section className={classes.root}>
+                <section className={`${classes.root}  mui-fixed`}>
                     <Switch>
                         <Route path="/" exact component={Homepage} />
                         <Route path="/about" exact component={About} />

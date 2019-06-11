@@ -35,7 +35,7 @@ export const Footer: FunctionComponent = () => {
     const gridDirection = useMediaQuery('(min-width:600px)') ? 'row' : 'column';
 
     return (
-        <footer className={classes.root}>
+        <footer className={`${classes.root} mui-fixed`}>
             <Grid 
                 container 
                 direction={gridDirection} 

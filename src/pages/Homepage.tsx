@@ -2,7 +2,6 @@ import React, { FunctionComponent, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Typography, Button } from '@material-ui/core';
 import { Logo } from '../components/Logo';
-import { textAlign } from '@material-ui/system';
 
 const useStyles = makeStyles(() => ({
     root: {
