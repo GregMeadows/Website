@@ -57,6 +57,7 @@ export const greyscale = createMuiTheme({
             secondary: grey[400],
         },
         primary: {
+            light: grey[500],
             main: grey[600],
         },
         secondary: {

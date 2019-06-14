@@ -5,37 +5,42 @@ import { observer } from 'mobx-react-lite';
 
 const useStyles = makeStyles((theme: Theme) => ({
     root :{
-        width: 25,
-        height: 22,
+        width: 24,
+        height: 20,
         cursor: 'pointer',
         zIndex: 1500,
         position: 'absolute',
+        '&:hover': {
+            '& span': {
+                background: theme.palette.primary.light,
+            },
+        },
         '& span': {
             display: 'block',
             position: 'absolute',
-            height: 5,
+            height: 4,
             width: '100%',
             background: theme.palette.primary.main,
             borderRadius: 10,
             opacity: 1,
             left: 0,
             transform: 'rotate(0deg)',
-            transition: 'all .15s ease .3s',
+            transition: 'all .15s ease .3s, background .1s linear 0s',
         },
         '& span:nth-child(1)': {
             top: 0,
         },
         '& span:nth-child(2), & span:nth-child(3)': {
-            top: 9,
-            transition: 'transform .15s ease 0s, background .1s linear .2s',
+            top: 8,
+            transition: 'transform .15s ease 0s, background .1s linear 0s',
         },
         '& span:nth-child(4)': {
-            top: 18,
+            top: 16,
         },
     },
     active: {
         '& span:nth-child(1), & span:nth-child(4)': {
-            top: 9,
+            top: 8,
             opacity: 0,
             transition: 'all .3s ease 0s',
         },
