@@ -52,9 +52,9 @@ export const Logo: FunctionComponent<{
     
     return (
         <Link to="/" className={classes.link}>
-            <svg className={classes.root} viewBox="0 0 82.6 16" xmlns="http://www.w3.org/2000/svg">
+            <svg className={classes.root} viewBox="0 0 82.6 16.2" xmlns="http://www.w3.org/2000/svg">
                 <text x="0" y="10" className={classes.svgName}>Greg Meadows</text>
-                <text x="29.42" y="14.8" className={classes.svgTitle}>Development Portfolio</text>
+                <text x="29.42" y="15" className={classes.svgTitle}>Development Portfolio</text>
             </svg>
         </Link>
     );
