@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         position: 'fixed',
         marginTop: '2%',
         visibility: 'visible',
-        '@media (max-width:599px)': {
+        [theme.breakpoints.down('xs')]: {
             position: 'absolute',
             marginTop: 0,
         }
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     appBar: {
         background: theme.palette.background.default,
         zIndex: theme.zIndex.drawer + 101,
-        '@media (min-width:600px)': {
+        [theme.breakpoints.up('sm')]: {
             visibility: 'hidden',
         }
     },
@@ -51,17 +51,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     drawerLayout: {
         marginTop: '2%',
         marginBottom: '2%',
-        '@media (max-width:599px)': {
+        [theme.breakpoints.down('xs')]: {
             width: 300,
         }
     },
     toolbar: theme.mixins.toolbar,
     item: {
         margin: '4% 6%',
-        '@media (max-width:719px)': {
+        [theme.breakpoints.down(720)]: {
             margin: '4%'
         },
-        '@media (max-width:599px)': {
+        [theme.breakpoints.down('xs')]: {
             margin: 0,
             '&:hover': {
                 background: theme.palette.background.highlight,
@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         '&:hover': {
             color: theme.palette.secondary.main,
         },
-        '@media (max-width:599px)': {
+        [theme.breakpoints.down('xs')]: {
             padding: '4% 0',
             paddingLeft: 50,
             textAlign: 'left',
@@ -88,17 +88,17 @@ const useStyles = makeStyles((theme: Theme) => ({
         }
     },
     mobileDisplayNone: {
-        '@media (max-width:599px)': {
+        [theme.breakpoints.down('xs')]: {
             display: 'none',
         }
     },
     mobileDisplayBlock: {
-        '@media (max-width:599px)': {
+        [theme.breakpoints.down('xs')]: {
             display: 'block',
         }
     },
     desktopDisplayNone: {
-        '@media (min-width:800px)': {
+        [theme.breakpoints.up(800)]: {
             display: 'none',
         }
     }

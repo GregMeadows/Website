@@ -48,7 +48,7 @@ export const main = createMuiTheme({
             fontFamily: 'Alegreya Sans, sans-serif',
         },
         subtitle2: {
-            fontSize: '0.6rem',
+            fontSize: '0.8rem',
         }
     },
 });
