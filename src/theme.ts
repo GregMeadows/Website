@@ -38,6 +38,11 @@ export const main = createMuiTheme({
     typography: {
         h1: {
             fontFamily: 'Alegreya Sans, sans-serif',
+            fontWeight: 500,
+        },
+        h2: {
+            fontFamily: 'Roboto, sans-serif',
+            fontWeight: 500,
         },
         h3: {
             fontFamily: 'Alegreya Sans, sans-serif',
@@ -72,6 +77,11 @@ export const greyscale = createMuiTheme({
     typography: {
         h1: {
             fontFamily: 'Alegreya Sans, sans-serif',
+            fontWeight: 500,
+        },
+        h2: {
+            fontFamily: 'Roboto, sans-serif',
+            fontWeight: 500,
         },
         h3: {
             fontFamily: 'Alegreya Sans, sans-serif',

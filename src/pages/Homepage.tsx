@@ -14,17 +14,19 @@ const useStyles = makeStyles(() => ({
 export const Homepage: FunctionComponent = () => {
     const classes = useStyles();
 
-    const [logoSize, setLogoSize] = useState(2.5);
+    const [logoSize, setLogoSize] = useState(250);
 
     function onTestClick() {
-        setLogoSize(0.5);
+        setLogoSize(50);
     }
 
     return (
         <div className={classes.root}>
             <Typography>Homepage</Typography>
             <Button variant="contained" onClick={() => onTestClick()}>Test</Button>
-            <Logo size={`${logoSize}rem`} />
+            <br />
+            <br />
+            <Logo size={logoSize} />
             {/* <Typography>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sagittis eu volutpat odio facilisis mauris sit amet massa vitae. Volutpat odio facilisis mauris sit amet massa vitae tortor condimentum. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Neque egestas congue quisque egestas diam in. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Luctus venenatis lectus magna fringilla urna. Augue neque gravida in fermentum et. At auctor urna nunc id cursus metus. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Sapien faucibus et molestie ac feugiat sed lectus. Sed elementum tempus egestas sed sed risus. Orci porta non pulvinar neque laoreet suspendisse. Volutpat consequat mauris nunc congue. Fames ac turpis egestas maecenas pharetra convallis. Mauris vitae ultricies leo integer malesuada nunc. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur.
 
