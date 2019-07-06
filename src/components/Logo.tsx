@@ -8,7 +8,7 @@ interface StyleProps {
 }
 
 export enum logoSizes {
-    small = 45,
+    small = 40,
     medium = 90,
     large = 180,
 }
