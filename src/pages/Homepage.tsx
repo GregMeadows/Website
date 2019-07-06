@@ -1,7 +1,8 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Typography, Button } from '@material-ui/core';
-import { Logo } from '../components/Logo';
+import { useMediaQuery } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+import { Logo, logoSizes } from '../components/Logo';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -13,20 +14,12 @@ const useStyles = makeStyles(() => ({
 
 export const Homepage: FunctionComponent = () => {
     const classes = useStyles();
-
-    const [logoSize, setLogoSize] = useState(250);
-
-    function onTestClick() {
-        setLogoSize(50);
-    }
+    const theme = useTheme();
+    const mediaMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
     return (
         <div className={classes.root}>
-            <Typography>Homepage</Typography>
-            <Button variant="contained" onClick={() => onTestClick()}>Test</Button>
-            <br />
-            <br />
-            <Logo size={logoSize} />
+            {mediaMobile || <Logo size={logoSizes.large} />}
             {/* <Typography>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sagittis eu volutpat odio facilisis mauris sit amet massa vitae. Volutpat odio facilisis mauris sit amet massa vitae tortor condimentum. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Neque egestas congue quisque egestas diam in. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Luctus venenatis lectus magna fringilla urna. Augue neque gravida in fermentum et. At auctor urna nunc id cursus metus. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Sapien faucibus et molestie ac feugiat sed lectus. Sed elementum tempus egestas sed sed risus. Orci porta non pulvinar neque laoreet suspendisse. Volutpat consequat mauris nunc congue. Fames ac turpis egestas maecenas pharetra convallis. Mauris vitae ultricies leo integer malesuada nunc. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur.
 

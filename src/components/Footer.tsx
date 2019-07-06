@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { useTheme } from '@material-ui/core/styles';
 import { Typography, Theme, Grid, useMediaQuery } from '@material-ui/core';
-import { Logo, logoSizes } from './Logo';
+import { useTheme } from '@material-ui/core/styles';
+import { Logo } from './Logo';
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -33,12 +33,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Footer: FunctionComponent = () => {
     const classes = useStyles();
     const theme = useTheme();
-
-    const mediaXSmall = useMediaQuery(theme.breakpoints.down('xs'));
     const mediaSmall = useMediaQuery(theme.breakpoints.down('sm'));
+    const mediaMobile = useMediaQuery(theme.breakpoints.down('xs'));
 
     let logoSize = 80;
-    if (mediaXSmall) {
+    if (mediaMobile) {
         logoSize = 60;
     } else if (mediaSmall) {
         logoSize = 70;
