@@ -37,11 +37,11 @@ export const Footer: FunctionComponent = () => {
     const mediaXSmall = useMediaQuery(theme.breakpoints.down('xs'));
     const mediaSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
-    let logoSize = logoSizes.medium;
-    if (mediaSmall) {
+    let logoSize = 80;
+    if (mediaXSmall) {
+        logoSize = 60;
+    } else if (mediaSmall) {
         logoSize = 70;
-    } else if (mediaXSmall) {
-        logoSize = 40;
     }
     
     return (
