@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Typography, Theme, Grid } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+import { Typography, Theme, Grid, useMediaQuery } from '@material-ui/core';
 import { Logo, logoSizes } from './Logo';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -32,8 +32,18 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const Footer: FunctionComponent = () => {
     const classes = useStyles();
-    const logoSize = useMediaQuery('(min-width:600px)') ? logoSizes.medium : 70;
+    const theme = useTheme();
 
+    const mediaXSmall = useMediaQuery(theme.breakpoints.down('xs'));
+    const mediaSmall = useMediaQuery(theme.breakpoints.down('sm'));
+
+    let logoSize = logoSizes.medium;
+    if (mediaSmall) {
+        logoSize = 70;
+    } else if (mediaXSmall) {
+        logoSize = 40;
+    }
+    
     return (
         <footer className={`${classes.root} mui-fixed`}>
             <Grid 
