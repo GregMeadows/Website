@@ -11,13 +11,9 @@ import { Breadcrumb } from './Breadcrumb';
 const useStyles = makeStyles((theme: Theme) => ({
     hamburger: {
         position: 'fixed',
-        marginTop: 10,
-        marginLeft: 10,
         visibility: 'visible',
         [theme.breakpoints.down('xs')]: {
             position: 'absolute',
-            marginTop: 0,
-            marginLeft: 0,
         }
     },
     breadcrumb: {
