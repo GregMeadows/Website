@@ -6,6 +6,7 @@ import { HideForMobile } from '../components/HideForMobile';
 const useStyles = makeStyles(() => ({
     root: {
         textAlign: 'center',
+        paddingTop: 40,
     }
 }), {
         classNamePrefix: 'homepage',

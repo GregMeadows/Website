@@ -11,6 +11,7 @@ import { main, greyscale } from './theme';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { Navigation } from './components/Navigation';
+import { Header } from './components/Header';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles(() => ({
         overflowX: 'hidden',
         minHeight: '100%',
         marginBottom: 300,
-        padding: '4rem 50px 100px',
+        padding: '20px 50px 100px',
     },
 }), {
     classNamePrefix: 'app',
@@ -36,6 +37,7 @@ export const App: FunctionComponent = observer(() => {
                 <ThemeProvider theme={greyscale}>
                     <Navigation />
                 </ThemeProvider>
+                <Header />
                 <section className={`${classes.root}  mui-fixed`}>
                     <Switch>
                         <Route path="/" exact component={Homepage} />
