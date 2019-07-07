@@ -112,7 +112,7 @@ export const Navigation: FunctionComponent = () => {
     const widthMobile = useMediaQuery(theme.breakpoints.down('xs'));
     const widthSmall= useMediaQuery(theme.breakpoints.down(800));
     const drawerAnchor = widthMobile ? 'left' : 'top';
-    const linkVarient = widthMobile ? 'h5' : widthSmall ? 'h4' : 'h3';
+    const linkVariant = widthMobile ? 'h5' : widthSmall ? 'h4' : 'h3';
     
     // Drawer State
     const [showNav, setShowNav] = useState(false);
@@ -164,19 +164,19 @@ export const Navigation: FunctionComponent = () => {
                     >
                         <Grid item className={classes.item}>
                             <Link to="/about" className={classes.link}>
-                                <Typography variant={linkVarient}>About</Typography>
+                                <Typography variant={linkVariant}>About</Typography>
                                 <Typography variant='subtitle1'>Who Am I?</Typography>
                             </Link>
                         </Grid>
                         <Grid item className={classes.item}>
                             <Link to="/portfolio" className={classes.link}>
-                                <Typography variant={linkVarient}>Portfolio</Typography>
+                                <Typography variant={linkVariant}>Portfolio</Typography>
                                 <Typography variant='subtitle1'>My Work</Typography>
                             </Link>
                         </Grid>
                         <Grid item className={classes.item}>
                             <Link to="/contact" className={classes.link}>
-                                <Typography variant={linkVarient}>Contact</Typography>
+                                <Typography variant={linkVariant}>Contact</Typography>
                                 <Typography variant='subtitle1'>Say Hello</Typography>
                             </Link>
                         </Grid>
