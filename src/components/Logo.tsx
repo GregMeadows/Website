@@ -4,19 +4,26 @@ import { Theme } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 interface StyleProps {
-    height: number;
+    maxHeight: number;
+    minHeight: number;
 }
 
 export enum logoSizes {
-    small = 40,
-    medium = 90,
-    large = 180,
+    xs = 40,
+    s = 60,
+    m = 80,
+    l = 100,
+    xl = 120,
+    xxl = 140,
+    xxxl = 160,
 }
 
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     root: (props: StyleProps) => ({
-        height: props.height,
-        transition: 'height 1s ease',
+        maxHeight: props.maxHeight,
+        minHeight: props.minHeight,
+        height: '10vw',
+        transition: 'height 0.5s ease',
         textDecoration: 'none',
     }),
     svgName: {
@@ -46,8 +53,11 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
 export const Logo: FunctionComponent<{
     size?: logoSizes | number;
 }> = ({size}) => {
-
-    const styleProps: StyleProps = {height: size || logoSizes.medium};
+    size = size || logoSizes.m
+    const styleProps: StyleProps = {
+        maxHeight: size,
+        minHeight: size <= logoSizes.s ? size : logoSizes.s,
+    };
     const classes = useStyles(styleProps);
     
     return (

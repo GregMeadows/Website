@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Typography, Theme, Grid, useMediaQuery } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { Typography, Theme, Grid } from '@material-ui/core';
 import { Logo } from './Logo';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -32,16 +31,6 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const Footer: FunctionComponent = () => {
     const classes = useStyles();
-    const theme = useTheme();
-    const mediaSmall = useMediaQuery(theme.breakpoints.down('sm'));
-    const mediaMobile = useMediaQuery(theme.breakpoints.down('xs'));
-
-    let logoSize = 80;
-    if (mediaMobile) {
-        logoSize = 60;
-    } else if (mediaSmall) {
-        logoSize = 70;
-    }
     
     return (
         <footer className={`${classes.root} mui-fixed`}>
@@ -54,7 +43,7 @@ export const Footer: FunctionComponent = () => {
                 <Grid item className={classes.item}>
                 </Grid>
                 <Grid item>
-                    <Logo size={logoSize} />
+                    <Logo />
                 </Grid>
             </Grid>
             <Typography variant='subtitle2' align='center' className={classes.copyright}>Copyright © {(new Date().getFullYear())}. Greg Meadows.</Typography>

@@ -19,7 +19,8 @@ export const Homepage: FunctionComponent = () => {
 
     return (
         <div className={classes.root}>
-            {mediaMobile || <Logo size={logoSizes.large} />}
+            {/* {mediaMobile || <Logo size={logoSizes.xxxl} />} */}
+            {<Logo size={logoSizes.xxxl} />}
             {/* <Typography>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sagittis eu volutpat odio facilisis mauris sit amet massa vitae. Volutpat odio facilisis mauris sit amet massa vitae tortor condimentum. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Neque egestas congue quisque egestas diam in. Pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Luctus venenatis lectus magna fringilla urna. Augue neque gravida in fermentum et. At auctor urna nunc id cursus metus. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Sapien faucibus et molestie ac feugiat sed lectus. Sed elementum tempus egestas sed sed risus. Orci porta non pulvinar neque laoreet suspendisse. Volutpat consequat mauris nunc congue. Fames ac turpis egestas maecenas pharetra convallis. Mauris vitae ultricies leo integer malesuada nunc. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur.
 

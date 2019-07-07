@@ -130,7 +130,7 @@ export const Navigation: FunctionComponent = () => {
                     <Hamburger onClick={toggleNav()} state={showNav} className={classes.hamburger} />
                     <Breadcrumb  className={`${classes.breadcrumb} ${showNav ? classes.activeBread : ''} ${classes.hamburger}`} />
                     <div className={`${classes.appBarLogo} ${showNav ? classes.appBarLogoHidden : ''}`}>
-                        <Logo size={logoSizes.small} />
+                        <Logo size={logoSizes.xs} />
                     </div>
                 </Toolbar>
             </AppBar>
