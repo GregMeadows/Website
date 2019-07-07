@@ -48,7 +48,9 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
 
 /**
  * Inserts the main logo with a variable size.
- * @param size can be of type enum logoSizes, or a number representing height (e.g. 100 - this will be converted to px).
+ * Size dictates the max size of the logo. Logo is responsive and will shrink to fit screen.
+ * @param size Max size of the logo. Can be of type enum logoSizes, or a number representing height
+ *             (e.g. 100 - this will be converted to px).
  */
 export const Logo: FunctionComponent<{
     size?: logoSizes | number;
