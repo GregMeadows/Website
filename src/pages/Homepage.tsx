@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Logo, logoSizes } from '../components/Logo';
+import { HideForMobile } from '../components/HideForMobile';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -14,8 +15,10 @@ export const Homepage: FunctionComponent = () => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <Logo size={logoSizes.xxxl} />
-        </div>
+        <section className={classes.root}>
+            <HideForMobile>
+                <Logo size={logoSizes.xxxl} />
+            </HideForMobile>
+        </section>
     );
 };
