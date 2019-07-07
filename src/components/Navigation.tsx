@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Grid, Typography, Theme, AppBar, Toolbar, SwipeableDrawer } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { Logo, logoSizes } from './Logo';
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     toolbar: theme.mixins.toolbar,
     item: {
         margin: '4% 6%',
-        [theme.breakpoints.down(720)]: {
+        [theme.breakpoints.down(800)]: {
             margin: '4%'
         },
         [theme.breakpoints.down('xs')]: {
@@ -107,9 +108,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const Navigation: FunctionComponent = () => {
     const classes = useStyles();
-    const mobileWidth = useMediaQuery('(max-width:599px)');
-    const drawerAnchor = mobileWidth ? 'left' : 'top';
-    const linkVarient = mobileWidth ? 'h5' : 'h3';
+    const theme = useTheme();
+    const widthMobile = useMediaQuery(theme.breakpoints.down('xs'));
+    const widthSmall= useMediaQuery(theme.breakpoints.down(800));
+    const drawerAnchor = widthMobile ? 'left' : 'top';
+    const linkVarient = widthMobile ? 'h5' : widthSmall ? 'h4' : 'h3';
     
     // Drawer State
     const [showNav, setShowNav] = useState(false);
