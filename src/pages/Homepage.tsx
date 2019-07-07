@@ -18,7 +18,7 @@ export const Homepage: FunctionComponent = () => {
     return (
         <section className={classes.root}>
             <HideForMobile>
-                <Logo size={logoSizes.xxxl} />
+                <Logo size={logoSizes.xxxl} scale={14} />
             </HideForMobile>
         </section>
     );
