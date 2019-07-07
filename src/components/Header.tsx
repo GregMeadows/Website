@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Typography, Theme, Grid } from '@material-ui/core';
 import { Logo, logoSizes } from './Logo';
 import { HideForMobile } from './HideForMobile';
 import { useLocation } from './Routing';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         textAlign: 'center',
         paddingTop: 20,
