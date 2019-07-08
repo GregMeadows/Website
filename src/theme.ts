@@ -39,13 +39,23 @@ export const main = createMuiTheme({
         h1: {
             fontFamily: 'Alegreya Sans, sans-serif',
             fontWeight: 500,
+            fontSize: '3rem',
         },
         h2: {
-            fontFamily: 'Roboto, sans-serif',
-            fontWeight: 500,
+            fontFamily: 'Alegreya Sans, sans-serif',
+            fontWeight: 400,
+            fontSize: '2.5rem',
         },
         h3: {
-            fontFamily: 'Alegreya Sans, sans-serif',
+            fontFamily: 'Roboto, sans-serif',
+            fontWeight: 400,
+            fontSize: '1.5rem',
+        },
+        body1: {
+            fontSize: '1.2rem',
+        },
+        subtitle1: {
+            fontSize: '1.1rem',
         },
         subtitle2: {
             fontSize: '0.8rem',
@@ -78,13 +88,23 @@ export const greyscale = createMuiTheme({
         h1: {
             fontFamily: 'Alegreya Sans, sans-serif',
             fontWeight: 500,
+            fontSize: '3rem',
         },
         h2: {
-            fontFamily: 'Roboto, sans-serif',
-            fontWeight: 500,
+            fontFamily: 'Alegreya Sans, sans-serif',
+            fontWeight: 400,
+            fontSize: '2.5rem',
         },
         h3: {
-            fontFamily: 'Alegreya Sans, sans-serif',
+            fontFamily: 'Roboto, sans-serif',
+            fontWeight: 400,
+            fontSize: '1.5rem',
+        },
+        body1: {
+            fontSize: '1.2rem',
+        },
+        subtitle1: {
+            fontSize: '1.1rem',
         },
         subtitle2: {
             fontSize: '0.8rem',

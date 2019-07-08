@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
         overflowX: 'hidden',
         minHeight: '100%',
         marginBottom: 300,
-        padding: '20px 50px 100px',
+        padding: '20px 10vw 100px',
     },
 }), {
     classNamePrefix: 'app',

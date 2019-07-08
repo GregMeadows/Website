@@ -35,8 +35,8 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     },
     svgTitle: {
         fill: theme.palette.primary.main,
-        fontFamily: theme.typography.h2.fontFamily,
-        fontWeight: theme.typography.h2.fontWeight,
+        fontFamily: theme.typography.h3.fontFamily,
+        fontWeight: theme.typography.h3.fontWeight,
         fontSize: '4.97px',
     },
     link: {

@@ -57,11 +57,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     toolbar: theme.mixins.toolbar,
     item: {
         margin: '4% 6%',
+        '& h2': {
+            fontSize: '3rem',
+        },
         [theme.breakpoints.down(800)]: {
-            margin: '4%'
+            margin: '4%',
+            '& h2': {
+                fontSize: '2.5rem',
+            },
         },
         [theme.breakpoints.down('xs')]: {
             margin: 0,
+            '& h2': {
+                fontSize: '2rem',
+            },
             '&:hover': {
                 background: theme.palette.background.highlight,
             },
@@ -112,7 +121,6 @@ export const Navigation: FunctionComponent = () => {
     const widthMobile = useMediaQuery(theme.breakpoints.down('xs'));
     const widthSmall= useMediaQuery(theme.breakpoints.down(800));
     const drawerAnchor = widthMobile ? 'left' : 'top';
-    const linkVariant = widthMobile ? 'h5' : widthSmall ? 'h4' : 'h3';
     
     // Drawer State
     const [showNav, setShowNav] = useState(false);
@@ -164,19 +172,19 @@ export const Navigation: FunctionComponent = () => {
                     >
                         <Grid item className={classes.item}>
                             <Link to="/about" className={classes.link}>
-                                <Typography variant={linkVariant}>About</Typography>
+                                <Typography variant='h2'>About</Typography>
                                 <Typography variant='subtitle1'>Who Am I?</Typography>
                             </Link>
                         </Grid>
                         <Grid item className={classes.item}>
                             <Link to="/portfolio" className={classes.link}>
-                                <Typography variant={linkVariant}>Portfolio</Typography>
+                                <Typography variant='h2'>Portfolio</Typography>
                                 <Typography variant='subtitle1'>My Work</Typography>
                             </Link>
                         </Grid>
                         <Grid item className={classes.item}>
                             <Link to="/contact" className={classes.link}>
-                                <Typography variant={linkVariant}>Contact</Typography>
+                                <Typography variant='h2'>Contact</Typography>
                                 <Typography variant='subtitle1'>Say Hello</Typography>
                             </Link>
                         </Grid>
