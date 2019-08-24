@@ -119,7 +119,6 @@ export const Navigation: FunctionComponent = () => {
     const classes = useStyles();
     const theme = useTheme();
     const widthMobile = useMediaQuery(theme.breakpoints.down('xs'));
-    const widthSmall= useMediaQuery(theme.breakpoints.down(800));
     const drawerAnchor = widthMobile ? 'left' : 'top';
     
     // Drawer State
