@@ -4,7 +4,6 @@ import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
     root: {
-        margin: 16
     }
 }), {
     classNamePrefix: 'about',
@@ -13,8 +12,8 @@ const useStyles = makeStyles(() => ({
 export const About: FunctionComponent = () => {
     const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <section className={classes.root}>
             <Typography>About</Typography>
-        </div>
+        </section>
     );
 };

@@ -4,7 +4,6 @@ import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
     root: {
-        margin: 16
     }
 }), {
     classNamePrefix: 'not-found',
@@ -13,8 +12,8 @@ const useStyles = makeStyles(() => ({
 export const NotFound: FunctionComponent = () => {
     const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <section className={classes.root}>
             <Typography>Page Not Found</Typography>
-        </div>
+        </section>
     );
 };

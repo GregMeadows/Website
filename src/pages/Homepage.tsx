@@ -9,12 +9,11 @@ const useStyles = makeStyles(() => ({
     root: {
         textAlign: 'center',
         paddingTop: 40,
+        margin: 0,
     },
     leftAligned: {
+        paddingTop: '2rem',
         textAlign: 'left',
-    },
-    spaced: {
-        paddingTop: '5rem',
     },
     para: {
         paddingTop: '0.6rem',
@@ -31,7 +30,7 @@ export const Homepage: FunctionComponent = () => {
             <HideOnMobile>
                 <Logo size={logoSizes.xxxl} scale={14} />
             </HideOnMobile>
-            <section className={`${classes.leftAligned} ${classes.spaced}`}>
+            <section className={classes.leftAligned}>
                 <Typography variant='h1'>Hello</Typography>
                 <Typography variant='body1' className={classes.para}>
                     Welcome to my portfolio site, here you can find out <Link to="/about">who I am</Link>,

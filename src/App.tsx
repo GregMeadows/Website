@@ -19,6 +19,7 @@ const useStyles = makeStyles(() => ({
         width: '100%',
         overflowX: 'hidden',
         minHeight: '100%',
+        marginTop: 0,
         marginBottom: 300,
         padding: '20px 10vw 100px',
     },
@@ -38,7 +39,7 @@ export const App: FunctionComponent = observer(() => {
                     <Navigation />
                 </ThemeProvider>
                 <Header />
-                <section className={`${classes.root}  mui-fixed`}>
+                <section className={`${classes.root} mui-fixed`}>
                     <Switch>
                         <Route path="/" exact component={Homepage} />
                         <Route path="/about" exact component={About} />
