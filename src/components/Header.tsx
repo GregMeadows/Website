@@ -17,17 +17,12 @@ const useStyles = makeStyles(() => ({
 export const Header: FunctionComponent = () => {
     const classes = useStyles();
     const  { pathname } = useLocation();
-
     const isHomepage = (pathname === '/');
-
-    if (isHomepage) {
-        return null;
-    }
     
     return (
         <header className={classes.root}>
             <HideOnMobile>
-                <Logo size={logoSizes.l} />
+                <Logo size={isHomepage ? logoSizes.xxxl : logoSizes.l} />
             </HideOnMobile>
         </header>
     );
