@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     copyright: {
         color: theme.palette.text.secondary,
+        userSelect: 'none',
     }
 }), {
     classNamePrefix: 'footer',
