@@ -38,8 +38,8 @@ export const App: FunctionComponent = observer(() => {
                 <ThemeProvider theme={greyscale}>
                     <Navigation />
                 </ThemeProvider>
-                <Header />
                 <section className={`${classes.root} mui-fixed`}>
+                    <Header />
                     <Switch>
                         <Route path="/" exact component={Homepage} />
                         <Route path="/about" exact component={About} />
