@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Logo, logoSizes } from '../components/Logo';
 import { HideOnMobile } from '../components/HideOnMobile';
 import { Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -33,7 +34,7 @@ export const Homepage: FunctionComponent = () => {
             <section className={`${classes.leftAligned} ${classes.spaced}`}>
                 <Typography variant='h1'>Hello</Typography>
                 <Typography variant='body1' className={classes.para}>
-                    I'm Greg Meadows, 
+                    Welcome to my portfolio site, here you will find examples of <Link to="/portfolio">my work</Link>. 
                 </Typography>
             </section>
         </section>

@@ -25,7 +25,6 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
         minHeight: props.minHeight,
         height: props.viewWidth,
         transition: 'height 0.5s ease',
-        textDecoration: 'none',
     }),
     svgName: {
         fill: theme.palette.text.secondary,

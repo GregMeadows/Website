@@ -30,8 +30,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         borderRadius: 10,
         background: theme.palette.background.highlight,
         color: theme.palette.text.primary,
-        textDecoration: 'none',
-        transition: 'color 0.175s, background 0.175s',
+        transition: 'background 0.175s',
         '&:hover, &:focus': {
             background: theme.palette.primary.main,
         },

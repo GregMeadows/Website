@@ -77,10 +77,8 @@ const useStyles = makeStyles((theme: Theme) => ({
         }
     },
     link: {
-        textDecoration: 'none',
         color: theme.palette.text.primary,
         textAlign: 'center',
-        transition: 'color 0.175s',
         display: 'block',
         '&:hover': {
             color: theme.palette.secondary.main,
