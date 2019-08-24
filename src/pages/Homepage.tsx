@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Logo, logoSizes } from '../components/Logo';
-import { HideOnMobile } from '../components/HideOnMobile';
 import { Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
