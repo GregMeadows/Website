@@ -34,7 +34,8 @@ export const Homepage: FunctionComponent = () => {
             <section className={`${classes.leftAligned} ${classes.spaced}`}>
                 <Typography variant='h1'>Hello</Typography>
                 <Typography variant='body1' className={classes.para}>
-                    Welcome to my portfolio site, here you will find examples of <Link to="/portfolio">my work</Link>. 
+                    Welcome to my portfolio site, here you can find out <Link to="/about">who I am</Link>,
+                    and <Link to="/portfolio">examples of my work</Link>. 
                 </Typography>
             </section>
         </section>
