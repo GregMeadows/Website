@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 interface StyleProps {
     maxHeight: number;
     minHeight: number;
-    viewWidth: string;
 }
 
 export enum logoSizes {
@@ -23,7 +22,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     root: (props: StyleProps) => ({
         maxHeight: props.maxHeight,
         minHeight: props.minHeight,
-        height: props.viewWidth,
+        height: '10vw',
         transition: 'height 0.5s ease',
         userSelect: 'none',
     }),
@@ -58,16 +57,12 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
  */
 export const Logo: FunctionComponent<{
     size?: logoSizes | number;
-    scale?: number;
-}> = ({size, scale}) => {
+}> = ({size}) => {
     size = size || logoSizes.m;
-    scale = scale || 10;
-    const viewWidth = `${scale}vw`;
 
     const styleProps: StyleProps = {
         maxHeight: size,
         minHeight: size <= logoSizes.s ? size : logoSizes.s,
-        viewWidth: viewWidth,
     };
     const classes = useStyles(styleProps);
     

@@ -7,8 +7,6 @@ const useStyles = makeStyles(() => ({
     root: {
         textAlign: 'left',
     },
-    leftAligned: {
-    },
     para: {
         paddingTop: '0.6rem',
     }
