@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Logo, logoSizes } from './Logo';
-import { HideForMobile } from './HideForMobile';
+import { HideOnMobile } from './HideOnMobile';
 import { useLocation } from './Routing';
 
 const useStyles = makeStyles(() => ({
@@ -26,9 +26,9 @@ export const Header: FunctionComponent = () => {
     
     return (
         <header className={classes.root}>
-            <HideForMobile>
+            <HideOnMobile>
                 <Logo size={logoSizes.l} />
-            </HideForMobile>
+            </HideOnMobile>
         </header>
     );
 };
