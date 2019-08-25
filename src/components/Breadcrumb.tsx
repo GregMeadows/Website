@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     linkBase: {
         display: 'flex',
         alignItems: 'center',
-        padding: '2px 6px',
+        padding: '2px 8px',
     },
     homeFlat: {
         paddingTop: 4,
@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         color: theme.palette.text.primary,
         transition: 'background 0.175s',
         '&:hover, &:focus': {
+            color: theme.palette.text.primary,
             background: theme.palette.primary.main,
         },
     },
@@ -69,7 +70,7 @@ export const Breadcrumb: FunctionComponent<{
             {pathnames.map((value, index) => {
                 const last = index === pathnames.length - 1;
                 const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-                return last ? (<span key={to}>{value}</span>) : (<Link className={classes.link} to={to} key={to}>{value}</Link>);
+                return last ? (<span key={to}>{value}</span>) : (<Link className={`${classes.linkBase} ${classes.link}`} to={to} key={to}>{value}</Link>);
             })};
         </Breadcrumbs>
     );
