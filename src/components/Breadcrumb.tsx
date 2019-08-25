@@ -68,6 +68,7 @@ export const Breadcrumb: FunctionComponent<{
                 : (<Link to="/" className={`${classes.linkBase} ${classes.link}`}>{homeFlat}</Link>)}
 
             {pathnames.map((value, index) => {
+                value = value.charAt(0).toUpperCase() + value.slice(1);;
                 const last = index === pathnames.length - 1;
                 const to = `/${pathnames.slice(0, index + 1).join('/')}`;
                 return last ? (<span key={to}>{value}</span>) : (<Link className={`${classes.linkBase} ${classes.link}`} to={to} key={to}>{value}</Link>);
