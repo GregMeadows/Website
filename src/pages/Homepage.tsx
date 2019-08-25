@@ -7,9 +7,6 @@ const useStyles = makeStyles(() => ({
     root: {
         textAlign: 'left',
     },
-    para: {
-        paddingTop: '0.6rem',
-    }
 }), {
         classNamePrefix: 'homepage',
     });
@@ -20,9 +17,9 @@ export const Homepage: FunctionComponent = () => {
     return (
         <section className={classes.root}>
             <Typography variant='h1'>Hello</Typography>
-            <Typography variant='body1' className={classes.para}>
-                Welcome to my portfolio site, here you can find out <Link to="/about">who I am</Link>,
-                and <Link to="/portfolio">examples of my work</Link>. 
+            <Typography variant='body1'>
+                Welcome to my website, here you can find out <Link to="/about">who I am</Link>,
+                and see <Link to="/portfolio">examples of my work</Link>. 
             </Typography>
         </section>
     );

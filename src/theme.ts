@@ -61,6 +61,17 @@ export const main = createMuiTheme({
             fontSize: '0.8rem',
         }
     },
+    overrides: {
+        MuiTypography: {
+            h1: {
+                marginTop: '1rem',
+                marginBottom: '1rem',
+            },
+            body1: {
+                marginTop: '1rem',
+            }
+        }
+    }
 });
 
 // Grey Theme
