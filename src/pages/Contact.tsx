@@ -1,7 +1,12 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, FormEvent, useState, ChangeEvent } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Typography, TextField, Button, Theme, Box } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
+
+interface formElements {
+    email: string | null;
+    message: string | null;
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
     form: {        
@@ -23,9 +28,32 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const Contact: FunctionComponent = () => {
     const classes = useStyles();
+    const [values, setValues] = useState<formElements>({
+        email: null,
+        message: null,
+    });
+    const [errorText, setErrorText] = useState('');
 
-    function handleSubmit() {
+    function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        if (values.message && values.message.trim() === '') {
+            setErrorText('Please send me something more than 5 letters');
+            return;
+        }
+
         alert('submit');
+    }
+
+    function handleChange(event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement>){
+        if (errorText) {
+            setErrorText('');
+        }
+
+        setValues({
+            ...values,
+            [event.currentTarget.name]: event.currentTarget.value,
+        });
     }
 
     return (
@@ -37,23 +65,31 @@ export const Contact: FunctionComponent = () => {
             >
                 <form className={classes.form} onSubmit={handleSubmit}>
                     <TextField
+                        name="email"
                         label="Email"
                         variant="outlined"
                         margin="normal"
+                        type="email"
+                        onChange={e => handleChange(e)}
+                        required
                     />
                     <TextField
+                        name="message"
                         label="Message"
                         variant="outlined"
                         multiline
-                        rows="6"
+                        rows="8"
                         margin="normal"
+                        error={errorText !== ''}
+                        helperText={errorText}
+                        onChange={e => handleChange(e)}
+                        required
                     />
                     <Box
                         display="flex"
-                        justifyContent="space-between"
+                        justifyContent="flex-end"
                         mt={2}
                     >
-                        <Typography variant="subtitle2">Both Fields Required</Typography>
                         <Button
                             variant="outlined"
                             color="primary"
