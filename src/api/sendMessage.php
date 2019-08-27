@@ -34,7 +34,7 @@ $message = str_replace("\r\n", "\n", $message);
 $message = str_replace("\r", "\n", $message);
 
 // Email Checks
-if (empty($email) or !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     error("Valid email required");
 }
 if (strlen($email) > 254) {
@@ -42,7 +42,7 @@ if (strlen($email) > 254) {
 }
 
 // Message Checks
-if (empty($message) or strlen($message) < 10) {
+if (strlen($message) < 10) {
     error("Message must be longer than 10 letters");    
 }
 

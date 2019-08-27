@@ -76,21 +76,15 @@ export const Contact: FunctionComponent = () => {
     }
 
     const successMessage = (
-        <Typography variant='body1'>
-            Thanks for the message! I'll back to you as soon as I can.
-        </Typography>
+        <Typography variant='body1'>Thanks for the message! I'll back to you as soon as I can.</Typography>
     );
 
     let sideText;
     if (formState === FormState.default || formState === FormState.validating) {
         sideText = (
             <>
-                <Typography variant='body1'>
-                    Use the from to send me a message.
-                </Typography>
-                <Typography variant='body1'>
-                    I'll try to get back to you as quick as possible, so ensure that your email is correct.
-                </Typography>
+                <Typography variant='body1'>Use the from to send me a message.</Typography>
+                <Typography variant='body1'>I'll try to get back to you as quick as possible, so ensure that your email is correct.</Typography>
             </>
         );
     } else if (formState === FormState.error) {
