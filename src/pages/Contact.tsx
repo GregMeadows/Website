@@ -40,7 +40,8 @@ export const Contact: FunctionComponent = () => {
         email: '',
         message: '',
     });
-    const [errorText, setErrorText] = useState('');
+    const [messageErrorText, setMessageErrorText] = useState('');
+    const [apiErrorText, setApiErrorText] = useState('');
     const [formState, setFormState] = useState<FormState>(FormState.default);
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -48,7 +49,7 @@ export const Contact: FunctionComponent = () => {
         setFormState(FormState.validating);
 
         if (values.message.trim().length < 10) {
-            setErrorText('Please don\'t spam me with short messages');
+            setMessageErrorText('Please don\'t spam me with short messages');
             setFormState(FormState.default);
             return;
         }
@@ -57,14 +58,15 @@ export const Contact: FunctionComponent = () => {
         .then(() => {
             setFormState(FormState.sent);
         })
-        .catch(() => {
+        .catch((response) => {
+            setApiErrorText(response['message']);
             setFormState(FormState.error);
         });
     }
 
     function handleChange(event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement>){
-        if (errorText) {
-            setErrorText('');
+        if (messageErrorText) {
+            setMessageErrorText('');
         }
 
         setValues({
@@ -94,12 +96,9 @@ export const Contact: FunctionComponent = () => {
     } else if (formState === FormState.error) {
         sideText = (
             <>
-                <Typography variant='body1'>
-                    Sorry, there was an issue while sending your message.
-                </Typography>
-                <Typography variant='body1'>
-                    Please feel free to try again.
-                </Typography>
+                <Typography variant='body1'>Sorry, there was an issue while sending your message.</Typography>
+                <Typography variant='body1'>{apiErrorText}</Typography>
+                <Typography variant='body1'>Please feel free to try again.</Typography>
             </>
         );
     }
@@ -131,8 +130,8 @@ export const Contact: FunctionComponent = () => {
                     multiline
                     rows="8"
                     margin="normal"
-                    error={errorText !== '' || formState === FormState.error}
-                    helperText={errorText}
+                    error={messageErrorText !== '' || formState === FormState.error}
+                    helperText={messageErrorText}
                     onChange={e => handleChange(e)}
                     required
                 />
