@@ -53,7 +53,7 @@ export const Contact: FunctionComponent = () => {
             return;
         }
 
-        axios.post('/sendMessage.php', values)
+        axios.post('api/sendMessage.php', values)
         .then(() => {
             setFormState(FormState.sent);
         })
