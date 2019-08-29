@@ -13,6 +13,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { Navigation } from './components/Navigation';
 import { Header } from './components/Header';
 import { Contact } from './pages/Contact';
+import { Portfolio } from './pages/Portfolio';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -45,6 +46,7 @@ export const App: FunctionComponent = observer(() => {
                         <Route path="/" exact component={Homepage} />
                         <Route path="/about" exact component={About} />
                         <Route path="/contact" exact component={Contact} />
+                        <Route path="/portfolio" exact component={Portfolio} />
                         <Route component={NotFound} />
                     </Switch>
                 </section>
