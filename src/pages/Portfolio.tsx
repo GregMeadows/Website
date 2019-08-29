@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Typography } from '@material-ui/core';
 import { PortfolioCard } from '../components/PortfolioCard';
+import reactImage from '../images/reactCode.jpg'
 
 export const Portfolio: FunctionComponent = () => {
 
@@ -13,6 +14,7 @@ export const Portfolio: FunctionComponent = () => {
             <PortfolioCard
                 title="React"
                 bodyText="Used to build this website."
+                imageURL={reactImage}
             />
         </section>
     );
