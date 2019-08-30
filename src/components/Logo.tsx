@@ -27,7 +27,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
         userSelect: 'none',
     }),
     svgName: {
-        fill: theme.palette.text.secondary,
+        fill: theme.palette.text.logo,
         fontFamily: theme.typography.h1.fontFamily,
         fontWeight: theme.typography.h1.fontWeight,
         fontSize: '14px',

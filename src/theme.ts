@@ -10,6 +10,10 @@ declare module '@material-ui/core/styles/createPalette' {
     //     custom?: PaletteColorOptions,
     // }
 
+    interface TypeText {
+        logo: string;
+    }
+
     interface TypeBackground {
         highlight: string,
     }
@@ -20,8 +24,9 @@ export const main = createMuiTheme({
     palette: {
         type: 'light',
         text: {
-            primary: '#000',
+            primary: 'black',
             secondary: grey[600],
+            logo: 'black',
         },
         primary: {
             main: '#0099ff',
@@ -81,6 +86,7 @@ export const greyscale = createMuiTheme({
         text: {
             primary: '#fff',
             secondary: grey[400],
+            logo: grey[400],
         },
         primary: {
             light: grey[500],
