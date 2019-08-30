@@ -24,9 +24,9 @@ export const main = createMuiTheme({
     palette: {
         type: 'light',
         text: {
-            primary: 'black',
+            primary: '#000',
             secondary: grey[600],
-            logo: 'black',
+            logo: '#000',
         },
         primary: {
             main: '#0099ff',
