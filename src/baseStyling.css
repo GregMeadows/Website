@@ -36,3 +36,7 @@ a {
 a:hover {
   color: #424242;
 }
+
+img {
+  max-width: 100%;
+}

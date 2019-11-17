@@ -1,7 +1,24 @@
 import React, { FunctionComponent } from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, makeStyles, Theme } from '@material-ui/core';
+import imgCanada from '../images/canada.jpg';
+import imgMe from '../images/me.jpg';
+
+const useStyles = makeStyles((theme: Theme) => ({
+    figure: {
+        float: 'right',
+        maxWidth: '50%',
+        [theme.breakpoints.down('sm')]: {
+            float: 'none',
+            maxWidth: '100%',
+        },
+    },
+}), {
+    classNamePrefix: 'about',
+});
 
 export const About: FunctionComponent = () => {
+    const classes = useStyles();
+
     function getAge(dateString: string) {
         var today = new Date();
         // Simple off-clock check
@@ -22,29 +39,48 @@ export const About: FunctionComponent = () => {
         <>
             <section>
                 <Typography variant='h1'>Who Am I</Typography>
+                <figure className={classes.figure}>
+                    <img src={imgMe} alt="Picture of myself" />
+                    <figcaption>Me.</figcaption>
+                </figure>
                 <Typography variant='body1'>
-                    I am a {age && ageString} software developer currently working at i-nexus, Coventry.
+                    I am a {age && ageString} software developer based in Leicester, currently working for i-nexus, in Coventry, UK.
                     I hold an MEng in Computer Science, which i completed at the University of Hertfordshire in 2018.
                 </Typography>
                 <Typography variant='body1'>
                     I have always enjoyed programming, starting with DOS commands and batch scripting to automate simple tasks,
                     leading to basic Windows programming using vbs scripts. This in turn lead to  a range of object-oriented languages,
                     such as Visual Basic, and eventually to C#, the .NET framework/WPF Forms, Python, and finally Java/JavaFX and Android development. 
+                    Additionally, I like web development and by extension front-end design, learning languages such as HTML/CSS, JavaScript/JQuery, PHP,
+                    and more recently found a love for the React library and Typescript.
                 </Typography>
-                <Typography variant='body1'>
-                    Additionally, I like web development and front-end design, learning languages such as HTML/CSS, JavaScript/JQuery, PHP,
-                    and more recently found a love for the React library.
-                </Typography>    
             </section>
             <section>
                 <Typography variant='h1'>Interests</Typography>
+                <figure className={classes.figure}>
+                    <img src={imgCanada} alt="Moraine Lake, Canada" />
+                    <figcaption>Moraine Lake, Canada.</figcaption>
+                </figure>
                 <Typography variant='body1'>
                     Staying on the techy side of things, I enjoy technology in general, I build my own PC, and enjoy getting my hands on
                     any new tech.
-                    In my down time I also like to game. I'm a big fan of the ARMA series, and have recently been enjoying XCOM 2.
-                    As for staying active, I like a good game of 5-a-side, and when possible I'm keen to go surfing
-                    (though living in Leicester makes this difficult).
+                    In my down time I also like to game. I'm a big fan of the ARMA series, and have recently been 'The Outer Worlds'.
                 </Typography>
+                <Typography variant='body1'>
+                    As for staying active, I like a good game of 5-a-side football, and when possible I'm keen to go surfing
+                    (though living in Leicester can make this pretty difficult).
+                </Typography>
+            </section>
+            <section>
+                <Typography variant='h1'>Aspirations</Typography>
+                <Typography variant='body1'>
+                    An aspiration of mine is to one day end up in Canada. I visited in 2013 and instantly fell in love with the stunning scenery
+                    and welcoming people. I stayed in the Rocky Mountains within Banff National Park, and it was the most serene place I have
+                    visited to date.
+                </Typography>
+                <Typography variant='body1'>
+                    My dream car is an Aston Martin, either a Vantage or DB11.
+                </Typography>                
             </section>
         </>
     );
