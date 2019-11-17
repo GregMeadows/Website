@@ -40,8 +40,8 @@ export const About: FunctionComponent = () => {
             <section>
                 <Typography variant='h1'>Who Am I</Typography>
                 <figure className={classes.figure}>
-                    <img src={imgMe} alt="Picture of myself" />
-                    <figcaption>Me.</figcaption>
+                    <img src={imgMe} alt="Me in Amsterdam, Netherlands." />
+                    <figcaption>Me in Amsterdam, Netherlands.</figcaption>
                 </figure>
                 <Typography variant='body1'>
                     I am a {age && ageString} software developer based in Leicester, currently working for i-nexus, in Coventry, UK.
