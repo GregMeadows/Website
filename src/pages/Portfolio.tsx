@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { Typography, Divider, makeStyles, Box } from '@material-ui/core';
 import { PortfolioCard } from '../components/PortfolioCard';
-import reactImage from '../images/reactCode.jpg'
-import twitterProject from '../images/twitterProject.jpg'
+import imgReact from '../images/reactCode.jpg'
+import imgTwitterProject from '../images/twitterProject.jpg'
+import imgVRE from '../images/vre.jpg'
 
 const useStyles = makeStyles(({
     divider: {
@@ -24,14 +25,20 @@ export const Portfolio: FunctionComponent = () => {
             <Box display="flex" flexWrap="wrap" justifyContent="space-evenly">
                 <PortfolioCard
                     title="This Website"
-                    bodyText="Built using React"
-                    imageURL={reactImage}
+                    bodyText="A complete overhaul of the site, using the React framework and Typescript."
+                    imageURL={imgReact}
                 />
             
                 <PortfolioCard
                     title="Twitter Sentiment Analysis"
-                    bodyText="Built with Java."
-                    imageURL={twitterProject}
+                    bodyText="My final year dissertation project, to predict a tweet's sentiment response."
+                    imageURL={imgTwitterProject}
+                />
+                
+                <PortfolioCard
+                    title="VRE"
+                    bodyText="A team based university project to build a virtual rehabilitation environment."
+                    imageURL={imgVRE}
                 />
             </Box>
 
