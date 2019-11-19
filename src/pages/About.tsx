@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         [theme.breakpoints.down('sm')]: {
             float: 'none',
             maxWidth: '100%',
+            margin: 0,
         },
     },
 }), {
