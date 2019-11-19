@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     figure: {
         float: 'right',
         maxWidth: '50%',
+        marginTop: 0,
         [theme.breakpoints.down('sm')]: {
             float: 'none',
             maxWidth: '100%',
