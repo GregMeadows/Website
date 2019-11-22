@@ -1,17 +1,45 @@
 import React, { FunctionComponent } from 'react';
-import { Typography, Divider, makeStyles, Box } from '@material-ui/core';
-import { PortfolioCard } from '../components/PortfolioCard';
+import { Typography, makeStyles, Theme } from '@material-ui/core';
 import imgReact from '../images/reactCode.jpg'
 import imgTwitterProject from '../images/twitterProject.jpg'
 import imgVRE from '../images/vre.jpg'
 
-const useStyles = makeStyles(({
-    divider: {
-        marginTop: '1rem',
-        marginBottom: '2rem',
-    }
+const useStyles = makeStyles((theme: Theme) => ({
+    projects: {
+        '& section:nth-child(odd)': {
+            backgroundColor: theme.palette.background.highlight,
+        }
+    },
+    section: {
+        margin: 0,
+        padding: '2rem',
+        display: 'flex',
+        '& :first-child': {
+            marginRight: '2rem',
+        },
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+        },
+    },
+    info: {
+         flexGrow: 1,
+         marginTop: 0,
+         [theme.breakpoints.down('sm')]: {
+            order: 3,
+            marginTop: '2rem',
+            marginRight: 0,
+        },
+    },
+    image: {
+        display: 'flex',
+        width: 550,
+        [theme.breakpoints.down('sm')]: {
+            order: 2,
+        },
+    },
 }), {
-    classNamePrefix: 'divider',
+    classNamePrefix: 'about',
 });
 
 export const Portfolio: FunctionComponent = () => {
@@ -19,29 +47,39 @@ export const Portfolio: FunctionComponent = () => {
 
     return (
         <section>
-            <Typography variant="h1">My Work</Typography>
-            <Divider className={classes.divider} />
-
-            <Box display="flex" flexWrap="wrap" justifyContent="space-evenly">
-                <PortfolioCard
-                    title="This Website"
-                    bodyText="A complete overhaul of the site, using the React framework and Typescript."
-                    imageURL={imgReact}
-                />
-            
-                <PortfolioCard
-                    title="Twitter Sentiment Analysis"
-                    bodyText="My final year dissertation project, to predict a tweet's sentiment response."
-                    imageURL={imgTwitterProject}
-                />
-                
-                <PortfolioCard
-                    title="VRE"
-                    bodyText="A team based university project to build a virtual rehabilitation environment."
-                    imageURL={imgVRE}
-                />
-            </Box>
-
+            <Typography variant="h1">Projects</Typography>
+            <Typography variant='body1'>
+                These are projects that I have worked on in my personal time, or as part of university.
+            </Typography>
+            <section className={classes.projects}>
+                <section className={classes.section}>
+                    <div className={classes.info}>
+                        <Typography variant="h3">This Website</Typography>
+                        <Typography variant='body1'>
+                            A complete overhaul of the site, using the React framework and Typescript.
+                        </Typography>
+                    </div>
+                    <img src={imgReact} alt="Code" className={classes.image}/>
+                </section>
+                <section className={classes.section}>
+                    <img src={imgTwitterProject} alt="Code" className={classes.image}/>
+                    <div className={classes.info}>
+                        <Typography variant="h3">Twitter Sentiment Analysis</Typography>
+                        <Typography variant='body1'>
+                            My final year dissertation project, to predict a tweet's sentiment response.
+                        </Typography>
+                    </div>
+                </section>
+                <section className={classes.section}>
+                    <div className={classes.info}>
+                        <Typography variant="h3">VRE</Typography>
+                        <Typography variant='body1'>
+                            A team based university project to build a virtual rehabilitation environment.
+                        </Typography>
+                    </div>
+                    <img src={imgVRE} alt="Code" className={classes.image}/>
+                </section>
+            </section>
         </section>
     );
 };
