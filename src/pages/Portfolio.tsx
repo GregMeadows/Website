@@ -5,6 +5,14 @@ import imgTwitterProject from '../images/twitterProject.jpg';
 import imgVRE from '../images/vre.jpg';
 import { OpenSourceChip } from '../components/OpenSourceChip';
 
+interface Project {
+    name: string;
+    info: string;
+    imgLink: string;
+    tags: string[];
+    openSource?: string;
+}
+
 const useStyles = makeStyles((theme: Theme) => ({
     projects: {
         '& > :nth-child(odd)': {
@@ -57,6 +65,44 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Portfolio: FunctionComponent = () => {
     const classes = useStyles();
 
+    const projects: Project[] = [
+        {
+            name: 'This Website',
+            info: 'A complete overhaul of the site, using the React framework and Typescript.',
+            imgLink: imgReact,
+            tags: ['React', 'TypeScript', 'HTML', 'CSS'],
+            openSource: 'GregMeadows.uk',
+        }, {
+            name: 'Twitter Sentiment Analysis',
+            info: 'My final year dissertation project, to predict a tweet\'s sentiment response.',
+            imgLink: imgTwitterProject,
+            tags: ['Java', 'JavaFX'],
+        }, {
+            name: 'VRE',
+            info: 'A team based university project to build a virtual rehabilitation environment.',
+            imgLink: imgVRE,
+            tags: ['Java', 'JavaScript', 'HTML', 'CSS'],
+        },
+    ];
+
+    const projectsDOM = projects.map((project: Project) => {
+        return (
+            <section className={classes.section}>
+                <div className={classes.info}>
+                    <Typography variant="h3">{project.name}</Typography>
+                    <Typography variant='body1'>{project.info}</Typography>
+                    <div className={classes.chips}>
+                        {project.openSource && (<OpenSourceChip repo={project.openSource} />)}
+                        {project.tags.map(tag => {
+                            return (<Chip size="small" label={tag} />);
+                        })}
+                    </div>
+                </div>
+                <img src={project.imgLink} alt={project.name} className={classes.image}/>
+            </section>
+        );
+    });
+
     return (
         <section>
             <Typography variant="h1">Projects</Typography>
@@ -64,50 +110,7 @@ export const Portfolio: FunctionComponent = () => {
                 These are projects that I have worked on in my personal time, or as part of university.
             </Typography>
             <section className={classes.projects}>
-                <section className={classes.section}>
-                    <div className={classes.info}>
-                        <Typography variant="h3">This Website</Typography>
-                        <Typography variant='body1'>
-                            A complete overhaul of the site, using the React framework and Typescript.
-                        </Typography>
-                        <div className={classes.chips}>
-                            <OpenSourceChip repo='GregMeadows.uk' />
-                            <Chip size="small" label="React" />
-                            <Chip size="small" label="TypeScript" />
-                            <Chip size="small" label="HTML" />
-                            <Chip size="small" label="CSS" />
-                        </div>
-                    </div>
-                    <img src={imgReact} alt="Code" className={classes.image}/>
-                </section>
-                <section className={classes.section}>
-                    <img src={imgTwitterProject} alt="Code" className={classes.image}/>
-                    <div className={classes.info}>
-                        <Typography variant="h3">Twitter Sentiment Analysis</Typography>
-                        <Typography variant='body1'>
-                            My final year dissertation project, to predict a tweet's sentiment response.
-                        </Typography>
-                        <div className={classes.chips}>
-                            <Chip size="small" label="Java" />
-                            <Chip size="small" label="JavaFX" />
-                        </div>
-                    </div>
-                </section>
-                <section className={classes.section}>
-                    <div className={classes.info}>
-                        <Typography variant="h3">VRE</Typography>
-                        <Typography variant='body1'>
-                            A team based university project to build a virtual rehabilitation environment.
-                        </Typography>
-                        <div className={classes.chips}>
-                            <Chip size="small" label="Java" />
-                            <Chip size="small" label="JavaScript" />
-                            <Chip size="small" label="HTML" />
-                            <Chip size="small" label="CSS" />
-                        </div>
-                    </div>
-                    <img src={imgVRE} alt="Code" className={classes.image}/>
-                </section>
+                {projectsDOM}
             </section>
         </section>
     );
