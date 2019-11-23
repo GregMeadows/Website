@@ -54,6 +54,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     image: {
         display: 'flex',
+        alignSelf: 'center',
+        flexShrink: 0,
         width: 550,
         [theme.breakpoints.down('sm')]: {
             order: 1,
