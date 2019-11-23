@@ -17,15 +17,24 @@ const useStyles = makeStyles((theme: Theme) => ({
     projects: {
         '& > :nth-child(odd)': {
             backgroundColor: theme.palette.background.highlight,
-        }
+            '& > div': {
+                marginRight: '2rem',
+            }
+        },
+        '& > :nth-child(even)': {
+            '& > img': {
+                order: 1,
+                marginRight: '2rem',
+            },
+            '& > div': {
+                order: 2,
+            }
+        },
     },
     section: {
         margin: 0,
         padding: '2rem',
         display: 'flex',
-        '& > :first-child': {
-            marginRight: '2rem',
-        },
         [theme.breakpoints.down('sm')]: {
             flexDirection: 'column',
             alignItems: 'center',
@@ -40,14 +49,15 @@ const useStyles = makeStyles((theme: Theme) => ({
             flexGrow: 1,
         },
         [theme.breakpoints.down('sm')]: {
-            order: 3,
+            order: 2,
             marginTop: '2rem',
             marginRight: 0,
         },
     },
     chips: {
-        marginTop: '1rem',
+        marginTop: '0.5rem',
         '& > *': {
+            marginTop: '0.5rem',
             marginRight: '0.2rem',
         }
     },
@@ -55,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: 'flex',
         width: 550,
         [theme.breakpoints.down('sm')]: {
-            order: 2,
+            order: 1,
         },
     },
 }), {
