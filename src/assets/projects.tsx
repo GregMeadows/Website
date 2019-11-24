@@ -43,7 +43,7 @@ export const projects: Project[] = [
             </>
         ),
         imgLink: imgTwitterProject,
-        tags: ['Java', 'JavaFX'],
+        tags: ['Java', 'JavaFX', 'SQL'],
     }, {
         name: 'VRE',
         info: (
@@ -65,6 +65,6 @@ export const projects: Project[] = [
             </>
         ),
         imgLink: imgVRE,
-        tags: ['Java', 'JavaScript', 'HTML', 'CSS'],
+        tags: ['Java', 'SQL', 'JavaScript', 'HTML', 'CSS'],
     },
 ];
