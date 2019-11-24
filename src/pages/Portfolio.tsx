@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         overflow: 'auto',
     },
     chips: {
-        marginTop: '0.5rem',
+        marginTop: '1rem',
         marginBottom: '2rem',
         '& > *': {
             marginTop: '0.5rem',
@@ -55,14 +55,14 @@ export const Portfolio: FunctionComponent = () => {
 
     const projectsDOM = projects.map((project: Project) => {
         return (
-            <section className={classes.project}>
+            <section className={classes.project} key={project.name}>
                 <img src={project.imgLink} alt={project.name} className={classes.image}/>
                 <Typography variant="h3">{project.name}</Typography>
-                <Typography variant='body1'>{project.info}</Typography>
+                {project.info}
                 <div className={classes.chips}>
                     {project.openSource && (<OpenSourceChip repo={project.openSource} />)}
                     {project.tags.map(tag => {
-                        return (<Chip size="small" label={tag} />);
+                        return (<Chip size="small" label={tag} key={tag}/>);
                     })}
                 </div>
             </section>
