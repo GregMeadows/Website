@@ -8,57 +8,42 @@ const useStyles = makeStyles((theme: Theme) => ({
     projects: {
         '& > :nth-child(odd)': {
             backgroundColor: theme.palette.background.highlight,
-            '& > div': {
-                marginRight: '2rem',
-            }
         },
-        '& > :nth-child(even)': {
-            '& > img': {
-                order: 1,
-                marginRight: '2rem',
+        '& > :nth-child(even) > img': {
+            float: 'left',
+            marginRight: '2rem',
+            marginLeft: 0,
+            [theme.breakpoints.down('sm')]: {
+                float: 'none',
+                margin: '0 auto 2rem auto'
             },
-            '& > div': {
-                order: 2,
-            }
         },
     },
-    section: {
+    project: {
         margin: 0,
         padding: '2rem',
-        display: 'flex',
-        [theme.breakpoints.down('sm')]: {
-            flexDirection: 'column',
-            alignItems: 'center',
-        },
-    },
-    info: {
-        display: 'flex',
-        flexDirection: 'column',
-        flexGrow: 1,
-        marginTop: 0,
-        '& > p': {
-            flexGrow: 1,
-        },
-        [theme.breakpoints.down('sm')]: {
-            order: 2,
-            marginTop: '2rem',
-            marginRight: 0,
-        },
+        paddingBottom: 0,
+        overflow: 'auto',
     },
     chips: {
         marginTop: '0.5rem',
+        marginBottom: '2rem',
         '& > *': {
             marginTop: '0.5rem',
             marginRight: '0.2rem',
-        }
+        },
     },
     image: {
-        display: 'flex',
-        alignSelf: 'center',
-        flexShrink: 0,
         width: 550,
+        maxWidth: '50%',
+        float: 'right',
+        marginLeft: '2rem',
+        marginBottom: '2rem',
         [theme.breakpoints.down('sm')]: {
-            order: 1,
+            float: 'none',
+            maxWidth: '100%',
+            display: 'block',
+            margin: '0 auto 2rem auto'
         },
     },
 }), {
@@ -70,18 +55,16 @@ export const Portfolio: FunctionComponent = () => {
 
     const projectsDOM = projects.map((project: Project) => {
         return (
-            <section className={classes.section}>
-                <div className={classes.info}>
-                    <Typography variant="h3">{project.name}</Typography>
-                    <Typography variant='body1'>{project.info}</Typography>
-                    <div className={classes.chips}>
-                        {project.openSource && (<OpenSourceChip repo={project.openSource} />)}
-                        {project.tags.map(tag => {
-                            return (<Chip size="small" label={tag} />);
-                        })}
-                    </div>
-                </div>
+            <section className={classes.project}>
                 <img src={project.imgLink} alt={project.name} className={classes.image}/>
+                <Typography variant="h3">{project.name}</Typography>
+                <Typography variant='body1'>{project.info}</Typography>
+                <div className={classes.chips}>
+                    {project.openSource && (<OpenSourceChip repo={project.openSource} />)}
+                    {project.tags.map(tag => {
+                        return (<Chip size="small" label={tag} />);
+                    })}
+                </div>
             </section>
         );
     });
