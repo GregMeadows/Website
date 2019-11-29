@@ -37,7 +37,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
         fill: theme.palette.primary.main,
         fontFamily: theme.typography.h3.fontFamily,
         fontWeight: theme.typography.h3.fontWeight,
-        fontSize: '3.8px',
+        fontSize: '3px',
     },
     link: {
         padding: 4,
@@ -52,9 +52,6 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
  * Size dictates the max size of the logo. Logo is responsive and will shrink to fit screen.
  * @param size  Max size of the logo. Can be of type enum logoSizes, or a number representing height
  *              (e.g. 100 - this will be converted to px).
- * @param scale Number representing view-width (vw) percentage, used ot se the width of the logo,
- *              increasing this increases the logo in proportion to the page.
- *              Defaults to 10 (which is converted to '10vw').
  */
 export const Logo: FunctionComponent<{
     size?: logoSizes | number;
@@ -72,7 +69,7 @@ export const Logo: FunctionComponent<{
     const logoSVG = (
         <svg className={classes.root} viewBox="0 0 82.6 16.2" xmlns="http://www.w3.org/2000/svg">
             <text x="0" y="10" className={classes.svgName}>Greg Meadows</text>
-            <text x="54.5" y="14" textAnchor="middle" textLength="51.2" className={classes.svgTitle}>Software Developer</text>
+            <text x="54.5" y="13.5" textAnchor="middle" textLength="51.2" className={classes.svgTitle}>Software Developer</text>
         </svg>
     );
     
