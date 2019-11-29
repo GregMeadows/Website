@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Theme } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { useLocation } from './Routing';
 
 interface StyleProps {
     maxHeight: number;
@@ -65,13 +66,23 @@ export const Logo: FunctionComponent<{
         minHeight: size <= logoSizes.s ? size : logoSizes.s,
     };
     const classes = useStyles(styleProps);
+    const  { pathname } = useLocation();
+    const isHomepage = (pathname === '/');
     
-    return (
-        <Link to="/" className={classes.link}>
-            <svg className={classes.root} viewBox="0 0 82.6 16.2" xmlns="http://www.w3.org/2000/svg">
-                <text x="0" y="10" className={classes.svgName}>Greg Meadows</text>
-                <text x="29.42" y="15" className={classes.svgTitle}>Development Portfolio</text>
-            </svg>
-        </Link>
+    const logoSVG = (
+        <svg className={classes.root} viewBox="0 0 82.6 16.2" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="10" className={classes.svgName}>Greg Meadows</text>
+            <text x="29.42" y="15" className={classes.svgTitle}>Development Portfolio</text>
+        </svg>
     );
+    
+    if (isHomepage) {
+        return (
+            <div className={classes.link}>{logoSVG}</div>
+        );
+    } else {
+        return (
+            <Link to="/" className={classes.link}>{logoSVG}</Link>
+        );
+    }
 };
