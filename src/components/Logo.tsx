@@ -37,7 +37,7 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
         fill: theme.palette.primary.main,
         fontFamily: theme.typography.h3.fontFamily,
         fontWeight: theme.typography.h3.fontWeight,
-        fontSize: '4.97px',
+        fontSize: '3.8px',
     },
     link: {
         padding: 4,
@@ -72,7 +72,7 @@ export const Logo: FunctionComponent<{
     const logoSVG = (
         <svg className={classes.root} viewBox="0 0 82.6 16.2" xmlns="http://www.w3.org/2000/svg">
             <text x="0" y="10" className={classes.svgName}>Greg Meadows</text>
-            <text x="29.42" y="15" className={classes.svgTitle}>Development Portfolio</text>
+            <text x="54.5" y="14" textAnchor="middle" textLength="51.2" className={classes.svgTitle}>Software Developer</text>
         </svg>
     );
     

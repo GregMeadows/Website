@@ -42,17 +42,17 @@ export const main = createMuiTheme({
     },
     typography: {
         h1: {
-            fontFamily: 'Alegreya Sans, sans-serif',
+            fontFamily: '"Alegreya Sans", sans-serif',
             fontWeight: 500,
             fontSize: '3rem',
         },
         h2: {
-            fontFamily: 'Alegreya Sans, sans-serif',
+            fontFamily: '"Alegreya Sans", sans-serif',
             fontWeight: 400,
             fontSize: '2.5rem',
         },
         h3: {
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: '"Source Code Pro", sans-serif',
             fontWeight: 400,
             fontSize: '1.5rem',
         },
