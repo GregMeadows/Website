@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Logo, logoSizes } from './Logo';
-import { useLocation } from './Routing';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -14,12 +13,10 @@ const useStyles = makeStyles(() => ({
 
 export const Header: FunctionComponent = () => {
     const classes = useStyles();
-    const  { pathname } = useLocation();
-    const isHomepage = (pathname === '/');
     
     return (
         <header className={classes.root}>
-            <Logo size={isHomepage ? logoSizes.xxxl : logoSizes.l} />
+            <Logo size={logoSizes.l} />
         </header>
     );
 };
