@@ -4,8 +4,7 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { Homepage } from './pages/Homepage';
 import { About } from './pages/About';
 import { NotFound } from './pages/NotFound';
-import { makeStyles, ThemeProvider } from '@material-ui/styles';
-import Background from './images/bg.jpg';
+import { ThemeProvider } from '@material-ui/styles';
 import { CssBaseline } from '@material-ui/core';
 import { main, greyscale } from './theme';
 import { Footer } from './components/Footer';
@@ -14,24 +13,10 @@ import { Navigation } from './components/Navigation';
 import { Header } from './components/Header';
 import { Contact } from './pages/Contact';
 import { Portfolio } from './pages/Portfolio';
-
-const useStyles = makeStyles(() => ({
-    root: {
-        background: `#F5F5F5 url(${Background}) repeat`,
-        width: '100%',
-        overflowX: 'hidden',
-        minHeight: '100%',
-        marginTop: 0,
-        marginBottom: 300,
-        padding: '20px 10vw 100px',
-    },
-}), {
-    classNamePrefix: 'app',
-});
+import { HideOnMobile } from './components/HideOnMobile';
+import { Layout } from './components/Layout';
 
 export const App: FunctionComponent = observer(() => {
-    const classes = useStyles();
-
     return (
         <ThemeProvider theme={main}>
             <CssBaseline />
@@ -40,8 +25,10 @@ export const App: FunctionComponent = observer(() => {
                 <ThemeProvider theme={greyscale}>
                     <Navigation />
                 </ThemeProvider>
-                <section className={`${classes.root} mui-fixed`}>
-                    <Header />
+                <Layout>
+                    <HideOnMobile>
+                        <Header />
+                    </HideOnMobile>
                     <Switch>
                         <Route path="/" exact component={Homepage} />
                         <Route path="/about" exact component={About} />
@@ -49,7 +36,7 @@ export const App: FunctionComponent = observer(() => {
                         <Route path="/portfolio" exact component={Portfolio} />
                         <Route component={NotFound} />
                     </Switch>
-                </section>
+                </Layout>
                 <ThemeProvider theme={greyscale}>
                     <Footer />
                 </ThemeProvider>
