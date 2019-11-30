@@ -26,15 +26,17 @@ export const App: FunctionComponent = observer(() => {
                     <Navigation />
                 </ThemeProvider>
                 <Layout>
-                    <HideOnMobile>
-                        <Header />
-                    </HideOnMobile>
                     <Switch>
                         <Route path="/" exact component={Homepage} />
-                        <Route path="/about" exact component={About} />
-                        <Route path="/contact" exact component={Contact} />
-                        <Route path="/portfolio" exact component={Portfolio} />
-                        <Route component={NotFound} />
+                        <>
+                            <HideOnMobile>
+                                <Header />
+                            </HideOnMobile>
+                            <Route path="/about" exact component={About} />
+                            <Route path="/contact" exact component={Contact} />
+                            <Route path="/portfolio" exact component={Portfolio} />
+                            <Route component={NotFound} />
+                        </>
                     </Switch>
                 </Layout>
                 <ThemeProvider theme={greyscale}>
