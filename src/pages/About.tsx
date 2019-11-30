@@ -2,13 +2,14 @@ import React, { FunctionComponent } from 'react';
 import { Typography, makeStyles, Theme } from '@material-ui/core';
 import imgCanada from '../images/canada.jpg';
 import imgMe from '../images/me.jpg';
+import { BREAKPOINT_TABLET } from '../assets/consts';
 
 const useStyles = makeStyles((theme: Theme) => ({
     figure: {
         float: 'right',
         maxWidth: '50%',
         marginTop: 0,
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down(BREAKPOINT_TABLET)]: {
             float: 'none',
             maxWidth: '100%',
             margin: 0,

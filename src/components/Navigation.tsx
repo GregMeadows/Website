@@ -8,12 +8,13 @@ import { Logo, logoSizes } from './Logo';
 import { Hamburger } from './Hamburger';
 import { useLocation } from './Routing';
 import { Breadcrumb } from './Breadcrumb';
+import { BREAKPOINT_MOBILE, BREAKPOINT_TABLET } from '../assets/consts';
 
 const useStyles = makeStyles((theme: Theme) => ({
     hamburger: {
         position: 'fixed',
         visibility: 'visible',
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             position: 'absolute',
         }
     },
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     appBar: {
         background: theme.palette.background.default,
         zIndex: theme.zIndex.drawer + 101,
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up(BREAKPOINT_TABLET)]: {
             visibility: 'hidden',
         }
     },
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     drawerLayout: {
         marginTop: '2%',
         marginBottom: '2%',
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             width: 300,
         }
     },
@@ -66,7 +67,7 @@ const useStyles = makeStyles((theme: Theme) => ({
                 fontSize: '2.5rem',
             },
         },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             margin: 0,
             '& h2': {
                 fontSize: '2rem',
@@ -83,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         '&:hover': {
             color: theme.palette.secondary.main,
         },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             padding: '4% 0',
             paddingLeft: 50,
             textAlign: 'left',
@@ -94,12 +95,12 @@ const useStyles = makeStyles((theme: Theme) => ({
         }
     },
     mobileDisplayNone: {
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             display: 'none',
         }
     },
     mobileDisplayBlock: {
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             display: 'block',
         }
     },
@@ -116,7 +117,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const Navigation: FunctionComponent = () => {
     const classes = useStyles();
     const theme = useTheme();
-    const widthMobile = useMediaQuery(theme.breakpoints.down('xs'));
+    const widthMobile = useMediaQuery(theme.breakpoints.down(BREAKPOINT_MOBILE));
     const drawerAnchor = widthMobile ? 'left' : 'top';
     
     // Drawer State

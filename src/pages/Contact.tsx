@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Typography, TextField, Button, Theme, Box } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import axios from 'axios';
+import { BREAKPOINT_TABLET } from '../assets/consts';
 
 interface FormElements {
     email: string;
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         flexGrow: 1,
         flexBasis: 0,
         minWidth: 300,
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up(BREAKPOINT_TABLET)]: {
             marginRight: theme.spacing(4),
         },
     },

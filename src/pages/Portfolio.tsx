@@ -3,6 +3,7 @@ import { Typography, makeStyles, Theme, Chip } from '@material-ui/core';
 
 import { OpenSourceChip } from '../components/OpenSourceChip';
 import { Project, projects } from '../assets/projects';
+import { BREAKPOINT_TABLET } from '../assets/consts';
 
 const useStyles = makeStyles((theme: Theme) => ({
     projects: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles((theme: Theme) => ({
             float: 'left',
             marginRight: '2rem',
             marginLeft: 0,
-            [theme.breakpoints.down('sm')]: {
+            [theme.breakpoints.down(BREAKPOINT_TABLET)]: {
                 float: 'none',
                 margin: '0 auto 2rem auto'
             },
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         float: 'right',
         marginLeft: '2rem',
         marginBottom: '2rem',
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down(BREAKPOINT_TABLET)]: {
             float: 'none',
             maxWidth: '100%',
             display: 'block',
