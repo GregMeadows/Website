@@ -58,7 +58,7 @@ export const Portfolio: FunctionComponent = () => {
         return (
             <section className={classes.project} key={project.name}>
                 <img src={project.imgLink} alt={project.name} className={classes.image}/>
-                <Typography variant="h3">{project.name}</Typography>
+                <Typography variant="h2">{project.name}</Typography>
                 {project.info}
                 <div className={classes.chips}>
                     {project.openSource && (<OpenSourceChip repo={project.openSource} />)}
