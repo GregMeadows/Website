@@ -14,9 +14,6 @@ export enum logoSizes {
     s = 60,
     m = 80,
     l = 100,
-    xl = 120,
-    xxl = 140,
-    xxxl = 160,
 }
 
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
@@ -60,7 +57,7 @@ export const Logo: FunctionComponent<{
 
     const styleProps: StyleProps = {
         maxHeight: size,
-        minHeight: size <= logoSizes.s ? size : logoSizes.s,
+        minHeight: (size <= logoSizes.s) ? size : logoSizes.s,
     };
     const classes = useStyles(styleProps);
     const  { pathname } = useLocation();
