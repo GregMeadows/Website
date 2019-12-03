@@ -32,10 +32,12 @@ export const App: FunctionComponent = observer(() => {
                             <HideOnMobile>
                                 <Header />
                             </HideOnMobile>
-                            <Route path="/about" exact component={About} />
-                            <Route path="/contact" exact component={Contact} />
-                            <Route path="/portfolio" exact component={Portfolio} />
-                            <Route component={NotFound} />
+                            <Switch>
+                                <Route path="/about" exact component={About} />
+                                <Route path="/contact" exact component={Contact} />
+                                <Route path="/portfolio" exact component={Portfolio} />
+                                <Route component={NotFound} />
+                            </Switch>
                         </>
                     </Switch>
                 </Layout>
