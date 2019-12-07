@@ -16,14 +16,23 @@ function error($errorMessage) {
 // Set variables
 $email = null;
 $message = null;
+$honeypot = null;
 
 // Email address to send to (encoded so it is not picked up by bots)
 $sendTo = base64_decode("d2ViZm9ybUBncmVnbWVhZG93cy51aw==");
 
 // Request is not POST
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    error("Request was not POST");
+    error("Request was not POST.");
 }
+
+// Honeypot check
+$honeypot = $_POST["msg_password"];
+
+if (!empty($honeypot)) {
+    error("The message was identified as potential spam.");
+}
+
 
 // Get form data and strip it
 $email = strip($_POST["email"]);
@@ -35,15 +44,15 @@ $message = str_replace("\r", "\n", $message);
 
 // Email Checks
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    error("Valid email required");
+    error("Valid email required.");
 }
 if (strlen($email) > 254) {
-    error("Email cannot exceed 254 letters");
+    error("Email cannot exceed 254 letters.");
 }
 
 // Message Checks
 if (strlen($message) < 10) {
-    error("Message must be longer than 10 letters");    
+    error("Message must be longer than 10 letters.");    
 }
 
 // Get date and time

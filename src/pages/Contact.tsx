@@ -8,6 +8,7 @@ import { BREAKPOINT_TABLET } from '../assets/consts';
 interface FormElements {
     email: string;
     message: string;
+    msg_password: string; // Honeypot
 }
 
 enum FormState {
@@ -30,6 +31,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     icon: {
         marginRight: theme.spacing(1),
+    },
+    obfuscate: {
+        display: 'none !important',
     }
 }), {
         classNamePrefix: 'contact',
@@ -40,6 +44,7 @@ export const Contact: FunctionComponent = () => {
     const [values, setValues] = useState<FormElements>({
         email: '',
         message: '',
+        msg_password: '',
     });
     const [messageErrorText, setMessageErrorText] = useState('');
     const [apiErrorText, setApiErrorText] = useState('');
@@ -49,6 +54,7 @@ export const Contact: FunctionComponent = () => {
         event.preventDefault();
         setFormState(FormState.validating);
 
+        // Check message length
         if (values.message.trim().length < 10) {
             setMessageErrorText('Please don\'t spam me with short messages');
             setFormState(FormState.default);
@@ -129,6 +135,14 @@ export const Contact: FunctionComponent = () => {
                     helperText={messageErrorText}
                     onChange={e => handleChange(e)}
                     required
+                />
+                <input
+                    type="text"
+                    name="msg_password"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    onChange={e => handleChange(e)}
+                    className={classes.obfuscate}
                 />
                 <Box
                     display="flex"
