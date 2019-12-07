@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginTop: '20vh',
     },
     navLayout: {
-        marginTop: '10vh',
+        marginTop: '4vh',
         '& > :not(:last-child)': {
             borderRight: `1px solid ${theme.palette.divider}`,
             [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
@@ -34,7 +34,10 @@ export const Homepage: FunctionComponent = () => {
                 Welcome to my site, here you can find out <Link to="/about">who I am</Link>,
                 and see <Link to="/portfolio">examples of my work</Link>. 
             </Typography>
-            <NavigationItems className={classes.navLayout} />
+            <NavigationItems
+                className={classes.navLayout}
+                showIcons
+            />
         </section>
     );
 };

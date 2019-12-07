@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/styles';
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { BREAKPOINT_MOBILE } from '../assets/consts';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+import CodeIcon from '@material-ui/icons/Code';
+import MessageIcon from '@material-ui/icons/Message';
 
 const useStyles = makeStyles((theme: Theme) => ({
     container: {
@@ -57,7 +60,10 @@ const useStyles = makeStyles((theme: Theme) => ({
             color: theme.palette.secondary.main,
         },
         [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
-            padding: '4% 0',
+            display: 'flex',
+            alignItems: 'center',
+            paddingTop: '4%',
+            paddingBottom: '4%',
             paddingLeft: 50,
             textAlign: 'left',
             borderBottom: `1px solid ${theme.palette.background.highlight}`,
@@ -66,6 +72,15 @@ const useStyles = makeStyles((theme: Theme) => ({
             },
         }
     },
+    icon: {
+        marginBottom: 10,
+        fontSize: '3rem',
+        [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
+            marginBottom: 0,
+            marginRight: 20,
+            fontSize: '2.5rem',
+        },
+    }
 }), {
     classNamePrefix: 'navigation-items',
 });
@@ -73,7 +88,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const NavigationItems: FunctionComponent<{
     className?: string;
-}> = ({ className }) => {
+    showIcons?: boolean;
+}> = ({ className, showIcons }) => {
     const classes = useStyles();
 
     return (
@@ -87,20 +103,29 @@ export const NavigationItems: FunctionComponent<{
         >
             <Grid item className={classes.item}>
                 <Link to="/about" className={classes.link}>
-                    <Typography variant='h2'>About</Typography>
-                    <Typography variant='subtitle1'>Who Am I?</Typography>
+                    {showIcons && (<PersonPinIcon fontSize="inherit" className={classes.icon} />)}
+                    <div>
+                        <Typography variant='h2'>About</Typography>
+                        <Typography variant='subtitle1'>Who Am I?</Typography>
+                    </div>
                 </Link>
             </Grid>
             <Grid item className={classes.item}>
                 <Link to="/portfolio" className={classes.link}>
-                    <Typography variant='h2'>Portfolio</Typography>
-                    <Typography variant='subtitle1'>My Work</Typography>
+                    {showIcons && (<CodeIcon fontSize="inherit" className={classes.icon} />)}
+                    <div>
+                        <Typography variant='h2'>Portfolio</Typography>
+                        <Typography variant='subtitle1'>My Work</Typography>
+                    </div>
                 </Link>
             </Grid>
             <Grid item className={classes.item}>
                 <Link to="/contact" className={classes.link}>
-                    <Typography variant='h2'>Contact</Typography>
-                    <Typography variant='subtitle1'>Say Hello</Typography>
+                    {showIcons && (<MessageIcon fontSize="inherit" className={classes.icon} />)}
+                    <div>
+                        <Typography variant='h2'>Contact</Typography>
+                        <Typography variant='subtitle1'>Say Hello</Typography>
+                    </div>
                 </Link>
             </Grid>
         </Grid>
