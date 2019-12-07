@@ -14,18 +14,18 @@ interface StyleProps {
 const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     container: {
         '& > :not(:last-child)': {
-            paddingRight: '5%',
+            paddingRight: '6%',
             [theme.breakpoints.down(800)]: {
-                paddingRight: '4%',
+                paddingRight: '5%',
             },
             [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
                 padding: 0,
             },
         },
         '& > :not(:first-child)': {
-            paddingLeft: '5%',
+            paddingLeft: '6%',
             [theme.breakpoints.down(800)]: {
-                paddingLeft: '4%',
+                paddingLeft: '5%',
             },
             [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
                 padding: 0,
