@@ -7,7 +7,11 @@ import PersonPinIcon from '@material-ui/icons/PersonPin';
 import CodeIcon from '@material-ui/icons/Code';
 import MessageIcon from '@material-ui/icons/Message';
 
-const useStyles = makeStyles((theme: Theme) => ({
+interface StyleProps {
+    showIcons: boolean;
+}
+
+const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     container: {
         '& > :not(:last-child)': {
             paddingRight: '5%',
@@ -52,7 +56,7 @@ const useStyles = makeStyles((theme: Theme) => ({
             },
         },
     },
-    link: {
+    link: (props: StyleProps) => ({
         color: theme.palette.text.primary,
         textAlign: 'center',
         display: 'block',
@@ -62,16 +66,16 @@ const useStyles = makeStyles((theme: Theme) => ({
         [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             display: 'flex',
             alignItems: 'center',
+            justifyContent: props.showIcons ? 'center' : 'flex-start',
+            paddingLeft: props.showIcons ? 0 : 50,
             paddingTop: '4%',
             paddingBottom: '4%',
-            paddingLeft: 50,
-            textAlign: 'left',
             borderBottom: `1px solid ${theme.palette.background.highlight}`,
             '&:hover': {
                 color: theme.palette.text.primary,
             },
         }
-    },
+    }),
     icon: {
         marginBottom: 10,
         fontSize: '3rem',
@@ -90,7 +94,10 @@ export const NavigationItems: FunctionComponent<{
     className?: string;
     showIcons?: boolean;
 }> = ({ className, showIcons }) => {
-    const classes = useStyles();
+    const styleProps: StyleProps = {
+        showIcons: showIcons || false
+    };
+    const classes = useStyles(styleProps);
 
     return (
         <Grid 
