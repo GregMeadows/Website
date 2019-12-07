@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Grid, Typography, Theme, AppBar, Toolbar, SwipeableDrawer } from '@material-ui/core';
+import { AppBar, Grid, SwipeableDrawer, Theme, Toolbar } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Link } from 'react-router-dom';
-import { Logo, logoSizes } from './Logo';
-import { Hamburger } from './Hamburger';
-import { useLocation } from './Routing';
-import { Breadcrumb } from './Breadcrumb';
+import { makeStyles } from '@material-ui/styles';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { BREAKPOINT_MOBILE, BREAKPOINT_TABLET } from '../assets/consts';
+import { Breadcrumb } from './Breadcrumb';
+import { Hamburger } from './Hamburger';
+import { Logo, logoSizes } from './Logo';
+import { NavigationItems } from './NavigationItems';
+import { useLocation } from './Routing';
 
 const useStyles = makeStyles((theme: Theme) => ({
     hamburger: {
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         }
     }
 }), {
-    classNamePrefix: 'nav',
+    classNamePrefix: 'navigation',
 });
 
 
@@ -160,33 +160,7 @@ export const Navigation: FunctionComponent = () => {
                     <Grid item className={classes.mobileDisplayNone}>
                         <Logo />
                     </Grid>
-                    <Grid 
-                        item
-                        container 
-                        direction='row'
-                        alignItems='center'
-                        justify='center'
-                        className={classes.mobileDisplayBlock}
-                    >
-                        <Grid item className={classes.item}>
-                            <Link to="/about" className={classes.link}>
-                                <Typography variant='h2'>About</Typography>
-                                <Typography variant='subtitle1'>Who Am I?</Typography>
-                            </Link>
-                        </Grid>
-                        <Grid item className={classes.item}>
-                            <Link to="/portfolio" className={classes.link}>
-                                <Typography variant='h2'>Portfolio</Typography>
-                                <Typography variant='subtitle1'>My Work</Typography>
-                            </Link>
-                        </Grid>
-                        <Grid item className={classes.item}>
-                            <Link to="/contact" className={classes.link}>
-                                <Typography variant='h2'>Contact</Typography>
-                                <Typography variant='subtitle1'>Say Hello</Typography>
-                            </Link>
-                        </Grid>
-                    </Grid>
+                    <NavigationItems />
                 </Grid>
             </SwipeableDrawer>
         </nav>
