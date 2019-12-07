@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Chip, Avatar } from '@material-ui/core';
-import gitHubIcon from '../images/GitHub-Mark-Light-32px.png';
+import { Chip } from '@material-ui/core';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 export const OpenSourceChip: FunctionComponent<{
     repo: string;
@@ -14,7 +14,7 @@ export const OpenSourceChip: FunctionComponent<{
             href={`https://github.com/GregMeadows/${repo}`}
             target="_blank"
             label="Open Source"
-            icon={<Avatar src={gitHubIcon} />}
+            icon={<GitHubIcon />}
             clickable 
         />
     );
