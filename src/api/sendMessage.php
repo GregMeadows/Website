@@ -1,25 +1,37 @@
 <?php
+/**
+ *  sendMessage.php
+ *  @author Greg Meadows
+ *  @copyright 2019 Greg Meadows
+ *  @link http://gregmeadows.uk
+ */
 
-// Strip potential attack characters
+/**
+ * Strip anything untoward
+ */
 function strip($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
+/**
+ * Throw JSON error
+ */
 function error($errorMessage) {
     echo json_encode(["sent" => false, "message" => $errorMessage]);
     die();
 }
 
-// Set variables
+// Initialise variable to null
 $email = null;
 $message = null;
 $honeypot = null;
 
 // Email address to send to (encoded so it is not picked up by bots)
 $sendTo = base64_decode("d2ViZm9ybUBncmVnbWVhZG93cy51aw==");
+$subject = "New message from GregMeadows.uk contact form";
 
 // Request is not POST
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
@@ -32,7 +44,6 @@ $honeypot = $_POST["msg_password"];
 if (!empty($honeypot)) {
     error("The message was identified as potential spam.");
 }
-
 
 // Get form data and strip it
 $email = strip($_POST["email"]);
@@ -95,7 +106,6 @@ $msg = <<< HTML
     </style>
     </head>
     <body>
-        <h3>$sub</h3>
         <table style='width:40%'>
             <tr><th>Name:</th><td>$name</td></tr>
             <tr><th>Email:</th><td>$email</td></tr>
@@ -114,7 +124,7 @@ $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $headers .= "From: $sendTo" . "\r\n";
 
 // Send Email
-mail($sendTo, $sub, $msg, $headers);
+mail($sendTo, $subject, $msg, $headers);
 
 // Success
 http_response_code(200);
