@@ -5,13 +5,36 @@ import { Link } from 'react-router-dom';
 import { BREAKPOINT_MOBILE } from '../assets/consts';
 
 const useStyles = makeStyles((theme: Theme) => ({
+    container: {
+        '& > :not(:last-child)': {
+            paddingRight: '5%',
+            [theme.breakpoints.down(800)]: {
+                paddingRight: '4%',
+            },
+            [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
+                padding: 0,
+            },
+        },
+        '& > :not(:first-child)': {
+            paddingLeft: '5%',
+            [theme.breakpoints.down(800)]: {
+                paddingLeft: '4%',
+            },
+            [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
+                padding: 0,
+            },
+        },
+        [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
+            display: 'block',
+        }
+    },
     item: {
-        margin: '4% 6%',
+        marginTop: '4%',
+        marginBottom: '4%',
         '& h2': {
             fontSize: '3rem',
         },
         [theme.breakpoints.down(800)]: {
-            margin: '4%',
             '& h2': {
                 fontSize: '2.5rem',
             },
@@ -24,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) => ({
             '&:hover': {
                 background: theme.palette.background.highlight,
             },
-        }
+        },
     },
     link: {
         color: theme.palette.text.primary,
@@ -43,17 +66,14 @@ const useStyles = makeStyles((theme: Theme) => ({
             },
         }
     },
-    mobileDisplayBlock: {
-        [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
-            display: 'block',
-        }
-    },
 }), {
     classNamePrefix: 'navigation-items',
 });
 
 
-export const NavigationItems: FunctionComponent = () => {
+export const NavigationItems: FunctionComponent<{
+    className?: string;
+}> = ({ className }) => {
     const classes = useStyles();
 
     return (
@@ -63,7 +83,7 @@ export const NavigationItems: FunctionComponent = () => {
             direction='row'
             alignItems='center'
             justify='center'
-            className={classes.mobileDisplayBlock}
+            className={`${classes.container} ${className}`}
         >
             <Grid item className={classes.item}>
                 <Link to="/about" className={classes.link}>

@@ -32,7 +32,7 @@ export const main = createMuiTheme({
             main: '#0099ff',
         },
         secondary: {
-            main: '#ff5900',
+            main: '#0099ff',
         },
         background: {
             default: '#F5F5F5',
