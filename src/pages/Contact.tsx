@@ -175,7 +175,11 @@ export const Contact: FunctionComponent = () => {
     return (
         <section>
             <Typography variant='h1'>Contact Me</Typography>
-            {formState === FormState.sent ? successMessage : contactForm}
+            {/* {formState === FormState.sent ? successMessage : contactForm} */}
+            <Typography variant='body1'>
+                Sorry my contact form is currently unavailable while I migrate my hosting,
+                I'll try to get it back up as soon as possible.
+            </Typography>
         </section>
     );
 };
