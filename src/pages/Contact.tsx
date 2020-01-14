@@ -56,8 +56,8 @@ export const Contact: FunctionComponent = () => {
     }
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault();
         setFormState(FormState.validating);
+        event.preventDefault();
 
         // TODO check valid email
         // TODO Check honey pot / use reCaptcha
@@ -70,7 +70,7 @@ export const Contact: FunctionComponent = () => {
         }
 
         // Validation successful & send form
-        fetch('/', {
+        fetch('/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encode({ 'form-name': 'contact', ...values }),
