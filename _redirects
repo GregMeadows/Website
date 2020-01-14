@@ -1,7 +1,2 @@
-# Redirects
-
-# Redirect all urls to root
 /*    /    200
-
-# Redirect default Netlify subdomain to primary domain
 https://gregmeadows.netlify.com/* https://gregmeadows.dev/:splat 301!
