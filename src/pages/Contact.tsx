@@ -2,7 +2,6 @@ import React, { FunctionComponent, FormEvent, useState, ChangeEvent } from 'reac
 import { makeStyles } from '@material-ui/styles';
 import { Typography, TextField, Button, Theme, Box } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
-import axios from 'axios';
 import { BREAKPOINT_TABLET } from '../assets/consts';
 
 interface FormElements {
@@ -36,8 +35,8 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: 'none !important',
     }
 }), {
-        classNamePrefix: 'contact',
-    });
+    classNamePrefix: 'contact',
+});
 
 export const Contact: FunctionComponent = () => {
     const classes = useStyles();
@@ -54,6 +53,9 @@ export const Contact: FunctionComponent = () => {
         event.preventDefault();
         setFormState(FormState.validating);
 
+        // TODO check valid email
+        // TODO Check honey pot / use reCaptcha
+
         // Check message length
         if (values.message.trim().length < 10) {
             setMessageErrorText('Please don\'t spam me with short messages');
@@ -61,12 +63,17 @@ export const Contact: FunctionComponent = () => {
             return;
         }
 
-        axios.post('api/sendMessage.php', values)
+        // Validation successful & send form
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: JSON.stringify({ 'form-name': 'contact', values })
+        })
         .then(() => {
             setFormState(FormState.sent);
         })
-        .catch((response) => {
-            setApiErrorText(response['message']);
+        .catch(error => {
+            setApiErrorText(error);
             setFormState(FormState.error);
         });
     }
@@ -110,9 +117,11 @@ export const Contact: FunctionComponent = () => {
             flexWrap="wrap"
         >
             <form
+                name="contact"
                 className={classes.form}
                 method="post"
                 onSubmit={handleSubmit}
+                data-netlify="true"
             >
                 <TextField
                     name="email"
@@ -175,11 +184,7 @@ export const Contact: FunctionComponent = () => {
     return (
         <section>
             <Typography variant='h1'>Contact Me</Typography>
-            {/* {formState === FormState.sent ? successMessage : contactForm} */}
-            <Typography variant='body1'>
-                Sorry my contact form is currently unavailable while I migrate my hosting,
-                I'll try to get it back up as soon as possible.
-            </Typography>
+            {formState === FormState.sent ? successMessage : contactForm}
         </section>
     );
 };
