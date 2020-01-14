@@ -49,6 +49,12 @@ export const Contact: FunctionComponent = () => {
     const [apiErrorText, setApiErrorText] = useState('');
     const [formState, setFormState] = useState<FormState>(FormState.default);
 
+    const encode = (data: {[key: string]: string}) => {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&");
+    }
+
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setFormState(FormState.validating);
@@ -67,7 +73,7 @@ export const Contact: FunctionComponent = () => {
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: JSON.stringify({ 'form-name': 'contact', values })
+            body: encode({ 'form-name': 'contact', ...values }),
         })
         .then(() => {
             setFormState(FormState.sent);
@@ -121,7 +127,6 @@ export const Contact: FunctionComponent = () => {
                 className={classes.form}
                 method="post"
                 onSubmit={handleSubmit}
-                data-netlify="true"
             >
                 <TextField
                     name="email"
