@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: 'none !important',
     }
 }), {
-        classNamePrefix: 'contact',
-    });
+    classNamePrefix: 'contact',
+});
 
 export const Contact: FunctionComponent = () => {
     const classes = useStyles();
@@ -52,6 +52,9 @@ export const Contact: FunctionComponent = () => {
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setFormState(FormState.validating);
+
+        // TODO check valid email
+        // TODO Check honey pot / use reCaptcha
 
         // Check message length
         if (values.message.trim().length < 10) {
