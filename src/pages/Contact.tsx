@@ -70,7 +70,7 @@ export const Contact: FunctionComponent = () => {
         }
 
         // Validation successful & send form
-        fetch('https://gregmeadows.dev/contact', {
+        fetch('https://gregmeadows.dev/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encode({ 'form-name': 'contact', ...values }),
