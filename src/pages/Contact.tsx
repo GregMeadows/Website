@@ -7,7 +7,7 @@ import { BREAKPOINT_TABLET } from '../assets/consts';
 interface FormElements {
     email: string;
     message: string;
-    msg_password: string; // Honeypot
+    website: string; // Honeypot
 }
 
 enum FormState {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     icon: {
         marginRight: theme.spacing(1),
     },
-    obfuscate: {
+    honeypot: {
         display: 'none !important',
     }
 }), {
@@ -43,7 +43,7 @@ export const Contact: FunctionComponent = () => {
     const [values, setValues] = useState<FormElements>({
         email: '',
         message: '',
-        msg_password: '',
+        website: '',
     });
     const [messageErrorText, setMessageErrorText] = useState('');
     const [apiErrorText, setApiErrorText] = useState('');
@@ -60,7 +60,6 @@ export const Contact: FunctionComponent = () => {
         setFormState(FormState.validating);
 
         // TODO check valid email
-        // TODO Check honey pot / use reCaptcha
 
         // Check message length
         if (values.message.trim().length < 10) {
@@ -152,11 +151,11 @@ export const Contact: FunctionComponent = () => {
                 />
                 <input
                     type="text"
-                    name="msg_password"
+                    name="website"
                     tabIndex={-1}
                     autoComplete="off"
                     onChange={e => handleChange(e)}
-                    className={classes.obfuscate}
+                    className={classes.honeypot}
                 />
                 <Box
                     display="flex"
