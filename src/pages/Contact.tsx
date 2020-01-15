@@ -12,7 +12,6 @@ interface FormElements {
 
 enum FormState {
     default,
-    validating,
     sent,
     error,
 }
@@ -45,7 +44,6 @@ export const Contact: FunctionComponent = () => {
         message: '',
         website: '',
     });
-    const [messageErrorText, setMessageErrorText] = useState('');
     const [apiErrorText, setApiErrorText] = useState('');
     const [formState, setFormState] = useState<FormState>(FormState.default);
 
@@ -57,19 +55,8 @@ export const Contact: FunctionComponent = () => {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        setFormState(FormState.validating);
 
-        // TODO check valid email
-
-        // Check message length
-        if (values.message.trim().length < 10) {
-            setMessageErrorText('Please don\'t spam me with short messages');
-            setFormState(FormState.default);
-            return;
-        }
-
-        // Validation successful & send form
-        fetch('https://gregmeadows.dev/', {
+        fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encode({ 'form-name': 'contact', ...values }),
@@ -84,10 +71,6 @@ export const Contact: FunctionComponent = () => {
     }
 
     function handleChange(event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement>){
-        if (messageErrorText) {
-            setMessageErrorText('');
-        }
-
         setValues({
             ...values,
             [event.currentTarget.name]: event.currentTarget.value,
@@ -99,7 +82,7 @@ export const Contact: FunctionComponent = () => {
     );
 
     let sideText;
-    if (formState === FormState.default || formState === FormState.validating) {
+    if (formState === FormState.default) {
         sideText = (
             <>
                 <Typography variant='body1'>Use the from to send me a message.</Typography>
@@ -144,9 +127,10 @@ export const Contact: FunctionComponent = () => {
                     multiline
                     rows="8"
                     margin="normal"
-                    error={messageErrorText !== '' || formState === FormState.error}
-                    helperText={messageErrorText}
                     onChange={e => handleChange(e)}
+                    inputProps={{
+                        minLength: 10
+                    }}
                     required
                 />
                 <input
