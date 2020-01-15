@@ -132,7 +132,7 @@ export const Contact: FunctionComponent = () => {
                     margin="normal"
                     onChange={e => handleChange(e)}
                     inputProps={{
-                        minLength: 10
+                        minLength: 20
                     }}
                     required
                 />
