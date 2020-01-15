@@ -39,13 +39,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const Contact: FunctionComponent = () => {
     const classes = useStyles();
+    const hasFilledForm = sessionStorage.getItem('contacted') === 'true';
+
     const [values, setValues] = useState<FormElements>({
         email: '',
         message: '',
         website: '',
     });
     const [apiErrorText, setApiErrorText] = useState('');
-    const [formState, setFormState] = useState<FormState>(FormState.default);
+    const [formState, setFormState] = useState<FormState>(hasFilledForm ? FormState.sent : FormState.default);
 
     const encode = (data: {[key: string]: string}) => {
         return Object.keys(data)
@@ -55,6 +57,7 @@ export const Contact: FunctionComponent = () => {
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        sessionStorage.setItem('contacted', 'true');
 
         fetch('/', {
             method: 'POST',
