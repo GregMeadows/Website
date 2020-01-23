@@ -2,8 +2,6 @@ import React, { FunctionComponent } from 'react';
 import { Typography, makeStyles, Theme, Chip, Card, CardContent, CardMedia } from '@material-ui/core';
 import { OpenSourceChip } from '../components/OpenSourceChip';
 import { Project, projects } from '../assets/projects';
-import { Timeline } from '../components/Timeline';
-import { workTimeline } from '../assets/workTimeline';
 
 const useStyles = makeStyles((theme: Theme) => ({
     projects: {
@@ -60,9 +58,7 @@ export const Portfolio: FunctionComponent = () => {
 
     return (
         <section>
-            <Typography variant="h1">Professional Work</Typography>
-            <Timeline items={workTimeline} />
-            <Typography variant="h1">Projects</Typography>
+            <Typography variant="h1">My Projects</Typography>
             <Typography variant='body1'>
                 These are projects that I have worked on in my personal time, or as part of university.
             </Typography>
