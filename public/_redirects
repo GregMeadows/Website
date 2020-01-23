@@ -1,2 +1,5 @@
-/*    /    200
+# Redirect Netlify site to proper domain
 https://gregmeadows.netlify.com/* https://gregmeadows.dev/:splat 301!
+
+# Redirect all pages to base domain for React routing
+/*    /    200

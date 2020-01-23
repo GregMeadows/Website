@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginTop: '2%',
         marginBottom: '2%',
         [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
-            width: 300,
+            width: '18rem',
         }
     },
     toolbar: theme.mixins.toolbar,
@@ -160,7 +160,7 @@ export const Navigation: FunctionComponent = () => {
                     <Grid item className={classes.mobileDisplayNone}>
                         <Logo />
                     </Grid>
-                    <NavigationItems />
+                    <NavigationItems showIcons />
                 </Grid>
             </SwipeableDrawer>
         </nav>

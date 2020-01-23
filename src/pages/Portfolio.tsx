@@ -1,53 +1,30 @@
 import React, { FunctionComponent } from 'react';
-import { Typography, makeStyles, Theme, Chip } from '@material-ui/core';
-
+import { Typography, makeStyles, Theme, Chip, Card, CardContent, CardMedia } from '@material-ui/core';
 import { OpenSourceChip } from '../components/OpenSourceChip';
 import { Project, projects } from '../assets/projects';
-import { BREAKPOINT_TABLET } from '../assets/consts';
-import { Timeline } from '../components/Timeline';
-import { workTimeline } from '../assets/workTimeline';
 
 const useStyles = makeStyles((theme: Theme) => ({
     projects: {
-        '& > :nth-child(odd)': {
-            backgroundColor: theme.palette.background.highlight,
-        },
-        '& > :nth-child(even) > img': {
-            float: 'left',
-            marginRight: '2rem',
-            marginLeft: 0,
-            [theme.breakpoints.down(BREAKPOINT_TABLET)]: {
-                float: 'none',
-                margin: '0 auto 2rem auto'
-            },
-        },
+        columnCount: 4,
+        columnWidth: '30rem',
+        columnGap: '1.6rem',
     },
     project: {
-        margin: 0,
-        padding: '2rem',
-        paddingBottom: 0,
-        overflow: 'auto',
+        breakInside: 'avoid-column',
+        pageBreakInside: 'avoid',
+        marginBottom: '2.2rem',
+        backgroundColor: theme.palette.background.highlight,
     },
     chips: {
-        marginTop: '1rem',
-        marginBottom: '2rem',
+        marginTop: '0.5rem',
+        marginBottom: '1rem',
         '& > *': {
             marginTop: '0.5rem',
             marginRight: '0.2rem',
         },
     },
     image: {
-        width: 550,
-        maxWidth: '50%',
-        float: 'right',
-        marginLeft: '2rem',
-        marginBottom: '2rem',
-        [theme.breakpoints.down(BREAKPOINT_TABLET)]: {
-            float: 'none',
-            maxWidth: '100%',
-            display: 'block',
-            margin: '0 auto 2rem auto'
-        },
+        height: 280,
     },
 }), {
     classNamePrefix: 'about',
@@ -58,25 +35,30 @@ export const Portfolio: FunctionComponent = () => {
 
     const projectsDOM = projects.map((project: Project) => {
         return (
-            <section className={classes.project} key={project.name}>
-                <img src={project.imgLink} alt={project.name} className={classes.image}/>
-                <Typography variant="h2">{project.name}</Typography>
-                {project.info}
-                <div className={classes.chips}>
-                    {project.openSource && (<OpenSourceChip repo={project.openSource} />)}
-                    {project.tags.map(tag => {
-                        return (<Chip size="small" label={tag} key={tag}/>);
-                    })}
-                </div>
-            </section>
+            <Card elevation={2} className={classes.project} key={project.name}>
+                <CardMedia
+                    className={classes.image}
+                    image={project.imgLink}
+                />
+                <CardContent>
+                    <Typography variant="h2">
+                        {project.name}
+                    </Typography>
+                    <div className={classes.chips}>
+                        {project.openSource && (<OpenSourceChip repo={project.openSource} />)}
+                        {project.tags.map(tag => {
+                            return (<Chip size="small" label={tag} key={tag}/>);
+                        })}
+                    </div>
+                    {project.info}
+                </CardContent>
+            </Card>
         );
     });
 
     return (
         <section>
-            <Typography variant="h1">Professional Work</Typography>
-            <Timeline items={workTimeline} />
-            <Typography variant="h1">Projects</Typography>
+            <Typography variant="h1">My Projects</Typography>
             <Typography variant='body1'>
                 These are projects that I have worked on in my personal time, or as part of university.
             </Typography>
