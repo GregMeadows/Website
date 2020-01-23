@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../components/Logo';
 import { makeStyles } from '@material-ui/styles';
 import { NavigationItems } from '../components/NavigationItems';
-import { BREAKPOINT_MOBILE } from '../assets/consts';
 import { HideOnMobile } from '../components/HideOnMobile';
 
 const useStyles = makeStyles((theme: Theme) => ({
