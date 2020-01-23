@@ -122,7 +122,7 @@ export const NavigationItems: FunctionComponent<{
                     {showIcons && (<CodeIcon fontSize="inherit" className={classes.icon} />)}
                     <div>
                         <Typography variant='h2'>Portfolio</Typography>
-                        <Typography variant='subtitle1'>My Work</Typography>
+                        <Typography variant='subtitle1'>My Projects</Typography>
                     </div>
                 </Link>
             </Grid>

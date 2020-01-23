@@ -174,7 +174,7 @@ export const Contact: FunctionComponent = () => {
 
     return (
         <section>
-            <Typography variant='h1'>Contact Me</Typography>
+            <Typography variant='h1'>Say Hello</Typography>
             {formState === FormState.sent ? successMessage : contactForm}
         </section>
     );
