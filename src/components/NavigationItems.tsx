@@ -15,11 +15,14 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
     container: {
         '& > :not(:last-child)': {
             paddingRight: '6%',
+            borderRight: `1px solid ${theme.palette.divider}`,
             [theme.breakpoints.down(800)]: {
                 paddingRight: '5%',
             },
             [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
                 padding: 0,
+                margin: 0,
+                border: 'none',
             },
         },
         '& > :not(:first-child)': {
@@ -33,17 +36,20 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
         },
         [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             display: 'block',
-        }
+        },
     },
     item: {
-        marginTop: '4%',
-        marginBottom: '4%',
+        marginTop: '2%',
+        marginBottom: '2%',
         '& h2': {
             fontSize: '3rem',
         },
         [theme.breakpoints.down(800)]: {
             '& h2': {
                 fontSize: '2.5rem',
+            },
+            '& h6': {
+                fontSize: '1rem',
             },
         },
         [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
@@ -66,9 +72,9 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
         [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             display: 'flex',
             alignItems: 'center',
-            justifyContent: props.showIcons ? 'center' : 'flex-start',
-            paddingLeft: props.showIcons ? 0 : 50,
+            paddingLeft: props.showIcons ? '2rem' : '4rem',
             paddingTop: '4%',
+            textAlign: 'left',
             paddingBottom: '4%',
             borderBottom: `1px solid ${theme.palette.background.highlight}`,
             '&:hover': {
@@ -77,12 +83,15 @@ const useStyles = makeStyles<Theme, StyleProps>((theme: Theme) => ({
         }
     }),
     icon: {
-        marginBottom: 10,
+        marginBottom: '0.5rem',
         fontSize: '3rem',
+        [theme.breakpoints.down(800)]: {
+            fontSize: '2.5rem',
+        },
         [theme.breakpoints.down(BREAKPOINT_MOBILE)]: {
             marginBottom: 0,
-            marginRight: 20,
-            fontSize: '2.5rem',
+            marginRight: '1.8rem',
+            fontSize: '2rem',
         },
     }
 }), {
