@@ -67,7 +67,7 @@ export const About: FunctionComponent = () => {
                 <Typography variant='body1'>
                     Staying on the techy side of things, I enjoy technology in general, I build my own PC, and enjoy getting my hands on
                     any new tech.
-                    In my down time I also like to game. I'm a big fan of the ARMA series, and have recently been 'The Outer Worlds'.
+                    In my down time I also like to game. I'm a big fan of the ARMA series, and have recently been playing 'The Outer Worlds'.
                 </Typography>
                 <Typography variant='body1'>
                     As for staying active, I like a good game of 5-a-side football, and when possible I'm keen to go surfing
