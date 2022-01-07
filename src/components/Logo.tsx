@@ -66,7 +66,7 @@ export const Logo: FunctionComponent<{
     const logoSVG = (
         <svg className={classes.root} viewBox="0 0 82.6 16.2" xmlns="http://www.w3.org/2000/svg">
             <text x="0" y="10" className={classes.svgName}>Greg Meadows</text>
-            <text x="54.5" y="13.5" textAnchor="middle" textLength="51.2" className={classes.svgTitle}>Software Developer</text>
+            <text x="55.5" y="13.5" textAnchor="middle" textLength="51.2" className={classes.svgTitle}>Software Developer</text>
         </svg>
     );
     
