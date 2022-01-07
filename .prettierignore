@@ -1,0 +1,9 @@
+# Artifacts
+build
+coverage
+
+# IDE Files
+.vscode
+
+#images
+src/images
