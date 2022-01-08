@@ -12,7 +12,7 @@ import { makeStyles } from 'tss-react/mui';
 import Breadcrumb from './Breadcrumb';
 import Hamburger from './Hamburger';
 import Logo, { logoSizes } from './Logo';
-import { NavigationItems } from './NavigationItems';
+import NavigationItems from './NavigationItems';
 
 const useStyles = makeStyles()((theme) => ({
   hamburger: {
