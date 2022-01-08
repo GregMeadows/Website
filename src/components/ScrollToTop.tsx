@@ -1,8 +1,8 @@
 import { useEffect, FunctionComponent } from 'react';
-import { useLocation } from './Routing';
+import { useLocation } from 'react-router-dom';
 
-export const ScrollToTop: FunctionComponent = () => {
-  const  { pathname, search } = useLocation();
+const ScrollToTop: FunctionComponent = function ScrollToTop() {
+  const { pathname, search } = useLocation();
 
   useEffect(() => {
     try {
@@ -16,6 +16,8 @@ export const ScrollToTop: FunctionComponent = () => {
       window.scrollTo(0, 0);
     }
   }, [pathname, search]);
-  
+
   return null;
 };
+
+export default ScrollToTop;

@@ -51,7 +51,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".ts", ".tsx", ".js"]
+        "extensions": [".ts", ".tsx", ".js"],
+        "moduleDirectory": ["node_modules", "src/"]
       }
     }
   },

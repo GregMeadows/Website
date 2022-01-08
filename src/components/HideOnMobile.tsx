@@ -1,13 +1,15 @@
+import { useMediaQuery, useTheme } from '@mui/material';
 import React, { FunctionComponent } from 'react';
-import { useMediaQuery } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import { BREAKPOINT_MOBILE } from '../assets/consts';
 
-export const HideOnMobile: FunctionComponent = ({children}) => {
-    const theme = useTheme();
-    const widthMobile = useMediaQuery(theme.breakpoints.down(BREAKPOINT_MOBILE));
-    
-    return (
-        <>{widthMobile || children}</>
-    );
+const HideOnMobile: FunctionComponent = function HideOnMobile({ children }) {
+  const theme = useTheme();
+  const notMobileWidth = useMediaQuery(theme.breakpoints.up('sm'));
+
+  if (notMobileWidth) {
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return <>{children}</>;
+  }
+  return null;
 };
+
+export default HideOnMobile;

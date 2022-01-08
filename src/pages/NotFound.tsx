@@ -1,19 +1,18 @@
+import { Typography } from '@mui/material';
 import React, { FunctionComponent } from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Typography } from '@material-ui/core';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(() => ({
-    root: {
-    }
-}), {
-    classNamePrefix: 'not-found',
-});
+const useStyles = makeStyles()(() => ({
+  root: {},
+}));
 
-export const NotFound: FunctionComponent = () => {
-    const classes = useStyles();
-    return (
-        <section className={classes.root}>
-            <Typography>Page Not Found</Typography>
-        </section>
-    );
+const NotFound: FunctionComponent = function NotFound() {
+  const { classes } = useStyles();
+  return (
+    <section className={classes.root}>
+      <Typography>Page Not Found</Typography>
+    </section>
+  );
 };
+
+export default NotFound;
