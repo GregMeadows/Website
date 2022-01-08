@@ -1,107 +1,147 @@
-import React, { FunctionComponent, ChangeEvent, FormEvent } from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { TextField, Button, Theme, Box } from '@material-ui/core';
-import SendIcon from '@material-ui/icons/Send';
-import { BREAKPOINT_TABLET } from '../assets/consts';
-
-interface FormElements {
-    email: string;
-    message: string;
-    website: string; // Honeypot
-}
+import SendRoundedIcon from '@mui/icons-material/SendRounded';
+import { Button, CircularProgress, Grid, TextField } from '@mui/material';
+import React, { ChangeEvent, FormEvent, FunctionComponent } from 'react';
+import { makeStyles } from 'tss-react/mui';
 
 export enum FormState {
-    default,
-    sent,
-    error,
+  default,
+  sending,
+  sent,
+  error,
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-    form: {        
-        display: 'flex',
-        flexDirection: 'column',
-        flexGrow: 1,
-        marginTop: '2rem',
-        maxWidth: '80%',
-        [theme.breakpoints.down(BREAKPOINT_TABLET)]: {
-            maxWidth: '100%',
-        },
-    },
-    icon: {
-        marginRight: theme.spacing(1),
-    },
-    honeypot: {
-        display: 'none !important',
-    }
-}), {
-    classNamePrefix: 'contact-form',
-});
+interface ContactFormProps {
+  formState: FormState;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  onChange: (
+    event: ChangeEvent<
+      HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
+    >
+  ) => void;
+}
 
-export const ContactForm: FunctionComponent<{
-    formState: FormState;
-    onSubmit: (event: FormEvent<HTMLFormElement>) => void;
-    onChange: (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement>) => void;
-}> = ({ formState, onSubmit, onChange }) => {
-    const classes = useStyles();
+const useStyles = makeStyles()((theme) => ({
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+    marginTop: '2rem',
+    maxWidth: '80%',
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '100%',
+    },
+  },
+  icon: {
+    marginRight: theme.spacing(1),
+  },
+  honeypot: {
+    display: 'none !important',
+  },
+  width: {
+    width: '100%',
+  },
+  submit: {
+    textAlign: 'right',
+  },
+  progress: {
+    marginLeft: '3rem',
+    marginRight: '4rem',
+  },
+}));
 
-    return (
-        <Box
-            display='flex'
-            justifyContent='center'
-        >
-            <form
-                name="contact"
-                className={classes.form}
-                method="post"
-                onSubmit={onSubmit}
-            >
-                <TextField
-                    name="email"
-                    label="Email"
-                    variant="outlined"
-                    margin="normal"
-                    type="email"
-                    error={formState === FormState.error}
-                    onChange={e => onChange(e)}
-                    required
-                />
-                <TextField
-                    name="message"
-                    label="Message"
-                    variant="outlined"
-                    multiline
-                    rows="8"
-                    margin="normal"
-                    onChange={e => onChange(e)}
-                    inputProps={{
-                        minLength: 20
-                    }}
-                    required
-                />
-                <input
-                    type="text"
-                    name="website"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    onChange={e => onChange(e)}
-                    className={classes.honeypot}
-                />
-                <Box
-                    display="flex"
-                    justifyContent="flex-end"
-                    mt={2}
-                >
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        type="submit"
-                        disabled={formState !== FormState.default && formState !== FormState.error}
-                    >
-                        <SendIcon className={classes.icon} />
-                        Send Message
-                    </Button>
-                </Box>
-            </form>
-        </Box>
-    );
+const ContactForm: FunctionComponent<ContactFormProps> = function ContactForm({
+  formState,
+  onSubmit,
+  onChange,
+}) {
+  const { classes } = useStyles();
+  const disableControls =
+    formState === FormState.sent || formState === FormState.sending;
+
+  return (
+    <form
+      name="contact"
+      className={classes.form}
+      method="post"
+      onSubmit={onSubmit}
+    >
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            name="name"
+            label="Name"
+            variant="outlined"
+            type="text"
+            error={formState === FormState.error}
+            onChange={(e) => onChange(e)}
+            required
+            disabled={disableControls}
+            className={classes.width}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            name="email"
+            label="Email"
+            variant="outlined"
+            margin="normal"
+            type="email"
+            error={formState === FormState.error}
+            onChange={(e) => onChange(e)}
+            required
+            disabled={disableControls}
+            className={classes.width}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            name="message"
+            label="Message"
+            variant="outlined"
+            multiline
+            rows="8"
+            error={formState === FormState.error}
+            onChange={(e) => onChange(e)}
+            inputProps={{
+              minLength: 20,
+            }}
+            required
+            disabled={disableControls}
+            className={classes.width}
+          />
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            onChange={(e) => onChange(e)}
+            className={classes.honeypot}
+          />
+        </Grid>
+        <Grid item xs={12} className={classes.submit}>
+          <Button
+            variant="outlined"
+            color="primary"
+            type="submit"
+            disabled={disableControls}
+          >
+            {formState === FormState.sending ? (
+              <CircularProgress
+                color="secondary"
+                size="1.5rem"
+                className={classes.progress}
+              />
+            ) : (
+              <>
+                <SendRoundedIcon className={classes.icon} />
+                Send Message
+              </>
+            )}
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
+  );
 };
+
+export default ContactForm;
