@@ -2,11 +2,10 @@ import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
+import Page from 'components/Page';
 import React, { FunctionComponent } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
-import Header from './components/Header';
-import HideOnMobile from './components/HideOnMobile';
 import Layout from './components/Layout';
 import Navigation from './components/Navigation';
 import ScrollToTop from './components/ScrollToTop';
@@ -34,18 +33,13 @@ const App: FunctionComponent = function App() {
           </ThemeProvider>
           <Layout>
             <Routes>
-              <Route path="/" element={Homepage} />
-              <>
-                <HideOnMobile>
-                  <Header />
-                </HideOnMobile>
-                <Routes>
-                  <Route path="/about" element={About} />
-                  <Route path="/contact" element={Contact} />
-                  <Route path="/portfolio" element={Portfolio} />
-                  <Route element={NotFound} />
-                </Routes>
-              </>
+              <Route path="/" element={<Homepage />} />
+              <Route element={<Page />}>
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/portfolio" element={<Portfolio />} />
+                <Route element={NotFound} />
+              </Route>
             </Routes>
           </Layout>
           <ThemeProvider theme={greyscale}>
