@@ -144,6 +144,9 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
         className={`${classes.container} ${className}`}
         component={motion.div}
         variants={listVariants}
+        initial="closed"
+        animate="open"
+        exit="closed"
       >
         <Grid
           item

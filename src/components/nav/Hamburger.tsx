@@ -38,37 +38,62 @@ const Hamburger: FunctionComponent<HamburgerProps> = function Hamburger({
       onClick={onClick}
       color="primary"
     >
-      <svg viewBox="0 0 22 19" className={classes.icon}>
+      <motion.svg
+        viewBox="0 0 22 19"
+        className={classes.icon}
+        initial={false}
+        animate={open ? 'open' : 'closed'}
+      >
         <motion.path
           className={classes.path}
-          initial={false}
-          animate={open ? 'open' : 'closed'}
           variants={{
-            closed: { d: 'M 2 2.5 L 20 2.5' },
-            open: { d: 'M 3 16.5 L 17 2.5' },
+            closed: {
+              d: [
+                'M 3 16.5 L 17 2.5',
+                'M 2 9.423 L 20 9.423',
+                'M 2 2.5 L 20 2.5',
+              ],
+            },
+            open: {
+              d: [
+                'M 2 2.5 L 20 2.5',
+                'M 2 9.423 L 20 9.423',
+                'M 3 16.5 L 17 2.5',
+              ],
+            },
           }}
+          transition={{ duration: 0.5 }}
         />
         <motion.path
           className={classes.path}
           d="M 2 9.423 L 20 9.423"
-          initial={false}
-          animate={open ? 'open' : 'closed'}
           variants={{
             closed: { opacity: 1 },
             open: { opacity: 0 },
           }}
-          transition={{ duration: 0.1 }}
+          transition={{ delay: 0.2, duration: 0.1 }}
         />
         <motion.path
           className={classes.path}
-          initial={false}
-          animate={open ? 'open' : 'closed'}
           variants={{
-            closed: { d: 'M 2 16.346 L 20 16.346' },
-            open: { d: 'M 3 2.5 L 17 16.346' },
+            closed: {
+              d: [
+                'M 3 2.5 L 17 16.346',
+                'M 2 9.423 L 20 9.423',
+                'M 2 16.346 L 20 16.346',
+              ],
+            },
+            open: {
+              d: [
+                'M 2 16.346 L 20 16.346',
+                'M 2 9.423 L 20 9.423',
+                'M 3 2.5 L 17 16.346',
+              ],
+            },
           }}
+          transition={{ duration: 0.5 }}
         />
-      </svg>
+      </motion.svg>
     </IconButton>
   );
 };
