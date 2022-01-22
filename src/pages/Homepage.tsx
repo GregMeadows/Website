@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
 import HideOnMobile from '../components/HideOnMobile';
 import Logo from '../components/Logo';
-import NavigationItems from '../components/NavigationItems';
+import NavigationItems from '../components/nav/NavigationItems';
 
 const useStyles = makeStyles()(() => ({
   root: {

@@ -2,6 +2,7 @@ import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import MessageRoundedIcon from '@mui/icons-material/MessageRounded';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import { Grid, Typography } from '@mui/material';
+import { motion } from 'framer-motion';
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
@@ -107,6 +108,32 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
     };
     const { classes } = useStyles(styleProps);
 
+    const listVariants = {
+      open: {
+        transition: { staggerChildren: 0.08, delayChildren: 0.4 },
+      },
+      closed: {
+        transition: { staggerChildren: 0.04 },
+      },
+    };
+
+    const itemVariants = {
+      open: {
+        y: 0,
+        opacity: 1,
+        transition: {
+          y: { stiffness: 50, velocity: -40 },
+        },
+      },
+      closed: {
+        y: -50,
+        opacity: 0,
+        transition: {
+          y: { stiffness: 50 },
+        },
+      },
+    };
+
     return (
       <Grid
         item
@@ -115,8 +142,15 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
         alignItems="center"
         justifyContent="center"
         className={`${classes.container} ${className}`}
+        component={motion.div}
+        variants={listVariants}
       >
-        <Grid item className={classes.item}>
+        <Grid
+          item
+          className={classes.item}
+          component={motion.div}
+          variants={itemVariants}
+        >
           <Link to="/about" className={classes.link}>
             {showIcons && (
               <PersonPinIcon fontSize="inherit" className={classes.icon} />
@@ -127,7 +161,12 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
             </div>
           </Link>
         </Grid>
-        <Grid item className={classes.item}>
+        <Grid
+          item
+          className={classes.item}
+          component={motion.div}
+          variants={itemVariants}
+        >
           <Link to="/portfolio" className={classes.link}>
             {showIcons && (
               <CodeRoundedIcon fontSize="inherit" className={classes.icon} />
@@ -138,7 +177,12 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
             </div>
           </Link>
         </Grid>
-        <Grid item className={classes.item}>
+        <Grid
+          item
+          className={classes.item}
+          component={motion.div}
+          variants={itemVariants}
+        >
           <Link to="/contact" className={classes.link}>
             {showIcons && (
               <MessageRoundedIcon fontSize="inherit" className={classes.icon} />

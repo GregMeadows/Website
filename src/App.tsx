@@ -7,7 +7,7 @@ import React, { FunctionComponent } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Layout from './components/Layout';
-import Navigation from './components/Navigation';
+import Navigation from './components/nav/Navigation';
 import ScrollToTop from './components/ScrollToTop';
 import About from './pages/About';
 import Contact from './pages/Contact';

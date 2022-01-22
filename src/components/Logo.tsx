@@ -73,7 +73,7 @@ export const Logo: FunctionComponent<LogoProps> = function Logo({
         Greg Meadows
       </text>
       <text
-        x="55.5"
+        x="56"
         y="13.5"
         textAnchor="middle"
         textLength="51.2"
