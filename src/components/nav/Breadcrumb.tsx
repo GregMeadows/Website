@@ -1,6 +1,7 @@
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 import { Breadcrumbs } from '@mui/material';
+import { motion } from 'framer-motion';
 import React, { FunctionComponent } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
@@ -19,10 +20,6 @@ const useStyles = makeStyles()((theme) => ({
     display: 'flex',
     alignItems: 'center',
     padding: '2px 8px',
-  },
-  homeFlat: {
-    paddingTop: 4,
-    paddingLeft: 4,
   },
   link: {
     borderRadius: 10,
@@ -49,7 +46,11 @@ const Breadcrumb: FunctionComponent<BreadcrumbProps> = function Breadcrumb({
 }) {
   const { classes, cx } = useStyles();
   const { pathname } = useLocation();
-  const pathnames = pathname.split('/');
+
+  let pathnames;
+  if (pathname !== '/') {
+    pathnames = pathname.substring(1).split('/');
+  }
 
   const homeFlat = (
     <>
@@ -57,6 +58,44 @@ const Breadcrumb: FunctionComponent<BreadcrumbProps> = function Breadcrumb({
       Home
     </>
   );
+
+  let crumbs;
+  if (pathnames && pathnames.length > 0) {
+    crumbs = pathnames.map((value, index, initial) => {
+      const label = value.charAt(0).toUpperCase() + value.slice(1);
+      const last = index === initial.length - 1;
+      const to = `/${initial.slice(0, index + 1).join('/')}`;
+      return last ? (
+        <span key={to}>{label}</span>
+      ) : (
+        <Link
+          className={`${classes.linkBase} ${classes.link}`}
+          to={to}
+          key={to}
+        >
+          {label}
+        </Link>
+      );
+    });
+  }
+
+  const breadcrumbVariants = {
+    open: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        x: { stiffness: 50, velocity: -40 },
+        delay: 0.4,
+      },
+    },
+    closed: {
+      x: -40,
+      opacity: 0,
+      transition: {
+        x: { stiffness: 50 },
+      },
+    },
+  };
 
   return (
     <Breadcrumbs
@@ -67,34 +106,21 @@ const Breadcrumb: FunctionComponent<BreadcrumbProps> = function Breadcrumb({
           className={classes.separator}
         />
       }
-      className={`${classes.root} ${className}`}
+      className={cx(classes.root, className)}
+      component={motion.nav}
+      variants={breadcrumbVariants}
+      initial="closed"
+      animate="open"
+      exit="closed"
     >
-      {pathnames.length === 0 ? (
-        <span className={`${classes.linkBase} ${classes.homeFlat}`}>
-          {homeFlat}
-        </span>
-      ) : (
+      {pathnames ? (
         <Link to="/" className={cx(classes.linkBase, classes.link)}>
           {homeFlat}
         </Link>
+      ) : (
+        <span className={classes.linkBase}>{homeFlat}</span>
       )}
-      {pathnames.map((value, index) => {
-        const label = value.charAt(0).toUpperCase() + value.slice(1);
-        const last = index === pathnames.length - 1;
-        const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-        return last ? (
-          <span key={to}>{label}</span>
-        ) : (
-          <Link
-            className={`${classes.linkBase} ${classes.link}`}
-            to={to}
-            key={to}
-          >
-            {label}
-          </Link>
-        );
-      })}
-      ;
+      {crumbs};
     </Breadcrumbs>
   );
 };
