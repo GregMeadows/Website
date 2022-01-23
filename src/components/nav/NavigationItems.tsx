@@ -7,32 +7,26 @@ import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
 
-interface StyleProps {
-  showIcons: boolean;
-}
-
 interface NavigationItemsProps {
   className?: string;
-  showIcons?: boolean;
 }
 
-const useStyles = makeStyles<StyleProps>()((theme, { showIcons }) => ({
+const useStyles = makeStyles()((theme) => ({
   container: {
     '& > :not(:last-child)': {
       paddingRight: '6%',
       borderRight: `1px solid ${theme.palette.divider}`,
-      [theme.breakpoints.down(1000)]: {
+      [theme.breakpoints.down('md')]: {
         paddingRight: '5%',
       },
       [theme.breakpoints.down('sm')]: {
         padding: 0,
-        margin: 0,
         border: 'none',
       },
     },
     '& > :not(:first-child)': {
       paddingLeft: '6%',
-      [theme.breakpoints.down(1000)]: {
+      [theme.breakpoints.down('md')]: {
         paddingLeft: '5%',
       },
       [theme.breakpoints.down('sm')]: {
@@ -40,7 +34,9 @@ const useStyles = makeStyles<StyleProps>()((theme, { showIcons }) => ({
       },
     },
     [theme.breakpoints.down('sm')]: {
-      display: 'block',
+      paddingTop: '1rem',
+      flexDirection: 'column',
+      alignSelf: 'flex-start',
     },
   },
   item: {
@@ -49,7 +45,9 @@ const useStyles = makeStyles<StyleProps>()((theme, { showIcons }) => ({
     '& h2': {
       fontSize: '3rem',
     },
-    [theme.breakpoints.down(1000)]: {
+    [theme.breakpoints.down('md')]: {
+      marginTop: '2rem',
+      marginBottom: '2rem',
       '& h2': {
         fontSize: '2.5rem',
       },
@@ -58,13 +56,9 @@ const useStyles = makeStyles<StyleProps>()((theme, { showIcons }) => ({
       },
     },
     [theme.breakpoints.down('sm')]: {
-      margin: 0,
-      '& h2': {
-        fontSize: '2rem',
-      },
-      '&:hover': {
-        background: theme.palette.background.highlight,
-      },
+      marginTop: '1%',
+      marginBottom: '1%',
+      width: '100%',
     },
   },
   link: {
@@ -77,36 +71,28 @@ const useStyles = makeStyles<StyleProps>()((theme, { showIcons }) => ({
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       alignItems: 'center',
-      paddingLeft: showIcons ? '2rem' : '4rem',
-      paddingTop: '4%',
+      paddingLeft: '12%',
       textAlign: 'left',
+      paddingTop: '4%',
       paddingBottom: '4%',
-      borderBottom: `1px solid ${theme.palette.background.highlight}`,
-      '&:hover': {
-        color: theme.palette.text.primary,
-      },
     },
   },
   icon: {
     marginBottom: '0.5rem',
     fontSize: '3rem',
-    [theme.breakpoints.down(1000)]: {
+    [theme.breakpoints.down('md')]: {
       fontSize: '2.5rem',
     },
     [theme.breakpoints.down('sm')]: {
       marginBottom: 0,
       marginRight: '1.8rem',
-      fontSize: '2rem',
     },
   },
 }));
 
 const NavigationItems: FunctionComponent<NavigationItemsProps> =
-  function NavigationItems({ className, showIcons }) {
-    const styleProps: StyleProps = {
-      showIcons: showIcons || false,
-    };
-    const { classes } = useStyles(styleProps);
+  function NavigationItems({ className }) {
+    const { classes, cx } = useStyles();
 
     const listVariants = {
       open: {
@@ -141,7 +127,7 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
         direction="row"
         alignItems="center"
         justifyContent="center"
-        className={`${classes.container} ${className}`}
+        className={cx(classes.container, className)}
         component={motion.div}
         variants={listVariants}
         initial="closed"
@@ -156,9 +142,7 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
           variants={itemVariants}
         >
           <Link to="/about" className={classes.link}>
-            {showIcons && (
-              <PersonPinIcon fontSize="inherit" className={classes.icon} />
-            )}
+            <PersonPinIcon fontSize="inherit" className={classes.icon} />
             <div>
               <Typography variant="h2">About</Typography>
               <Typography variant="subtitle1">Who Am I?</Typography>
@@ -172,9 +156,7 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
           variants={itemVariants}
         >
           <Link to="/portfolio" className={classes.link}>
-            {showIcons && (
-              <CodeRoundedIcon fontSize="inherit" className={classes.icon} />
-            )}
+            <CodeRoundedIcon fontSize="inherit" className={classes.icon} />
             <div>
               <Typography variant="h2">Portfolio</Typography>
               <Typography variant="subtitle1">My Projects</Typography>
@@ -188,9 +170,7 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
           variants={itemVariants}
         >
           <Link to="/contact" className={classes.link}>
-            {showIcons && (
-              <MessageRoundedIcon fontSize="inherit" className={classes.icon} />
-            )}
+            <MessageRoundedIcon fontSize="inherit" className={classes.icon} />
             <div>
               <Typography variant="h2">Contact</Typography>
               <Typography variant="subtitle1">Say Hello</Typography>

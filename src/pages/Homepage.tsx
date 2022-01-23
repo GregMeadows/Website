@@ -28,7 +28,7 @@ const Homepage: FunctionComponent = function Homepage() {
         <Link to="/portfolio">examples of my work</Link>.
       </Typography>
       <HideOnMobile>
-        <NavigationItems className={classes.navLayout} showIcons />
+        <NavigationItems className={classes.navLayout} />
       </HideOnMobile>
     </section>
   );

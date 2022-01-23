@@ -1,5 +1,5 @@
 import { Grid, Modal } from '@mui/material';
-import Logo from 'components/Logo';
+import Logo, { logoSizes } from 'components/Logo';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
@@ -21,10 +21,15 @@ const useStyles = makeStyles()((theme) => ({
     left: 72,
   },
   drawerLayout: {
-    paddingTop: '2%',
-    paddingBottom: '2%',
+    paddingTop: '3rem',
+    paddingBottom: '3rem',
+    [theme.breakpoints.down('md')]: {
+      paddingTop: '4rem',
+      paddingBottom: '1rem',
+    },
     [theme.breakpoints.down('sm')]: {
-      width: '18rem',
+      paddingTop: '6rem',
+      paddingBottom: '5rem',
     },
   },
   background: {
@@ -86,13 +91,12 @@ const Navigation: FunctionComponent = function Navigation() {
               container
               direction="column"
               alignItems="center"
-              justifyContent="center"
               className={classes.drawerLayout}
             >
               <Grid item id="nav-title">
-                <Logo />
+                <Logo size={logoSizes.l} />
               </Grid>
-              <NavigationItems showIcons />
+              <NavigationItems />
             </Grid>
           </>
         </NavMotionWrapper>
