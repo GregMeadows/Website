@@ -147,6 +147,7 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
         initial="closed"
         animate="open"
         exit="closed"
+        id="nav-description"
       >
         <Grid
           item

@@ -3,6 +3,7 @@ import Logo from 'components/Logo';
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
+import Breadcrumb from './Breadcrumb';
 import Hamburger from './Hamburger';
 import NavigationItems from './NavigationItems';
 import NavMotionWrapper from './NavMotionWrapper';
@@ -13,6 +14,11 @@ const useStyles = makeStyles()((theme) => ({
     zIndex: theme.zIndex.modal + 1,
     top: 16,
     left: 16,
+  },
+  breadcrumb: {
+    position: 'fixed',
+    top: 29,
+    left: 72,
   },
   drawerLayout: {
     paddingTop: '2%',
@@ -64,8 +70,8 @@ const Navigation: FunctionComponent = function Navigation() {
         className={classes.hamburger}
       />
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
+        aria-labelledby="nav-title"
+        aria-describedby="nav-description"
         open={isOpen}
         onClose={handleClose}
         closeAfterTransition
@@ -74,18 +80,21 @@ const Navigation: FunctionComponent = function Navigation() {
         }}
       >
         <NavMotionWrapper in={isOpen}>
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-            className={classes.drawerLayout}
-          >
-            <Grid item>
-              <Logo />
+          <>
+            <Breadcrumb className={classes.breadcrumb} />
+            <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justifyContent="center"
+              className={classes.drawerLayout}
+            >
+              <Grid item id="nav-title">
+                <Logo />
+              </Grid>
+              <NavigationItems showIcons />
             </Grid>
-            <NavigationItems showIcons />
-          </Grid>
+          </>
         </NavMotionWrapper>
       </Modal>
     </>
