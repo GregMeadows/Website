@@ -13,7 +13,7 @@ interface NavigationItemsProps {
 
 const useStyles = makeStyles()((theme) => ({
   container: {
-    '& > :not(:last-child)': {
+    '& > :not(div:last-of-type)': {
       paddingRight: '6%',
       borderRight: `1px solid ${theme.palette.divider}`,
       [theme.breakpoints.down('md')]: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles()((theme) => ({
         border: 'none',
       },
     },
-    '& > :not(:first-child)': {
+    '& > :not(div:first-of-type)': {
       paddingLeft: '6%',
       [theme.breakpoints.down('md')]: {
         paddingLeft: '5%',

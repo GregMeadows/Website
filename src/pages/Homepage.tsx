@@ -2,17 +2,22 @@ import { Typography } from '@mui/material';
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
-import HideOnMobile from '../components/HideOnMobile';
 import Logo from '../components/Logo';
 import NavigationItems from '../components/nav/NavigationItems';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme) => ({
   root: {
     textAlign: 'center',
-    marginTop: '20vh',
+    marginTop: '10rem',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '8rem',
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '4rem',
+    },
   },
   navLayout: {
-    marginTop: '4vh',
+    marginTop: '2rem',
   },
 }));
 
@@ -27,9 +32,7 @@ const Homepage: FunctionComponent = function Homepage() {
         <Link to="/about">who I am</Link>, and see{' '}
         <Link to="/portfolio">examples of my work</Link>.
       </Typography>
-      <HideOnMobile>
-        <NavigationItems className={classes.navLayout} />
-      </HideOnMobile>
+      <NavigationItems className={classes.navLayout} />
     </section>
   );
 };
