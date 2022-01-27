@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
+import { Outlet } from 'react-router-dom';
 import { makeStyles } from 'tss-react/mui';
-import Logo, { logoSizes } from './Logo';
+import Logo, { logoSizes } from '../Logo';
+import HideOnMobile from './HideOnMobile';
 
 const useStyles = makeStyles()(() => ({
   root: {
@@ -13,9 +15,14 @@ const Header: FunctionComponent = function Header() {
   const { classes } = useStyles();
 
   return (
-    <header className={classes.root}>
-      <Logo size={logoSizes.l} />
-    </header>
+    <>
+      <HideOnMobile>
+        <header className={classes.root}>
+          <Logo size={logoSizes.l} />
+        </header>
+      </HideOnMobile>
+      <Outlet />
+    </>
   );
 };
 

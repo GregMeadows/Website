@@ -1,6 +1,10 @@
+import { ThemeProvider } from '@mui/material';
+import Navigation from 'components/nav/Navigation';
+import Background from 'images/bg.jpg';
 import React, { FunctionComponent } from 'react';
+import { greyscale, main } from 'theme';
 import { makeStyles } from 'tss-react/mui';
-import Background from '../images/bg.jpg';
+import Footer from './Footer';
 
 const useStyles = makeStyles()((theme) => ({
   root: {
@@ -20,7 +24,17 @@ const Layout: FunctionComponent = function Layout({ children }) {
   const { classes, cx } = useStyles();
 
   return (
-    <section className={cx(classes.root, 'mui-fixed')}>{children}</section>
+    <>
+      <ThemeProvider theme={greyscale}>
+        <Navigation />
+      </ThemeProvider>
+      <ThemeProvider theme={main}>
+        <section className={cx(classes.root, 'mui-fixed')}>{children}</section>
+      </ThemeProvider>
+      <ThemeProvider theme={greyscale}>
+        <Footer />
+      </ThemeProvider>
+    </>
   );
 };
 
