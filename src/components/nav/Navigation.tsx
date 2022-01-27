@@ -32,8 +32,8 @@ const useStyles = makeStyles()((theme) => ({
       paddingBottom: '5rem',
     },
   },
-  background: {
-    background: theme.palette.background.default,
+  logo: {
+    padding: '0 5vw',
   },
 }));
 
@@ -93,7 +93,7 @@ const Navigation: FunctionComponent = function Navigation() {
               alignItems="center"
               className={classes.drawerLayout}
             >
-              <Grid item id="nav-title">
+              <Grid item id="nav-title" className={classes.logo}>
                 <Logo size={logoSizes.l} />
               </Grid>
               <NavigationItems />

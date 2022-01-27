@@ -10,10 +10,10 @@ const useStyles = makeStyles()((theme) => ({
     textAlign: 'center',
     marginTop: '10rem',
     [theme.breakpoints.down('md')]: {
-      marginTop: '8rem',
+      marginTop: '7rem',
     },
     [theme.breakpoints.down('sm')]: {
-      marginTop: '4rem',
+      marginTop: '3rem',
     },
   },
   navLayout: {
