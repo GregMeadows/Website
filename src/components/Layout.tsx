@@ -9,7 +9,6 @@ const useStyles = makeStyles()((theme) => ({
     overflowX: 'hidden',
     minHeight: '100%',
     marginTop: 0,
-    marginBottom: 300,
     padding: '3rem 10vw 10rem',
     [theme.breakpoints.down('sm')]: {
       padding: '5rem 8vw',
