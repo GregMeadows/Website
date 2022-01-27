@@ -24,6 +24,7 @@ const useStyles = makeStyles<StyleProps>()(
       maxHeight,
       minHeight,
       height: '10vw',
+      maxWidth: '100%',
       transition: 'height 0.5s ease',
       userSelect: 'none',
     },
