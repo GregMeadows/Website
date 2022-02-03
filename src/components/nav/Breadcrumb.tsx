@@ -80,7 +80,7 @@ const Breadcrumb: FunctionComponent<BreadcrumbProps> = function Breadcrumb({
   }
 
   const breadcrumbVariants = {
-    open: {
+    in: {
       x: 0,
       opacity: 1,
       transition: {
@@ -88,7 +88,7 @@ const Breadcrumb: FunctionComponent<BreadcrumbProps> = function Breadcrumb({
         delay: 0.4,
       },
     },
-    closed: {
+    out: {
       x: -40,
       opacity: 0,
       transition: {
@@ -109,9 +109,9 @@ const Breadcrumb: FunctionComponent<BreadcrumbProps> = function Breadcrumb({
       className={cx(classes.root, className)}
       component={motion.nav}
       variants={breadcrumbVariants}
-      initial="closed"
-      animate="open"
-      exit="closed"
+      initial="out"
+      animate="in"
+      exit="out"
     >
       {pathnames ? (
         <Link to="/" className={cx(classes.linkBase, classes.link)}>

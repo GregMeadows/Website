@@ -42,19 +42,19 @@ const Hamburger: FunctionComponent<HamburgerProps> = function Hamburger({
         viewBox="0 0 22 19"
         className={classes.icon}
         initial={false}
-        animate={open ? 'open' : 'closed'}
+        animate={open ? 'in' : 'out'}
       >
         <motion.path
           className={classes.path}
           variants={{
-            closed: {
+            out: {
               d: [
                 'M 3 16.5 L 17 2.5',
                 'M 2 9.423 L 20 9.423',
                 'M 2 2.5 L 20 2.5',
               ],
             },
-            open: {
+            in: {
               d: [
                 'M 2 2.5 L 20 2.5',
                 'M 2 9.423 L 20 9.423',
@@ -68,22 +68,22 @@ const Hamburger: FunctionComponent<HamburgerProps> = function Hamburger({
           className={classes.path}
           d="M 2 9.423 L 20 9.423"
           variants={{
-            closed: { opacity: 1 },
-            open: { opacity: 0 },
+            out: { opacity: 1 },
+            in: { opacity: 0 },
           }}
           transition={{ delay: 0.2, duration: 0.1 }}
         />
         <motion.path
           className={classes.path}
           variants={{
-            closed: {
+            out: {
               d: [
                 'M 3 2.5 L 17 16.346',
                 'M 2 9.423 L 20 9.423',
                 'M 2 16.346 L 20 16.346',
               ],
             },
-            open: {
+            in: {
               d: [
                 'M 2 16.346 L 20 16.346',
                 'M 2 9.423 L 20 9.423',
