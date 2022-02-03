@@ -22,7 +22,7 @@ const NavMotionWrapper = React.forwardRef<
   const { classes } = useStyles();
 
   const backgroundVariants = {
-    open: {
+    in: {
       clipPath: `circle(150% at 40px 40px)`,
       transition: {
         type: 'spring',
@@ -30,7 +30,7 @@ const NavMotionWrapper = React.forwardRef<
         restDelta: 2,
       },
     },
-    closed: {
+    out: {
       clipPath: 'circle(0% at 40px 40px)',
       transition: {
         delay: 0.2,
@@ -42,13 +42,13 @@ const NavMotionWrapper = React.forwardRef<
   };
 
   const handleAnimationStart = (definition: string) => {
-    if (definition === 'open' && onEnter) {
+    if (definition === 'in' && onEnter) {
       onEnter();
     }
   };
 
   const handleAnimationComplete = (definition: string) => {
-    if (definition === 'closed' && onExited) {
+    if (definition === 'out' && onExited) {
       onExited();
     }
   };
@@ -61,9 +61,9 @@ const NavMotionWrapper = React.forwardRef<
           key="navMotionWrapper"
           className={classes.background}
           variants={backgroundVariants}
-          initial="closed"
-          animate="open"
-          exit="closed"
+          initial="out"
+          animate="in"
+          exit="out"
           onAnimationStart={handleAnimationStart}
           onAnimationComplete={handleAnimationComplete}
           tabIndex={-1}

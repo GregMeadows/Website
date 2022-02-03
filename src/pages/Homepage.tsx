@@ -32,7 +32,7 @@ const Homepage: FunctionComponent = function Homepage() {
         <Link to="/about">who I am</Link>, and see{' '}
         <Link to="/portfolio">examples of my work</Link>.
       </Typography>
-      <NavigationItems className={classes.navLayout} />
+      <NavigationItems className={classes.navLayout} delay={1} />
     </section>
   );
 };

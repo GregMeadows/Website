@@ -9,6 +9,7 @@ import { makeStyles } from 'tss-react/mui';
 
 interface NavigationItemsProps {
   className?: string;
+  delay?: number;
 }
 
 const useStyles = makeStyles()((theme) => ({
@@ -91,27 +92,27 @@ const useStyles = makeStyles()((theme) => ({
 }));
 
 const NavigationItems: FunctionComponent<NavigationItemsProps> =
-  function NavigationItems({ className }) {
+  function NavigationItems({ className, delay }) {
     const { classes, cx } = useStyles();
 
     const listVariants = {
-      open: {
-        transition: { staggerChildren: 0.08, delayChildren: 0.4 },
+      in: {
+        transition: { staggerChildren: 0.08, delayChildren: delay || 0.4 },
       },
-      closed: {
+      out: {
         transition: { staggerChildren: 0.04 },
       },
     };
 
     const itemVariants = {
-      open: {
+      in: {
         y: 0,
         opacity: 1,
         transition: {
           y: { stiffness: 50, velocity: -40 },
         },
       },
-      closed: {
+      out: {
         y: -50,
         opacity: 0,
         transition: {
@@ -130,9 +131,9 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
         className={cx(classes.container, className)}
         component={motion.div}
         variants={listVariants}
-        initial="closed"
-        animate="open"
-        exit="closed"
+        initial="out"
+        animate="in"
+        exit="out"
         id="nav-description"
       >
         <Grid
