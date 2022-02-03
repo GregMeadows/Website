@@ -6,6 +6,9 @@ const AnimatedWrapper: FunctionComponent = function AnimatedWrapper() {
   const variants = {
     in: {
       opacity: 1,
+      transition: {
+        delay: 0.1,
+      },
     },
     out: {
       opacity: 0,
@@ -21,7 +24,7 @@ const AnimatedWrapper: FunctionComponent = function AnimatedWrapper() {
       animate="in"
       exit="out"
       variants={variants}
-      transition={{ duration: 0.1 }}
+      transition={{ duration: 0.15 }}
     >
       <Outlet />
     </motion.section>
