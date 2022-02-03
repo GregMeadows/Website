@@ -1,4 +1,5 @@
 import { Typography } from '@mui/material';
+import AnimatedImage from 'components/AnimatedImage';
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import imgCanada from '../images/canada.jpg';
@@ -43,10 +44,15 @@ const About: FunctionComponent = function About() {
     <>
       <section>
         <Typography variant="h1">Who Am I</Typography>
-        <figure className={classes.figure}>
-          <img src={imgMe} alt="Me in Amsterdam, Netherlands." />
-          <figcaption>Me in Amsterdam, Netherlands.</figcaption>
-        </figure>
+        <AnimatedImage
+          src={imgMe}
+          alt="Me, wearing a blue jumper, standing on a canal bridge in Amsterdam."
+          caption="Amsterdam, Netherlands"
+          height={1000}
+          width={1500}
+          maxHeight={600}
+          className={classes.figure}
+        />
         <Typography variant="body1">
           I am a {age && ageString} software developer based in Leicester,
           currently working for i-nexus, in Coventry, UK. I hold an MEng in
@@ -67,10 +73,15 @@ const About: FunctionComponent = function About() {
       </section>
       <section>
         <Typography variant="h1">Interests</Typography>
-        <figure className={classes.figure}>
-          <img src={imgCanada} alt="Moraine Lake, Canada" />
-          <figcaption>Moraine Lake, Canada.</figcaption>
-        </figure>
+        <AnimatedImage
+          src={imgCanada}
+          alt="A lake with a backdrop of mountains, with pine trees lining the right side"
+          caption="Moraine Lake, Canada"
+          height={1000}
+          width={1500}
+          maxHeight={600}
+          className={classes.figure}
+        />
         <Typography variant="body1">
           Staying on the techy side of things, I enjoy technology in general, I
           build my own PC, and enjoy getting my hands on any new tech. In my
