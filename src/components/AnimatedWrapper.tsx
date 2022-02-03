@@ -19,7 +19,7 @@ const AnimatedWrapper: FunctionComponent = function AnimatedWrapper() {
   };
 
   return (
-    <motion.section
+    <motion.div
       initial="out"
       animate="in"
       exit="out"
@@ -27,7 +27,7 @@ const AnimatedWrapper: FunctionComponent = function AnimatedWrapper() {
       transition={{ duration: 0.15 }}
     >
       <Outlet />
-    </motion.section>
+    </motion.div>
   );
 };
 

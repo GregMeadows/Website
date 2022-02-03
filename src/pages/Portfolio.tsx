@@ -1,5 +1,6 @@
 import { Card, CardContent, CardMedia, Chip, Typography } from '@mui/material';
 import OpenSourceChip from 'components/OpenSourceChip';
+import { motion } from 'framer-motion';
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from 'tss-react/mui';
 import { Project, projects } from '../assets/projects';
@@ -14,7 +15,6 @@ const useStyles = makeStyles()((theme) => ({
     breakInside: 'avoid-column',
     pageBreakInside: 'avoid',
     marginBottom: '2.2rem',
-    backgroundColor: theme.palette.background.highlight,
   },
   chips: {
     marginTop: '0.5rem',
@@ -26,14 +26,47 @@ const useStyles = makeStyles()((theme) => ({
   },
   image: {
     height: 280,
+    borderBottom: `1px solid ${theme.palette.divider}`,
   },
 }));
 
 const Portfolio: FunctionComponent = function Portfolio() {
   const { classes } = useStyles();
 
+  const containerVariants = {
+    in: {
+      transition: { staggerChildren: 0.1, delayChildren: 0.4 },
+    },
+    out: {
+      transition: { staggerChildren: 0.05 },
+    },
+  };
+
+  const itemVariants = {
+    in: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        y: { stiffness: 20, velocity: -20 },
+      },
+    },
+    out: {
+      y: -80,
+      opacity: 0,
+      transition: {
+        y: { stiffness: 20 },
+      },
+    },
+  };
+
   const projectsDOM = projects.map((project: Project) => (
-    <Card elevation={2} className={classes.project} key={project.name}>
+    <Card
+      variant="outlined"
+      className={classes.project}
+      key={project.name}
+      component={motion.div}
+      variants={itemVariants}
+    >
       <CardMedia className={classes.image} image={project.imgLink} />
       <CardContent>
         <Typography variant="h2">{project.name}</Typography>
@@ -55,7 +88,15 @@ const Portfolio: FunctionComponent = function Portfolio() {
         These are projects that I have worked on in my personal time, or as part
         of university.
       </Typography>
-      <section className={classes.projects}>{projectsDOM}</section>
+      <motion.section
+        className={classes.projects}
+        variants={containerVariants}
+        initial="out"
+        animate="in"
+        exit="out"
+      >
+        {projectsDOM}
+      </motion.section>
     </section>
   );
 };

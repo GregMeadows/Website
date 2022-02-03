@@ -21,7 +21,7 @@ const AnimatedRoutes: FunctionComponent = function AnimatedRoutes() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/portfolio" element={<Portfolio />} />
-            <Route element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Route>
       </Routes>
