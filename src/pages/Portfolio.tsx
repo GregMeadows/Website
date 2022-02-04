@@ -84,10 +84,7 @@ const Portfolio: FunctionComponent = function Portfolio() {
   return (
     <section>
       <Typography variant="h1">My Projects</Typography>
-      <Typography variant="body1">
-        These are projects that I have worked on in my personal time, or as part
-        of university.
-      </Typography>
+      <Typography variant="body1">Projects that I have worked on.</Typography>
       <motion.section
         className={classes.projects}
         variants={containerVariants}
