@@ -1,7 +1,25 @@
+import DoneIcon from '@mui/icons-material/Done';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import { Button, CircularProgress, Grid, TextField } from '@mui/material';
+import {
+  Alert,
+  AlertColor,
+  AlertTitle,
+  Button,
+  CircularProgress,
+  Collapse,
+  Grid,
+  TextField,
+  Typography,
+} from '@mui/material';
 import React, { ChangeEvent, FormEvent, FunctionComponent } from 'react';
 import { makeStyles } from 'tss-react/mui';
+
+export interface FormElements {
+  name: string;
+  email: string;
+  message: string;
+  website: string; // Honeypot
+}
 
 export enum FormState {
   default,
@@ -12,6 +30,8 @@ export enum FormState {
 
 interface ContactFormProps {
   formState: FormState;
+  defaultValues: Omit<FormElements, 'website'>;
+  errorText: string;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   onChange: (
     event: ChangeEvent<
@@ -25,11 +45,17 @@ const useStyles = makeStyles()((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,
-    marginTop: '2rem',
-    maxWidth: '80%',
+    maxWidth: '70rem',
+    margin: '3rem auto 0',
     [theme.breakpoints.down('md')]: {
-      maxWidth: '100%',
+      marginTop: '2rem',
     },
+    [theme.breakpoints.down('sm')]: {
+      marginTop: '1rem',
+    },
+  },
+  grid: {
+    marginTop: '1rem',
   },
   icon: {
     marginRight: theme.spacing(1),
@@ -44,19 +70,70 @@ const useStyles = makeStyles()((theme) => ({
     textAlign: 'right',
   },
   progress: {
-    marginLeft: '3rem',
-    marginRight: '4rem',
+    margin: '0 3rem',
   },
 }));
 
 const ContactForm: FunctionComponent<ContactFormProps> = function ContactForm({
   formState,
+  defaultValues,
+  errorText,
   onSubmit,
   onChange,
 }) {
   const { classes } = useStyles();
   const disableControls =
     formState === FormState.sent || formState === FormState.sending;
+
+  let alertText;
+  let severity: AlertColor = 'info';
+  if (formState === FormState.sent) {
+    severity = 'success';
+    alertText = (
+      <>
+        <AlertTitle>Thanks for the message!</AlertTitle>
+        <Typography variant="body1">
+          I&apos;ll get back to you shortly.
+        </Typography>
+      </>
+    );
+  } else if (formState === FormState.error) {
+    severity = 'error';
+    alertText = (
+      <>
+        <AlertTitle>There was an issue sending your message.</AlertTitle>
+        <Typography variant="body1">
+          Reason: <strong>{errorText}</strong>
+        </Typography>
+        <Typography variant="body1">Please feel free to try again.</Typography>
+      </>
+    );
+  }
+
+  let sendText;
+  if (formState === FormState.sending) {
+    sendText = (
+      <CircularProgress
+        color="secondary"
+        size="1.5rem"
+        className={classes.progress}
+      />
+    );
+  } else if (formState === FormState.sent) {
+    sendText = (
+      <>
+        <DoneIcon className={classes.icon} />
+        Message Sent
+      </>
+    );
+  } else {
+    sendText = (
+      <>
+        <SendRoundedIcon className={classes.icon} />
+        Send Message
+      </>
+    );
+  }
 
   return (
     <form
@@ -65,7 +142,12 @@ const ContactForm: FunctionComponent<ContactFormProps> = function ContactForm({
       method="post"
       onSubmit={onSubmit}
     >
-      <Grid container spacing={2}>
+      <Collapse
+        in={formState === FormState.sent || formState === FormState.error}
+      >
+        <Alert severity={severity}>{alertText}</Alert>
+      </Collapse>
+      <Grid container spacing={2} className={classes.grid}>
         <Grid item xs={12} sm={6}>
           <TextField
             name="name"
@@ -77,6 +159,7 @@ const ContactForm: FunctionComponent<ContactFormProps> = function ContactForm({
             required
             disabled={disableControls}
             className={classes.width}
+            defaultValue={defaultValues.name}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -84,13 +167,13 @@ const ContactForm: FunctionComponent<ContactFormProps> = function ContactForm({
             name="email"
             label="Email"
             variant="outlined"
-            margin="normal"
             type="email"
             error={formState === FormState.error}
             onChange={(e) => onChange(e)}
             required
             disabled={disableControls}
             className={classes.width}
+            defaultValue={defaultValues.email}
           />
         </Grid>
         <Grid item xs={12}>
@@ -108,6 +191,7 @@ const ContactForm: FunctionComponent<ContactFormProps> = function ContactForm({
             required
             disabled={disableControls}
             className={classes.width}
+            defaultValue={defaultValues.message}
           />
           <input
             type="text"
@@ -125,18 +209,7 @@ const ContactForm: FunctionComponent<ContactFormProps> = function ContactForm({
             type="submit"
             disabled={disableControls}
           >
-            {formState === FormState.sending ? (
-              <CircularProgress
-                color="secondary"
-                size="1.5rem"
-                className={classes.progress}
-              />
-            ) : (
-              <>
-                <SendRoundedIcon className={classes.icon} />
-                Send Message
-              </>
-            )}
+            {sendText}
           </Button>
         </Grid>
       </Grid>
