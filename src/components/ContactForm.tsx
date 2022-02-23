@@ -45,7 +45,7 @@ const useStyles = makeStyles()((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,
-    maxWidth: '70rem',
+    maxWidth: '80rem',
     margin: '3rem auto 0',
     [theme.breakpoints.down('md')]: {
       marginTop: '2rem',
