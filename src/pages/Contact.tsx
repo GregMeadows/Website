@@ -80,9 +80,7 @@ const Contact: FunctionComponent = function Contact() {
   return (
     <section>
       <Typography variant="h1">Say Hello</Typography>
-      <Typography variant="body1">
-        Use the from below to get in touch.
-      </Typography>
+      <Typography>Use the from below to get in touch.</Typography>
       <ContactForm
         formState={formState}
         defaultValues={storedValues}

@@ -27,10 +27,9 @@ const Homepage: FunctionComponent = function Homepage() {
   return (
     <section className={classes.root}>
       <Logo size={250} />
-      <Typography variant="body1">
+      <Typography>
         Welcome to my site, here you can find out{' '}
-        <Link to="/about">who I am</Link>, and see{' '}
-        <Link to="/portfolio">examples of my work</Link>.
+        <Link to="/about">who I am</Link>, and <Link to="/xp">what I do</Link>.
       </Typography>
       <NavigationItems className={classes.navLayout} delay={1} />
     </section>

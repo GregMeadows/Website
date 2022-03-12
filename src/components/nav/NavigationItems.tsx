@@ -156,11 +156,13 @@ const NavigationItems: FunctionComponent<NavigationItemsProps> =
           component={motion.div}
           variants={itemVariants}
         >
-          <Link to="/portfolio" className={classes.link}>
+          <Link to="/xp" className={classes.link}>
             <CodeRoundedIcon fontSize="inherit" className={classes.icon} />
             <div>
-              <Typography variant="h2">Portfolio</Typography>
-              <Typography variant="subtitle1">My Projects</Typography>
+              <Typography variant="h2">Experience</Typography>
+              <Typography variant="subtitle1">
+                My Skills &amp; Projects
+              </Typography>
             </div>
           </Link>
         </Grid>

@@ -1,9 +1,8 @@
 import { Card, CardContent, CardMedia, Chip, Typography } from '@mui/material';
 import OpenSourceChip from 'components/OpenSourceChip';
-import { motion } from 'framer-motion';
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from 'tss-react/mui';
-import { Project, projects } from '../assets/projects';
+import { Project, projects } from 'assets/projects';
 
 const useStyles = makeStyles()((theme) => ({
   projects: {
@@ -33,40 +32,8 @@ const useStyles = makeStyles()((theme) => ({
 const Portfolio: FunctionComponent = function Portfolio() {
   const { classes } = useStyles();
 
-  const containerVariants = {
-    in: {
-      transition: { staggerChildren: 0.1, delayChildren: 0.4 },
-    },
-    out: {
-      transition: { staggerChildren: 0.05 },
-    },
-  };
-
-  const itemVariants = {
-    in: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 20, velocity: -20 },
-      },
-    },
-    out: {
-      y: -80,
-      opacity: 0,
-      transition: {
-        y: { stiffness: 20 },
-      },
-    },
-  };
-
   const projectsDOM = projects.map((project: Project) => (
-    <Card
-      variant="outlined"
-      className={classes.project}
-      key={project.name}
-      component={motion.div}
-      variants={itemVariants}
-    >
+    <Card variant="outlined" className={classes.project} key={project.name}>
       <CardMedia className={classes.image} image={project.imgLink} />
       <CardContent>
         <Typography variant="h2">{project.name}</Typography>
@@ -83,17 +50,9 @@ const Portfolio: FunctionComponent = function Portfolio() {
 
   return (
     <section>
-      <Typography variant="h1">My Projects</Typography>
-      <Typography variant="body1">Projects that I have worked on.</Typography>
-      <motion.section
-        className={classes.projects}
-        variants={containerVariants}
-        initial="out"
-        animate="in"
-        exit="out"
-      >
-        {projectsDOM}
-      </motion.section>
+      <Typography variant="h1">Notable Projects</Typography>
+      <Typography>Some projects that I have worked on.</Typography>
+      <section className={classes.projects}>{projectsDOM}</section>
     </section>
   );
 };
