@@ -75,7 +75,8 @@ const technologies: XPList = {
     { name: 'Gradle', logo: gradleLogo, logoAlt: 'Gradle Logo' },
     { name: 'Tomcat' },
     { name: 'Docker', logo: dockerLogo, logoAlt: 'Docker Logo' },
-    { name: 'JIRA / Trello' },
+    { name: 'JIRA' },
+    { name: 'Trello' },
   ],
 };
 
