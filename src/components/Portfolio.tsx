@@ -3,7 +3,7 @@ import OpenSourceChip from 'components/OpenSourceChip';
 import { motion } from 'framer-motion';
 import React, { FunctionComponent } from 'react';
 import { makeStyles } from 'tss-react/mui';
-import { Project, projects } from '../assets/projects';
+import { Project, projects } from 'assets/projects';
 
 const useStyles = makeStyles()((theme) => ({
   projects: {
@@ -83,8 +83,10 @@ const Portfolio: FunctionComponent = function Portfolio() {
 
   return (
     <section>
-      <Typography variant="h1">My Projects</Typography>
-      <Typography variant="body1">Projects that I have worked on.</Typography>
+      <Typography variant="h1">Notable Projects</Typography>
+      <Typography variant="body1">
+        Some projects that I have worked on.
+      </Typography>
       <motion.section
         className={classes.projects}
         variants={containerVariants}

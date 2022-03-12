@@ -1,9 +1,9 @@
 import { AnimatePresence } from 'framer-motion';
 import About from 'pages/About';
 import Contact from 'pages/Contact';
+import Experience from 'pages/Experience';
 import Homepage from 'pages/Homepage';
 import NotFound from 'pages/NotFound';
-import Portfolio from 'pages/Portfolio';
 import React, { FunctionComponent } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import AnimatedWrapper from './AnimatedWrapper';
@@ -20,7 +20,7 @@ const AnimatedRoutes: FunctionComponent = function AnimatedRoutes() {
           <Route element={<Header />}>
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/xp" element={<Experience />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Route>
