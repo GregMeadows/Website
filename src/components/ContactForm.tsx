@@ -92,9 +92,7 @@ const ContactForm: FunctionComponent<ContactFormProps> = function ContactForm({
     alertText = (
       <>
         <AlertTitle>Thanks for the message!</AlertTitle>
-        <Typography variant="body1">
-          I&apos;ll get back to you shortly.
-        </Typography>
+        <Typography>I&apos;ll get back to you shortly.</Typography>
       </>
     );
   } else if (formState === FormState.error) {
@@ -102,10 +100,10 @@ const ContactForm: FunctionComponent<ContactFormProps> = function ContactForm({
     alertText = (
       <>
         <AlertTitle>There was an issue sending your message.</AlertTitle>
-        <Typography variant="body1">
+        <Typography paragraph>
           Reason: <strong>{errorText}</strong>
         </Typography>
-        <Typography variant="body1">Please feel free to try again.</Typography>
+        <Typography>Please feel free to try again.</Typography>
       </>
     );
   }

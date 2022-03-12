@@ -12,27 +12,7 @@ declare module '@mui/material/styles/createPalette' {
   }
 }
 
-// Main Colour Theme
-export const main = createTheme({
-  palette: {
-    mode: 'light',
-    text: {
-      primary: '#000',
-      secondary: grey[600],
-      logo: '#000',
-    },
-    primary: {
-      main: '#0099ff',
-    },
-    secondary: {
-      main: '#0099ff',
-    },
-    background: {
-      default: '#F5F5F5',
-      paper: '#F5F5F5',
-      highlight: grey[200],
-    },
-  },
+const baseTheme = createTheme({
   typography: {
     h1: {
       fontFamily: '"Alegreya Sans", sans-serif',
@@ -66,16 +46,36 @@ export const main = createTheme({
           marginTop: '1rem',
           marginBottom: '1rem',
         },
-        body1: {
-          marginTop: '1rem',
-        },
       },
     },
   },
 });
 
+// Main Colour Theme
+export const main = createTheme(baseTheme, {
+  palette: {
+    mode: 'light',
+    text: {
+      primary: '#000',
+      secondary: grey[600],
+      logo: '#000',
+    },
+    primary: {
+      main: '#0099ff',
+    },
+    secondary: {
+      main: '#0099ff',
+    },
+    background: {
+      default: '#F5F5F5',
+      paper: '#F5F5F5',
+      highlight: grey[200],
+    },
+  },
+});
+
 // Grey Theme
-export const greyscale = createTheme({
+export const greyscale = createTheme(baseTheme, {
   palette: {
     mode: 'dark',
     text: {
@@ -94,32 +94,6 @@ export const greyscale = createTheme({
       default: grey[800],
       paper: grey[800],
       highlight: grey[700],
-    },
-  },
-  typography: {
-    h1: {
-      fontFamily: 'Alegreya Sans, sans-serif',
-      fontWeight: 500,
-      fontSize: '3rem',
-    },
-    h2: {
-      fontFamily: 'Alegreya Sans, sans-serif',
-      fontWeight: 400,
-      fontSize: '2.5rem',
-    },
-    h3: {
-      fontFamily: 'Roboto, sans-serif',
-      fontWeight: 400,
-      fontSize: '1.5rem',
-    },
-    body1: {
-      fontSize: '1.2rem',
-    },
-    subtitle1: {
-      fontSize: '1.1rem',
-    },
-    subtitle2: {
-      fontSize: '0.8rem',
     },
   },
 });

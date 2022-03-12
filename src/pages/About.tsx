@@ -53,12 +53,12 @@ const About: FunctionComponent = function About() {
           maxHeight={600}
           className={classes.figure}
         />
-        <Typography variant="body1">
+        <Typography paragraph>
           I am a {age && ageString} software developer based in Leicester,
           currently working for i-nexus. I hold an MEng in Computer Science that
           I received from the University of Hertfordshire in 2018.
         </Typography>
-        <Typography variant="body1">
+        <Typography paragraph>
           I have always enjoyed programming. My first foray into programming was
           DOS commands and batch scripting. I loved the ability to carry out
           multiple tasks what seemed instantly (back on Windows XP) and with
@@ -66,7 +66,7 @@ const About: FunctionComponent = function About() {
           Visual Basic, which lead to object-oriented languages like C# and the
           .NET framework.
         </Typography>
-        <Typography variant="body1">
+        <Typography paragraph>
           Soon I discoverd WPF Forms, and my interest in building good user
           interfaces. This lead me down a split path between desktop based
           development, with Java/JavaFX. And web development, with HTML/CSS
@@ -74,7 +74,7 @@ const About: FunctionComponent = function About() {
           the growing trend to move all apps to a web based environment,
           it&apos;s clear where the market is heading.
         </Typography>
-        <Typography variant="body1">
+        <Typography paragraph>
           Now in a professional environment, I have found a love for Typescript,
           and especially frameworks like React (with hooks is even better). I
           find this mix ideal for small and large projects alike, and makes for
@@ -94,23 +94,23 @@ const About: FunctionComponent = function About() {
           maxHeight={600}
           className={classes.figure}
         />
-        <Typography variant="body1">
+        <Typography paragraph>
           Staying on the techy side of things, I greatly enjoy technology in
           general. I like to get my hands on any new tech, and have built myself
           more than one PC.
         </Typography>
-        <Typography variant="body1">
+        <Typography paragraph>
           In my down time I like to game, especially with friends. I&apos;m a
           big fan of Escape From Tarkov, and occasionally like to tortue myself
           with League of Legends.
         </Typography>
-        <Typography variant="body1">
+        <Typography paragraph>
           More recently I have picked up playing chess. I&apos;m not very good,
           but have enjoyed learning the different concepts and openings, and can
           only hope that I get better in time. I currently favour the London and
           Dutch Defence.
         </Typography>
-        <Typography variant="body1">
+        <Typography paragraph>
           As for staying active, I like a good game of 5-a-side football, and
           when possible I&apos;m keen to go surfing (though living in Leicester
           can make this pretty difficult).
@@ -118,7 +118,7 @@ const About: FunctionComponent = function About() {
       </section>
       <section>
         <Typography variant="h1">Aspirations</Typography>
-        <Typography variant="body1">
+        <Typography paragraph>
           Possibly my largest aspiration is to one day end up in Canada. I
           visited back in 2013, and instantly fell in love with the stunning
           scenery and welcoming people. I stayed in the Rocky Mountains, within
@@ -126,7 +126,7 @@ const About: FunctionComponent = function About() {
           to date. Luckily, with the more recent prevelance of remote working,
           this doesn&apos;t seem too unrealistic.
         </Typography>
-        <Typography variant="body1">
+        <Typography paragraph>
           Aside from that, my dream car is an Aston Martin, either a Vantage or
           DB11 (I wouldn&apos;t be fussy). This is somewhat less likely than
           remote working from Canada, especially with the rise of electric cars,

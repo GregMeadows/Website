@@ -125,7 +125,7 @@ const Experience: FunctionComponent = function Experience() {
     <>
       <section>
         <Typography variant="h1">Experience &amp; Skills</Typography>
-        <Typography variant="body1">
+        <Typography>
           Languages, frameworks, and technologies that I have used.
         </Typography>
         <Grid container spacing={6} className={classes.skills}>

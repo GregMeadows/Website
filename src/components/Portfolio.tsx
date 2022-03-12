@@ -51,9 +51,7 @@ const Portfolio: FunctionComponent = function Portfolio() {
   return (
     <section>
       <Typography variant="h1">Notable Projects</Typography>
-      <Typography variant="body1">
-        Some projects that I have worked on.
-      </Typography>
+      <Typography>Some projects that I have worked on.</Typography>
       <section className={classes.projects}>{projectsDOM}</section>
     </section>
   );
