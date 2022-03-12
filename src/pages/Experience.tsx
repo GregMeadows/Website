@@ -5,20 +5,36 @@ import React, { FunctionComponent } from 'react';
 import { makeStyles } from 'tss-react/mui';
 
 const useStyles = makeStyles()((theme) => ({
+  skills: {
+    marginTop: '2rem',
+    marginBottom: '8rem',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '1rem',
+      marginBottom: '6rem',
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginTop: 0,
+      marginBottom: '4rem',
+    },
+  },
   title: {
     display: 'flex',
     alignItems: 'center',
     marginBottom: '0.6rem',
   },
-  icon: {
+  titleIcon: {
     fontSize: '2.2rem',
     marginRight: '0.5rem',
   },
-  logos: {
+  logoContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
+    marginTop: 0,
+    [theme.breakpoints.down('lg')]: {
+      marginTop: '1rem',
+    },
   },
   logo: {
     height: '3.6rem',
@@ -44,15 +60,6 @@ const useStyles = makeStyles()((theme) => ({
       marginRight: '0.2rem',
     },
   },
-  skills: {
-    marginBottom: '8rem',
-    [theme.breakpoints.down('md')]: {
-      marginBottom: '6rem',
-    },
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: '4rem',
-    },
-  },
 }));
 
 const Experience: FunctionComponent = function Experience() {
@@ -64,7 +71,7 @@ const Experience: FunctionComponent = function Experience() {
     <Grid item key={xpList.title} xs>
       <div className={classes.title}>
         {React.cloneElement(xpList.icon, {
-          className: classes.icon,
+          className: classes.titleIcon,
         })}
         <Typography variant="h2">{xpList.title}</Typography>
       </div>
@@ -73,7 +80,6 @@ const Experience: FunctionComponent = function Experience() {
           if (item.logo) {
             logos.push(item);
           }
-
           return (
             <Chip label={item.name} key={item.name} className={classes.chip} />
           );
@@ -84,28 +90,26 @@ const Experience: FunctionComponent = function Experience() {
 
   return (
     <>
-      <section className={classes.skills}>
+      <section>
         <Typography variant="h1">Experience &amp; Skills</Typography>
         <Typography variant="body1">
           Languages, frameworks, and technologies that I have used.
         </Typography>
-        <section>
-          <Grid container spacing={6}>
-            <Grid container item spacing={6} xs={12} lg={6}>
-              {xpLists}
-            </Grid>
-            <Grid item className={classes.logos} xs={12} lg={6}>
-              {logos.map((logo) => (
-                <img
-                  key={logo.logoAlt}
-                  src={logo.logo}
-                  alt={logo.logoAlt}
-                  className={classes.logo}
-                />
-              ))}
-            </Grid>
+        <Grid container spacing={6} className={classes.skills}>
+          <Grid container item spacing={6} xs={12} lg={6}>
+            {xpLists}
           </Grid>
-        </section>
+          <Grid item className={classes.logoContainer} xs={12} lg={6}>
+            {logos.map((logo) => (
+              <img
+                key={logo.logoAlt}
+                src={logo.logo}
+                alt={logo.logoAlt}
+                className={classes.logo}
+              />
+            ))}
+          </Grid>
+        </Grid>
       </section>
       <Portfolio />
     </>
