@@ -10,10 +10,11 @@ const useStyles = makeStyles()((theme) => ({
     float: 'right',
     maxWidth: '50%',
     marginTop: 0,
+    clear: 'both',
     [theme.breakpoints.down('md')]: {
       float: 'none',
       maxWidth: '100%',
-      margin: 0,
+      margin: '0 0 1rem 0',
     },
   },
 }));
@@ -46,17 +47,15 @@ const About: FunctionComponent = function About() {
         <Typography variant="h1">Who Am I</Typography>
         <AnimatedImage
           src={imgMe}
-          alt="Me, wearing a blue jumper, standing on a canal bridge in Amsterdam."
-          caption="Amsterdam, Netherlands"
-          height={1000}
-          width={1500}
-          maxHeight={600}
+          alt="Me, wearing t-shirt and shorts, in front of an old Korean gate in South Korea."
+          caption="Daereungwon Tomb Complex, Gyeongju, South Korea"
+          maxWidth={600}
           className={classes.figure}
         />
         <Typography paragraph>
-          I am a {age && ageString} software developer based in Leicester,
-          currently working for i-nexus. I hold an MEng in Computer Science that
-          I received from the University of Hertfordshire in 2018.
+          I am a {age && ageString} software developer based in Leicester. I
+          hold an MEng in Computer Science that I received from the University
+          of Hertfordshire in 2018.
         </Typography>
         <Typography paragraph>
           I have always enjoyed programming. My first foray into programming was
@@ -68,11 +67,12 @@ const About: FunctionComponent = function About() {
         </Typography>
         <Typography paragraph>
           Soon I discoverd WPF Forms, and my interest in building good user
-          interfaces. This lead me down a split path between desktop based
-          development, with Java/JavaFX. And web development, with HTML/CSS
-          using JavaScript/JQuery and PHP to produce functionality. Though, with
-          the growing trend to move all apps to a web based environment,
-          it&apos;s clear where the market is heading.
+          interfaces. This lead me down a split path, trying to create good
+          looking user interfaces in both the desktop app environment (utilising
+          Java/JavaFX), and the rapidly growing web app environment (using
+          HTM/CSS, with JavaScript/JQuery/PHP to produce functionality). Though,
+          the growing trend to move all apps to a web based environment made it
+          clear where the market is heading.
         </Typography>
         <Typography paragraph>
           Now in a professional environment, I have found a love for Typescript,
@@ -85,15 +85,6 @@ const About: FunctionComponent = function About() {
       </section>
       <section>
         <Typography variant="h1">Interests</Typography>
-        <AnimatedImage
-          src={imgCanada}
-          alt="A lake with a backdrop of mountains, with pine trees lining the right side, and scree slopes on the left"
-          caption="Moraine Lake, Canada"
-          height={1000}
-          width={1500}
-          maxHeight={600}
-          className={classes.figure}
-        />
         <Typography paragraph>
           Staying on the techy side of things, I greatly enjoy technology in
           general. I like to get my hands on any new tech, and have built myself
@@ -112,12 +103,18 @@ const About: FunctionComponent = function About() {
         </Typography>
         <Typography paragraph>
           As for staying active, I like a good game of 5-a-side football, and
-          when possible I&apos;m keen to go surfing (though living in Leicester
-          can make this pretty difficult).
+          when possible I enjoy airsoft with my friends.
         </Typography>
       </section>
       <section>
         <Typography variant="h1">Aspirations</Typography>
+        <AnimatedImage
+          src={imgCanada}
+          alt="A lake with a backdrop of mountains, with pine trees lining the right side, and scree slopes on the left"
+          caption="Moraine Lake, Canada"
+          maxWidth={600}
+          className={classes.figure}
+        />
         <Typography paragraph>
           Possibly my largest aspiration is to one day end up in Canada. I
           visited back in 2013, and instantly fell in love with the stunning
