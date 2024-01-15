@@ -4,20 +4,18 @@ import React, { FunctionComponent, useState } from 'react';
 import { makeStyles } from 'tss-react/mui';
 
 interface StyleProps {
-  height: number;
-  width: number;
-  maxHeight: number;
+  maxHeight?: number;
+  maxWidth?: number;
 }
 
 const useStyles = makeStyles<StyleProps>()(
-  (theme, { height, width, maxHeight }) => ({
+  (theme, { maxHeight, maxWidth }) => ({
     image: {
       maxHeight,
+      width: maxWidth,
     },
     container: {
       position: 'relative',
-      width,
-      aspectRatio: `${width} / ${height}`,
       maxHeight,
       maxWidth: '100%',
     },
@@ -33,9 +31,8 @@ interface AnimatedImageProps {
   src: string;
   alt: string;
   caption: string;
-  height: number;
-  width: number;
-  maxHeight: number;
+  maxHeight?: number;
+  maxWidth?: number;
   className?: string;
 }
 
@@ -44,12 +41,11 @@ const AnimatedImage: FunctionComponent<AnimatedImageProps> =
     src,
     alt,
     caption,
-    height,
-    width,
     maxHeight,
+    maxWidth,
     className,
   }) {
-    const { classes } = useStyles({ height, width, maxHeight });
+    const { classes } = useStyles({ maxHeight, maxWidth });
     const [loading, setLoading] = useState(true);
 
     const variants = {
