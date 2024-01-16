@@ -45,6 +45,7 @@ const languages: XPList = {
     { name: 'SQL' },
     { name: 'PHP', logo: phpLogo, logoAlt: 'PHP Logo' },
     { name: 'C#.NET', logo: dotnetLogo, logoAlt: 'Dot NET Logo' },
+    { name: 'Liquid' },
   ],
 };
 
