@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import React, { ReactFragment } from 'react';
 import imgReact from '../images/reactCode.jpg';
 import imgTwitterProject from '../images/twitterProject.jpg';
-import imgVRE from '../images/vre.jpg';
+import imgEnyoBackdrop from '../images/enyoBackdrop.jpg';
 
 export interface Project {
   name: string;
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     ),
     imgLink: imgReact,
     tags: ['React', 'TypeScript', 'HTML', 'CSS'],
-    openSource: 'GregMeadows.uk',
+    openSource: 'Website',
   },
   {
     name: 'Twitter Sentiment Analysis',
@@ -80,39 +80,47 @@ export const projects: Project[] = [
     tags: ['Java', 'JavaFX', 'SQL'],
   },
   {
-    name: 'Virtual Rehabilitation Environment',
+    name: 'Enyo Shop & Website',
+    openSource: 'enyo',
     info: (
       <>
         <Typography paragraph>
-          This was a project between 4 of us, carried out as part of our
-          masters.
+          Enyo was a company that designed and manufactured unique premium
+          esports performance apparel and merchandise for esports teams,
+          streamers and individuals.
         </Typography>
         <Typography paragraph>
-          We were tasked to create a virtual rehabilitation environment for
-          patients with neurological conditions based at the Danesbury
-          Neurological Centre, Welwyn.
+          The project entailed creating and maintaining a Shopify shop, in
+          addition to a brand website.
         </Typography>
         <Typography paragraph>
-          The concept was to create a platform that could aid in the
-          rehabilitation process, such as, to give reminders for physiotherapy,
-          reminders for upcoming appointments, and track their overall progress.
+          The shop side utilised the Shopify store front platform, using Liquid
+          and CSS to create a branded store page. This was my first foray into
+          Shopify and Liquid as a template language, so presented a lot of new
+          experiences. While the language is fairly simple, it
         </Typography>
         <Typography paragraph>
-          The platfrom had to cater to users that could have a wide range of
-          neurological conditions, and as such the UX decisions were vital. This
-          resulted in a fairly simple design, with a large clean layout, and
-          clear colour-coded pages. This did not make for the most impressive
-          platform visually, but it achieved the goal of being navigable by the
-          intended users.
+          While the language is fairly simple, it is very reminicent of PHP due
+          to the server side rendering. This was not dynamic enough for my
+          liking, and made dynamic styling fairly difficult and obtuse.
         </Typography>
         <Typography paragraph>
-          Java was used to run the backend server, while Javascript was used for
-          frontend functionality, using JSON service calls to communicate
-          between the two.
+          The brand website was written in Typescript using the React framework.
+          This was far easier to work with than the store front, though posed a
+          challenge when the two had to flow.
+        </Typography>
+        <Typography paragraph>
+          The brand site was hosted on AWS, making use of several services,
+          notably, Amplify, S3, and Route 53, in addition to a couple Lambda
+          functions. This was very interesting to venture into, as I had only
+          had brief exposure to AWS. Amplify provided a very easy CI/CD workflow
+          which I was a fan of. While Route 53 allowed for complex domain/email
+          routing rules, though felt like slight overkill for the simple use
+          case.
         </Typography>
       </>
     ),
-    imgLink: imgVRE,
-    tags: ['Java', 'SQL', 'JavaScript', 'HTML', 'CSS'],
+    imgLink: imgEnyoBackdrop,
+    tags: ['React', 'Typescript', 'JavaScript', 'Liquid', 'HTML', 'CSS', 'AWS'],
   },
 ];
