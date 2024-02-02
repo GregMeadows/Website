@@ -92,7 +92,7 @@ const About: FunctionComponent = function About() {
         </Typography>
         <Typography paragraph>
           In my down time I like to game, especially with friends. I&apos;m a
-          big fan of Escape From Tarkov, and occasionally like to tortue myself
+          big fan of Escape From Tarkov, and occasionally like to torture myself
           with League of Legends.
         </Typography>
         <Typography paragraph>
